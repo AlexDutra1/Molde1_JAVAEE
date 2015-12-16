@@ -5,3 +5,5 @@
 <h:outputScript library="javascript" name="bootstrap.min.js"  /> 
 <h:outputScript library="javascript" name="jquery.js" /> 
  -->
+ 
+ teste

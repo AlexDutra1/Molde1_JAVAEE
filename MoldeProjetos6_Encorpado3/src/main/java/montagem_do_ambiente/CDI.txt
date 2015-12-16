@@ -1,0 +1,13 @@
+1]Adicione no src/main/resources/META-INF o arquivo beans.xml vazio
+Obs: Apesar que alguns posts comentam que o arquivo deve ficar em WEB-INF
+
+2]Se o container for tomcat coloque o arquivo context.xml no webapp/META-INF
+
+3]Adicione 2 blocos de codigo no web.xml (O listener do CDI e o BeanManager)
+
+4]Adicione a dependencia da implementação WELD do CDI ao pom.xml
+
+5]Insira as anotações @Named ao inves de @ManagedBean nas classes beans e 
+@Inject ao invez de instanciar as classes
+
+6]Efetue o teste se CDI esta OK
