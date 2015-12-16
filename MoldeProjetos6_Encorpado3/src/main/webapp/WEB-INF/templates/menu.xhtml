@@ -1,0 +1,61 @@
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+<div class="panel panel-default">
+		
+		<div class="panel-body">
+		
+<h:form id="menuForm">
+		<nav class="navbar navbar-custom" style="margin: 10px 0">
+			<div class="container-fluid">
+				<div class="navbar-header">
+			    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+			        	<span class="btn sr-only">Toggle navigation</span>
+				        <span class="btn icon-bar"></span>
+				        <span class="btn icon-bar"></span>
+				        <span class="btn icon-bar"></span>
+			      	</button>
+			    </div>
+			    
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			      	<ul class="nav navbar-nav">
+			      		<li class="dropdown" style="">
+			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="#{clienteController.abreCadastro}" value="Cadastrar Cliente" /></li>
+			            		<li><h:commandLink action="#{clienteController.abrePesquisa}" value="Pesquisar Cliente" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li class="dropdown" style="">
+			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			aria-haspopup="true" aria-expanded="false">Usuários<span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="#{usuarioController.abreCadastro}" value="Cadastrar Usuários" /></li>
+			            		<li><h:commandLink action="#{usuarioController.abrePesquisa}" value="Pesquisar Usuários" /></li>
+			          		</ul>
+			      		</li>
+			      		
+			      		<li style=""><h:commandLink action="#{empenhoController.abreIniciar()}" value="teste 6" /></li>
+			      		<li class="dropdown" style="">
+			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tabelas de Apoio <span class="caret"></span></a>
+			      			<ul class="dropdown-menu">
+			            		<li><h:commandLink action="#" value="Manter Natureza de Despesa" /></li>
+			          		</ul>
+			      		</li>
+			      		<li style=""><h:commandLink action="#" value="Sair do Sistema" /></li>
+			      	</ul>
+				</div>
+			</div><!-- FIM DO CONTAINER-FLUID -->
+		</nav>
+    </h:form>
+    </div><!-- FINAL DO CORPO DO PAINEL -->
+</div><!-- FINAL DO PAINEL -->
+</h:body>	
+	
+</ui:component>

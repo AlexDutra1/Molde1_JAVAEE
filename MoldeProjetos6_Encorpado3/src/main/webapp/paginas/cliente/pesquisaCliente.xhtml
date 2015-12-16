@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form>
+
+
+
+
+			<!-- PAINEL GERAL -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Pesquisa de Clientes</h3>
+				</div>
+			<div class="panel-body">
+
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Campos de Pesquisa</h4>
+				</div>
+			<div class="panel-body">
+			
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Nome"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:commandButton value="Pesquisar"></p:commandButton>
+			</div>
+			
+			</div><!-- FINAL DO CORPO DO PAINEL -->
+			</div><!-- FINAL DO PAINEL -->
+
+
+
+
+
+			<!-- TABELA -->
+				<p:dataTable value="#{clienteController.formulario.todosClientes}"
+					var="cliente" id="tabelaClientes">
+
+					<p:column headerText="NOME">
+						<h:outputText value="#{cliente.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="EMAIL">
+						<h:outputText value="#{cliente.email}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="DATA DE NASCIMENTO">
+						<h:outputText value="#{cliente.dataNascimento}">
+							<f:convertDateTime dateStyle="medium" locale="pt_BR"></f:convertDateTime>
+						</h:outputText>
+					</p:column>
+					
+					<p:column headerText="GÉNERO">
+						<h:outputText value="#{cliente.genero}"></h:outputText>
+					</p:column>
+					
+		
+				</p:dataTable>
+			
+			<!-- FIM DA TABELA -->
+			
+			</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div><!-- FINAL DO PAINEL GERAL -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

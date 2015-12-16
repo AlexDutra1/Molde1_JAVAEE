@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+<!-- FORM NECESSARIO -->
+<h:form>
+
+
+<!-- Teste do painel bootstrap -->
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Cadastro do Cliente</h3></div>
+		
+		<div class="panel-body">
+		
+		<div class="panel panel-default">
+		<div class="panel-heading"><h4>Dados do Cliente</h4></div>
+		<div class="panel-body">
+		
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Nome"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
+			</div>
+			
+			<div class="col-md-12 form-group">
+				<p:outputLabel value="Data de Nascimento"></p:outputLabel>
+			</div>
+			
+			<div class="col-md-12 form-group">
+				<p:calendar showOn="button" id="txtDataNascimento" 
+					mask="99/99/9999" locale="pt" pattern="dd/MM/yyyy"
+					value="#{clienteController.formulario.cliente.dataNascimento}">
+				</p:calendar>
+			</div>
+			
+	<!-- Necessario row para voltar a esquerda o telefone -->		
+	<div class="row">
+		<div class="col-md-12 form-group">	
+			<div class="col-md-2 form-group">
+				<p:outputLabel value="DDD "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				></p:inputText>
+			</div>
+			<div class="col-md-4 form-group">
+				<p:outputLabel value="Telefone Fixo"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				></p:inputText>
+			</div>
+		</div>
+	</div>
+			
+	<div class="row">
+		<div class="col-md-12 form-group">
+			<div class="col-md-2 form-group">
+				<p:outputLabel value="DDD "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				></p:inputText>
+			</div>
+			<div class="col-md-4 form-group">
+				<p:outputLabel value="Telefone Celular "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				></p:inputText>
+			</div>
+		</div>
+	</div>
+			
+			<div class="col-md-6 form-group">
+				<p:outputLabel value="Email "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.email}"></p:inputText>
+			</div>
+
+			<div class="col-md-10 form-group">
+				<h:outputLabel value="Género" />
+				<h:selectOneRadio value="#{clienteController.formulario.cliente.genero}">
+				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
+				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
+				</h:selectOneRadio>
+			</div>
+				
+		</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div> <!-- FINAL DO PAINEL -->
+		
+		
+		<div class="panel panel-default">
+				<div class="panel-heading"><h4>Interesses do Cliente</h4></div>
+				<div class="panel-body">
+				
+				<div class="col-md-12 form-group">
+				<h:selectManyCheckbox layout="pageDirection"
+				value="#{clienteController.formulario.listaInteresses}">
+					<f:selectItem itemValue="Casa" itemLabel="Casa" />
+   					<f:selectItem itemValue="Lote" itemLabel="Lote" />
+   					<f:selectItem itemValue="Apartamento" itemLabel="Apartamento" />
+   					<f:selectItem itemValue="Casa em cond. fechado" itemLabel="Casa em cond. fechado" />
+   				</h:selectManyCheckbox>
+   				</div>
+				
+				
+				</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div><!-- FINAL DO PAINEL -->
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+		<div class="panel-heading"><h4>Endereço do Cliente</h4></div>
+		<div class="panel-body">
+		
+		<div class="col-md-8 form-group">
+				<p:outputLabel value="Lagradouro "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				></p:inputText>
+		</div>
+		
+		<div class="col-md-2 form-group">
+				<p:outputLabel value="Quadra "></p:outputLabel>
+				<p:inputText styleClass="form-control"></p:inputText>
+		</div>
+		
+		<div class="col-md-2 form-group">
+				<p:outputLabel value="Lote "></p:outputLabel>
+				<p:inputText styleClass="form-control"></p:inputText>
+		</div>
+		
+		<div class="col-md-4 form-group">
+				<p:outputLabel value="CEP "></p:outputLabel>
+				<p:inputText styleClass="form-control"></p:inputText>
+		</div>
+		
+		<div class="col-md-8 form-group">
+				<p:outputLabel value="Bairro "></p:outputLabel>
+				<p:inputText styleClass="form-control"></p:inputText>
+		</div>
+		
+		<div class="col-md-6 form-group">
+			<h:outputLabel value="Estado" />
+				<h:selectOneMenu id="estado" styleClass="form-control"
+				value="#{clienteController.formulario.idEstadoSelecionado}" >
+				   <f:selectItem itemValue="" itemLabel="Selecione" />
+				   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+				</h:selectOneMenu>	
+				
+				<p:commandButton value="Cadastrar Estado"></p:commandButton>
+		</div>
+		
+		<div class="col-md-6 form-group">
+			<h:outputLabel value="Cidade" />
+				<h:selectOneMenu id="cidade" styleClass="form-control">
+				   <f:selectItem itemValue="" itemLabel="Selecione" />
+				   <f:selectItems var="cidades" itemValue="#{cidade}" itemLabel="#{cidade.nome}"></f:selectItems>
+				</h:selectOneMenu>	
+				
+				<p:commandButton value="Cadastrar Cidade"></p:commandButton>
+		</div>
+		
+				
+		</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div> <!-- FINAL DO PAINEL ENDERECO -->
+		
+		<div class="col-md-12 form-group">
+				<p:commandButton value="Salvar" action="#{clienteController.salvarCadastro}"></p:commandButton>
+		</div>
+		
+		</div> <!-- FINAL DO CORPO DO PAINEL -->
+	</div> <!-- FINAL DO PAINEL -->
+	
+</h:form>	
+	</ui:define>
+</ui:composition>
+
+
+</html>

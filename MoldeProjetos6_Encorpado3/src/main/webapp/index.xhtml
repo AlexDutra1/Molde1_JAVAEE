@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:p="http://primefaces.org/ui" 
+xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+ <!-- DECLARACAO DO CSS DO BOOTSTRAP -->
+<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+</h:head>
+
+<h:body >
+
+<h:outputLabel>Testa Bootstrap</h:outputLabel>
+<button type="button" class="btn btn-default navbar-btn">Sign in</button>
+<span class="label label-default">Default</span>
+<span class="label label-primary">Primary</span>
+<span class="label label-success">Success</span>
+
+<br></br>
+<h:outputLabel>=====================================================</h:outputLabel>
+
+
+<!-- 
+TESTE CDI 
+-->
+<h:form>
+<h:outputLabel>Testa CDI</h:outputLabel><br></br>
+<h:outputLabel>NOME:</h:outputLabel>
+<h:inputText value="#{testeCDI.cliente.nome}"></h:inputText>
+<h:commandButton value="Testar CDI" action="#{testeCDI.exibirMensagemNoConsole}"></h:commandButton>
+</h:form>
+
+
+<br></br>
+<h:outputLabel>=====================================================</h:outputLabel>
+<br></br>
+
+<!-- 
+TESTA REDIRECIONAMENTO DO FACES CONFIG
+ -->
+<h:outputLabel>Testa funcionamento do Faces Config</h:outputLabel>
+<h:outputLabel>Se o valor do input for 123 a pagina é mudada, senão permanece no mesmo local </h:outputLabel>
+
+
+
+
+
+
+
+<!-- Incluindo o jQuery que é requisito do JavaScript do Bootstrap -->
+<script src="resources/bootstrap/js/jquery.js"></script>
+
+<!-- Incluindo o JavaScript do Bootstrap -->
+<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+
+</h:body>
+
+</html> 

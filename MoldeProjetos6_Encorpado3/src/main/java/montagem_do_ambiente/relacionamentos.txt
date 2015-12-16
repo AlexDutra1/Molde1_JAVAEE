@@ -1,0 +1,80 @@
+OneToOne
+
+Faca o mapeamento na classe
+@OneToOne
+private Marca marca;
+=======================================
+PROPRIEDADES DO RELACIONAMENTO
+Anotação:
+@SequenceGenerator
+
+Propriedades:
+name = "CUSTOMER_SEQUENCE"
+sequenceName = "CUSTOMER_SEQUENCE"
+allocationSize = 1
+initialValue = 0
+
+Anotação:
+@GeneratedValue
+strategy = GenerationType.SEQUENCE
+generator = "CUSTOMER_SEQUENCE"
+=======================================
+CONFIGURANDO RELACIONAMENTO OneToOne
+
+Anotação: OneToOne
+
+Propriedades:
+cascade = CascadeType.ALL   //Define ações automatizadas no relacionamento, ex.: Ao apagar um Customer, apagar também um Usuário. 
+optional = false 			//Você não será obrigado a ter um User ao persistir um Customer, ou seja, você não tem que criar um usuário para satisfazer essa condição
+fetch = FetchType.EAGER 	//O valor padrão é EAGER. Ou seja, ao carregar o Customer já será feita a consulta relacionada ao User de modo automático.
+orphanRemoval = true 		//Define que uma entidade dependente, caso não tenha relacionamento, será removida do banco de dados
+
+Anotação: @JoinColumn
+define qual é a coluna mapeada para fazer a união na consulta. É indicado
+o nome da coluna através do parâmetro “name” e que esse campo não pode ser
+nulo pelo parâmetro “nullable”.
+
+Anotação: @PrimaryKeyJoinColumn
+Essa anotação indica ao JPA que, para encontrar um objeto User basta procurar
+um registro com o mesmo ID do Customer. Ou seja, indica que um User vai ter o
+mesmo ID que seu Customer.
+
+
+Anotação: @JoinTable(name="CUSTOMER_HAS_DOGS", joinColumns={@JoinColumn(name="CUSTOMER_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DOG_ID", referencedColumnName="id")})
+    
+@JoinTable(name="CUSTOMER_HAS_DOGS", joinColumns={@JoinColumn(name="CUSTOMER_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DOG_ID", referencedColumnName="id")})
+Explicação:
+
+
+=======================================
+CONCEITOS
+
+Tipos de estrategias para mapeamento de chave primaria
+Table
+Sequence
+
+
+=======================================
+RASCUNHO
+
+
+	//RELACIONAMENTO ENDERECO
+
+	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name="endereco_id", nullable=true)
+	private Endereco endereco;
+	
+ /*	
+	//RELACIONAMENTO TELEFONE
+	
+	@ManyToOne
+	private Telefone telefoneFixo;
+	
+	@OneToOne
+	private Telefone telefoneCelular;
+	
+*/
+	/*
+	@ManyToMany
+	private List <Interesse> interesses;
+	*/ 

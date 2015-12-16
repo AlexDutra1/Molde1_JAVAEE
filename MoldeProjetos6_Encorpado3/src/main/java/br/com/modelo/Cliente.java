@@ -1,0 +1,101 @@
+package br.com.modelo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.modelo.enums.EnumGenero;
+
+@Entity
+@Table(name="tb_cliente")
+@SequenceGenerator(name="CLIENTE_SEQUENCE", sequenceName="CLIENTE_SEQUENCE", allocationSize=1, initialValue=0)
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="CLIENTE_SEQUENCE")
+	private Long idCliente;
+	
+	@Column(name="nome")
+	private String nome;
+	
+	@Column(name="email")
+	private String email;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_nascimento")
+	private Date dataNascimento;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="genero")
+	private EnumGenero genero;
+	
+	@OneToOne(cascade = CascadeType.ALL,targetEntity=Endereco.class)
+	private Endereco endereco;
+	
+	
+	
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public EnumGenero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(EnumGenero genero) {
+		this.genero = genero;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	
+	
+}

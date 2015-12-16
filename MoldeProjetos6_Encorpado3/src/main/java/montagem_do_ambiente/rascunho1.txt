@@ -1,0 +1,7 @@
+
+<!-- FORMA NOVA DE IMPORTAR CSS E JS--NAO FUNCIONA-->
+<!-- 
+<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+<h:outputScript library="javascript" name="bootstrap.min.js"  /> 
+<h:outputScript library="javascript" name="jquery.js" /> 
+ -->
