@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,9 @@ public class Usuario implements Serializable{
 	private String senha;
 	
 	private String email;
+	
+	@Lob
+	private byte[] imagem;
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -52,5 +56,13 @@ public class Usuario implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
 }

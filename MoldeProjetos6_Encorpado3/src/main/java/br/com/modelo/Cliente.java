@@ -1,6 +1,7 @@
 package br.com.modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,9 @@ public class Cliente implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name="genero")
 	private EnumGenero genero;
+	
+	@Column(precision=7,scale=3, name="renda")
+	private BigDecimal rendaMensal;
 	
 	@OneToOne(cascade = CascadeType.ALL,targetEntity=Endereco.class)
 	private Endereco endereco;
@@ -94,6 +98,14 @@ public class Cliente implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public BigDecimal getRendaMensal() {
+		return rendaMensal;
+	}
+
+	public void setRendaMensal(BigDecimal rendaMensal) {
+		this.rendaMensal = rendaMensal;
 	}
 
 	

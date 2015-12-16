@@ -1,0 +1,11 @@
+Internacionalizacao
+Exclusao Logica de registro (controlado por um inteiro)
+Montar componentes reutilizaveis: Panel, Modal, Tabelas de Resultados
+
+Implementar Relacionamentos
+Implementar Regras de apresentacao no controller e nas paginas
+Implementar imagem do usuario
+Implementar 
+
+Corrigir Menu
+Corrigir Topo com banner
