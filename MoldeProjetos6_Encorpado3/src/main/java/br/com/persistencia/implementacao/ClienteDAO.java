@@ -37,19 +37,8 @@ public class ClienteDAO implements ClienteGerenciable {
 		cliente=this.manager.merge(cliente);
 		this.manager.merge(cliente);
 		
-		/*this.manager.persist(cliente);
-		*/
 		trx.commit();
 		
-		
-	/*	tx.begin();
-		
-		cliente=em.merge(cliente);
-		em.merge(cliente);
-		
-		tx.commit();
-		em.close();*/
-	
 	}
 	
 	/*//EXCLUI CLIENTE

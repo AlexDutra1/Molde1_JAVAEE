@@ -23,7 +23,7 @@ Um x Muitos
 Cliente x Telefones
 
 Muitos x Muitos
-Cliente x Interesse
+Clientes x Interesses
 =====================================================
 Exemplo com os tipos de dados:
 

@@ -11,6 +11,9 @@
 <!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
 	<ui:define name="corpo">
 
+<!-- UPLOAD DE ARQUIVOS TESTE -->			
+<h:form enctype="multipart/form-data">
+
 <!-- Teste do painel bootstrap -->
 	<div class="panel panel-default">
 		<div class="panel-heading">Cadastro de Usuários</div>
@@ -20,23 +23,31 @@
 			<div class="row">
 		
 			<div class="col-md-10 form-group">
-				<p:outputLabel value="Nome: "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:outputLabel value="Usuário: "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{usuarioController.formulario.usuario.usuario}"
+				></p:inputText>
 			</div>
 			
 			<div class="col-md-9 form-group">
 				<p:outputLabel value="Email: "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{usuarioController.formulario.usuario.email}"
+				></p:inputText>
 			</div>
 			
 			<div class="col-md-4 form-group">
 				<p:outputLabel value="Senha: "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{usuarioController.formulario.usuario.senha}"
+				></p:inputText>
 			</div>
 
 			<div class="col-md-4 form-group">
 				<p:outputLabel value="Repetir senha: "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{usuarioController.formulario.usuario.senha}"
+				></p:inputText>
 			</div>
 			
 			<div class="col-md-12 form-group">
@@ -47,16 +58,18 @@
 				</div>
 				</div>
 			</div>
-				
+
 			
 			<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{usuarioController.salvarCadastro}"></p:commandButton>
 			</div>
 
 
 				</div> <!-- FINAL DA ROW -->
 		</div> <!-- FINAL DO CORPO DO PAINEL -->
 	</div> <!-- FINAL DO PAINEL -->
+	
+	   </h:form> 
 	</ui:define>
 </ui:composition>
 

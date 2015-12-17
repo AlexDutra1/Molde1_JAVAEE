@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,8 +24,9 @@ public class Usuario implements Serializable{
 	
 	private String email;
 	
+	@OneToOne
 	@Lob
-	private byte[] imagem;
+	private Imagem imagem;
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -58,11 +60,13 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	public byte[] getImagem() {
+	public Imagem getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(Imagem imagem) {
 		this.imagem = imagem;
 	}
+
+	
 }

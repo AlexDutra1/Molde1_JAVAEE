@@ -28,7 +28,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h4>Campos de Pesquisa</h4>
+					<h4>Filtrar</h4>
 				</div>
 			<div class="panel-body">
 			
@@ -53,22 +53,37 @@
 				<p:dataTable value="#{clienteController.formulario.todosClientes}"
 					var="cliente" id="tabelaClientes">
 
-					<p:column headerText="NOME">
+					<p:column headerText="NOME" style="text-align: center;">
 						<h:outputText value="#{cliente.nome}"></h:outputText>
 					</p:column>
 					
-					<p:column headerText="EMAIL">
+					<p:column headerText="EMAIL" style="text-align: center;">
 						<h:outputText value="#{cliente.email}"></h:outputText>
 					</p:column>
 					
-					<p:column headerText="DATA DE NASCIMENTO">
+					<p:column headerText="DATA DE NASCIMENTO" style="text-align: center;">
 						<h:outputText value="#{cliente.dataNascimento}">
 							<f:convertDateTime dateStyle="medium" locale="pt_BR"></f:convertDateTime>
 						</h:outputText>
 					</p:column>
 					
-					<p:column headerText="GÉNERO">
+					<p:column headerText="GÉNERO" style="text-align: center;">
 						<h:outputText value="#{cliente.genero}"></h:outputText>
+					</p:column>
+					
+					<!-- O style adiciona alinha o conteudo da celula no centro -->
+					<p:column headerText="RENDA MENSAL" style="text-align: center;">
+						<h:outputText value="#{cliente.rendaMensal}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<p:commandLink action="#" ajax="false" title="Editar" styleClass="img-link">
+								<p:graphicImage value="/resources/img/editar.png"/>
+						</p:commandLink>
+						<p:commandLink action="#" ajax="false" title="Excluir" styleClass="img-link">
+								<p:graphicImage value="/resources/img/excluir.png"/>
+						</p:commandLink>
+						
 					</p:column>
 					
 		
