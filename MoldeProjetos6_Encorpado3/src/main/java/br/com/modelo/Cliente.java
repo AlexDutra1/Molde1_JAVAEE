@@ -9,10 +9,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -47,10 +50,18 @@ public class Cliente implements Serializable {
 	@Column(precision=7,scale=3, name="renda")
 	private BigDecimal rendaMensal;
 	
-	@OneToOne(cascade = CascadeType.ALL,targetEntity=Endereco.class)
+	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name="endereco_id", nullable=false)
+    @PrimaryKeyJoinColumn
 	private Endereco endereco;
 	
+	/*
+	@OneToMany
+	private Telefone telefoneFixo;
 	
+	@OneToMany
+	private Telefone telefoneCelular;
+	*/
 	
 	public Long getIdCliente() {
 		return idCliente;

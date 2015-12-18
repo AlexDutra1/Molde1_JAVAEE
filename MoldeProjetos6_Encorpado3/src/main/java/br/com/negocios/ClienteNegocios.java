@@ -8,11 +8,6 @@ public class ClienteNegocios {
 
 	@Inject
 	private ClienteDAO dao;
-
-	
-	
-	
-	
 	
 	public ClienteDAO getDao() {
 		return dao;

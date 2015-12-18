@@ -26,9 +26,14 @@ public class ClienteController implements Serializable {
 	
 	public void salvarCadastro(){
 		
-		this.getService().getNegocios().getDao().guardar(this.getFormulario().getCliente());
+		//Configura endereco do usuario
+		this.formulario.getCliente().setEndereco(formulario.getEndereco());
+		
+		//Salva no banco de dados
+		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
 		
 	}
+	
 
 	@PostConstruct
 	public void init(){

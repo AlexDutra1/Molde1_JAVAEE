@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.modelo.Cliente;
+import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 
@@ -22,6 +23,9 @@ public class ClienteFormulario implements Serializable{
 
 	@Inject
 	private Cliente cliente;
+	
+	@Inject
+	private Endereco endereco;
 	
 	private List <Cliente> todosClientes;
 
@@ -72,6 +76,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setListaInteresses(List<Interesse> listaInteresses) {
 		this.listaInteresses = listaInteresses;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 

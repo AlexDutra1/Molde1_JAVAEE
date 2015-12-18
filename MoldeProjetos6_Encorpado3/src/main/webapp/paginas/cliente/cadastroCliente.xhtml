@@ -78,6 +78,13 @@
 				<p:inputText styleClass="form-control"
 				value="#{clienteController.formulario.cliente.email}"></p:inputText>
 			</div>
+			
+			
+			<div class="col-md-7 form-group">
+				<p:outputLabel value="Renda Mensal"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.rendaMensal}"></p:inputText>
+			</div>
 
 			<div class="col-md-10 form-group">
 				<h:outputLabel value="Género" />
@@ -87,12 +94,6 @@
 				</h:selectOneRadio>
 			</div>
 			
-			<div class="col-md-4 form-group">
-				<p:outputLabel value="Renda Mensal"></p:outputLabel>
-				<p:inputText styleClass="form-control"
-				value="#{clienteController.formulario.cliente.rendaMensal}"></p:inputText>
-			</div>
-				
 		</div> <!-- FINAL DO CORPO DO PAINEL -->
 		</div> <!-- FINAL DO PAINEL -->
 		
@@ -126,30 +127,42 @@
 		<div class="panel-heading"><h4>Endereço do Cliente</h4></div>
 		<div class="panel-body">
 		
-		<div class="col-md-8 form-group">
+		<div class="col-md-6 form-group">
 				<p:outputLabel value="Lagradouro "></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.lagradouro}"
 				></p:inputText>
 		</div>
 		
 		<div class="col-md-2 form-group">
 				<p:outputLabel value="Quadra "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.quadra}"></p:inputText>
 		</div>
 		
 		<div class="col-md-2 form-group">
 				<p:outputLabel value="Lote "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.lote}"></p:inputText>
+		</div>
+		
+		
+		<div class="col-md-2 form-group">
+				<p:outputLabel value="Número "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.numero}"></p:inputText>
 		</div>
 		
 		<div class="col-md-4 form-group">
 				<p:outputLabel value="CEP "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.cep}"></p:inputText>
 		</div>
 		
 		<div class="col-md-8 form-group">
 				<p:outputLabel value="Bairro "></p:outputLabel>
-				<p:inputText styleClass="form-control"></p:inputText>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.bairro}"></p:inputText>
 		</div>
 		
 		<div class="col-md-6 form-group">

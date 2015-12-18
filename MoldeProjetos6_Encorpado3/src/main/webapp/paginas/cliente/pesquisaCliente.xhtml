@@ -39,6 +39,12 @@
 			</div>
 			
 			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Lagradouro"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.endereco.lagradouro}"></p:inputText>
+			</div>
+			
+			<div class="col-md-11 form-group">
 				<p:commandButton value="Pesquisar"></p:commandButton>
 			</div>
 			
@@ -74,6 +80,24 @@
 					<!-- O style adiciona alinha o conteudo da celula no centro -->
 					<p:column headerText="RENDA MENSAL" style="text-align: center;">
 						<h:outputText value="#{cliente.rendaMensal}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Lagradouro" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.lagradouro}"></h:outputText>
+					</p:column>
+															
+					<p:column headerText="END.Cep" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.cep}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Bairro" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.bairro}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="END.Estado" style="text-align: center;">
+					</p:column>
+					
+					<p:column headerText="END.Cidade" style="text-align: center;">
 					</p:column>
 					
 					<p:column headerText="AÇÕES" style="text-align: center;">
