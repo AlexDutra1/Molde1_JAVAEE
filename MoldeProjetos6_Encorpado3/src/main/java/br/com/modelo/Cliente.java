@@ -3,6 +3,7 @@ package br.com.modelo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
@@ -50,18 +52,22 @@ public class Cliente implements Serializable {
 	@Column(precision=7,scale=3, name="renda")
 	private BigDecimal rendaMensal;
 	
-	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+	//RELACIONAMENTO ENDERECO OK
+	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="endereco_id", nullable=false)
     @PrimaryKeyJoinColumn
 	private Endereco endereco;
 	
-	/*
-	@OneToMany
-	private Telefone telefoneFixo;
+	//Faz o mapeamento na entidade telefone. A coluna que faz a ligação foi nomeada com cliente_id_fixo
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="cliente_id_fixo")
+	private List <Telefone> telefoneFixo;
 	
-	@OneToMany
-	private Telefone telefoneCelular;
-	*/
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="cliente_id_celular")
+	private List <Telefone> telefoneCelular;
+	
 	
 	public Long getIdCliente() {
 		return idCliente;
@@ -118,6 +124,15 @@ public class Cliente implements Serializable {
 	public void setRendaMensal(BigDecimal rendaMensal) {
 		this.rendaMensal = rendaMensal;
 	}
+
+	public List<Telefone> getTelefoneCelular() {
+		return telefoneCelular;
+	}
+
+	public void setTelefoneCelular(List<Telefone> telefoneCelular) {
+		this.telefoneCelular = telefoneCelular;
+	}
+
 
 	
 	

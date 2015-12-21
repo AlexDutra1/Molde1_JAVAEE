@@ -25,17 +25,25 @@ Define qual é a coluna mapeada para fazer a união na consulta. É indicado o n
 =======================================
 @OneToMany
 
-Podemos fazer o relacionamento @OneToMany de dois modos, utilizando a 
-anotação @JoinColumn ou a anotação @JoinTable.
+Podemos fazer o relacionamento @OneToMany de dois modos, utilizando as anotaçoes:
+@JoinTable (Cria uma tabela adicional)
+ou
+@JoinColumn (Não cria uma tabela adicional)
 
 
-Forma 1:
-@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER, orphanRemoval = true)
-@JoinColumn(name="USER_ID", nullable=true)
-private User user;
+Forma 1 - JoinTable:
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@JoinTable(name="CUSTOMER_HAS_DOGS", joinColumns={@JoinColumn(name="CUSTOMER_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DOG_ID", referencedColumnName="id")})
+private List dogs;
 
+Forma 2 - JoinColumn:
+(Muito mais simples)
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@JoinColumn(name="CUSTOMER_ID")
+private List dogs;
 
-
+Obs: A coluna que liga as entidade será mapeado na entidade dogs e a coluna se
+chamará "CUSTOMER_ID"
 =======================================
 PROPRIEDADES DO RELACIONAMENTO
 Anotação:

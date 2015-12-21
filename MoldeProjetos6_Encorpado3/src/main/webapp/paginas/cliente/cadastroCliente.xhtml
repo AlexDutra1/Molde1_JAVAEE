@@ -48,11 +48,13 @@
 			<div class="col-md-2 form-group">
 				<p:outputLabel value="DDD "></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneFixo.ddd}"
 				></p:inputText>
 			</div>
 			<div class="col-md-4 form-group">
 				<p:outputLabel value="Telefone Fixo"></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneFixo.numero}"
 				></p:inputText>
 			</div>
 		</div>
@@ -63,11 +65,13 @@
 			<div class="col-md-2 form-group">
 				<p:outputLabel value="DDD "></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneCelular.ddd}"
 				></p:inputText>
 			</div>
 			<div class="col-md-4 form-group">
 				<p:outputLabel value="Telefone Celular "></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneCelular.ddd}"
 				></p:inputText>
 			</div>
 		</div>
@@ -191,7 +195,7 @@
 		</div> <!-- FINAL DO PAINEL ENDERECO -->
 		
 		<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar" action="#{clienteController.salvarCadastro}"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{clienteController.acaoAposCadastrar}"></p:commandButton>
 		</div>
 		
 		</div> <!-- FINAL DO CORPO DO PAINEL -->

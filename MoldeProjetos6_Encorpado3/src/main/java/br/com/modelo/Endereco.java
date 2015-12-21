@@ -2,10 +2,12 @@ package br.com.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,6 +32,12 @@ public class Endereco implements Serializable{
 	private String cep;
 	
 	private String bairro;
+	
+	
+	//RELACIONAMENTO ESTADO
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Estado estado;
+	
 
 	public Long getIdEndereco() {
 		return idEndereco;
@@ -86,5 +94,7 @@ public class Endereco implements Serializable{
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+
+	
 
 }

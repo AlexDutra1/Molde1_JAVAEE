@@ -25,12 +25,6 @@ public class ClienteDAO implements ClienteGerenciable {
 	@Override
 	public void guardar(Cliente cliente) {
 
-		System.out.println("ID: "+cliente.getIdCliente());
-		System.out.println("Nome: "+cliente.getNome());
-		System.out.println("Data de Nascimento: "+cliente.getDataNascimento());
-		System.out.println("Email: "+cliente.getEmail());
-		System.out.println("Genero: "+cliente.getGenero());
-		
 		EntityTransaction trx = this.manager.getTransaction();
 		trx.begin();
 		
@@ -41,19 +35,19 @@ public class ClienteDAO implements ClienteGerenciable {
 		
 	}
 	
-	/*//EXCLUI CLIENTE
+	//EXCLUI CLIENTE
 	public void excluir(Cliente cliente) {
 		
-		tx.begin();
+		EntityTransaction trx = this.manager.getTransaction();
+		trx.begin();
 		
-		cliente=em.merge(cliente);
-		em.remove(cliente);
+		cliente=manager.merge(cliente);
+		manager.remove(cliente);
 		
-		tx.commit();
-		em.close();
+		trx.commit();
 		
 	}
-*/	
+
 	//CONSULTA TODOS OS CLIENTES
 	@SuppressWarnings("unchecked")
 	@Override

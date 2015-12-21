@@ -1,6 +1,8 @@
 package br.com.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,6 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.controller.formulario.ClienteFormulario;
+import br.com.modelo.Cliente;
+import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
 
 
@@ -24,16 +28,46 @@ public class ClienteController implements Serializable {
 	private ClienteFormulario formulario;
 	
 	
-	public void salvarCadastro(){
+	public void acaoAposCadastrar(){
 		
 		//Configura endereco do usuario
 		this.formulario.getCliente().setEndereco(formulario.getEndereco());
 		
+		//Pega o telefone fixo e o celular e insere em um array
+		List <Telefone> listaTelefones=new ArrayList();
+		listaTelefones.add(this.getFormulario().getTelefoneCelular());
+		listaTelefones.add(this.getFormulario().getTelefoneFixo());
+		
+		//Configura os telefones no usuario
+		this.formulario.getCliente().setTelefoneCelular(listaTelefones);
+		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
 		
+		//Limpa os campos
+		
 	}
 	
+	public void excluirRegistro(Cliente clienteExcluir){
+		
+		this.service.getNegocios().getDao().excluir(clienteExcluir);
+	
+	}
+	
+	
+	public String preparaEdicao(Cliente clienteEditar){
+		
+		this.formulario.setCliente(clienteEditar);
+
+		return "editarCliente.xhtml";
+	}
+	/*
+	public void salvarEdicao(){
+		
+				//Salva no banco de dados
+				this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
+	}
+	*/
 
 	@PostConstruct
 	public void init(){

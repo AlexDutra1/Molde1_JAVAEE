@@ -45,6 +45,27 @@
 			</div>
 			
 			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				
+				></p:inputText>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Municipio"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				
+				></p:inputText>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Telefone - Fixo"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				
+				></p:inputText>
+			</div>
+			
+			<div class="col-md-11 form-group">
 				<p:commandButton value="Pesquisar"></p:commandButton>
 			</div>
 			
@@ -101,10 +122,10 @@
 					</p:column>
 					
 					<p:column headerText="AÇÕES" style="text-align: center;">
-						<p:commandLink action="#" ajax="false" title="Editar" styleClass="img-link">
+						<p:commandLink action="#{clienteController.preparaEdicao(cliente)}" ajax="false" title="Editar" styleClass="img-link">
 								<p:graphicImage value="/resources/img/editar.png"/>
 						</p:commandLink>
-						<p:commandLink action="#" ajax="false" title="Excluir" styleClass="img-link">
+						<p:commandLink action="#{clienteController.excluirRegistro(cliente)}" ajax="false" title="Excluir" styleClass="img-link">
 								<p:graphicImage value="/resources/img/excluir.png"/>
 						</p:commandLink>
 						
@@ -112,8 +133,49 @@
 					
 		
 				</p:dataTable>
-			
+				
+				
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3>Consulta de números</h3>
+				</div>
+				<div class="panel-body">
+					
+					
+			<div class="row">		
+				<div class="col-md-11 form-group">
+					<p:outputLabel value="Pelo nome:"></p:outputLabel>
+					<p:inputText styleClass="form-control"
+					
+					></p:inputText>
+				</div>
+			</div>		
+					
+			<!-- TABELA PARA TELEFONE CELULARES -->
+				
+				<p:dataTable value="#{clienteController.formulario.cliente.telefoneCelular}"
+					var="telefoneCelular" id="tabelaTelefonesCelulares">
+					
+					<p:column headerText="Numero" style="text-align: center;">
+							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					</p:column>
+					
+				</p:dataTable>			
 			<!-- FIM DA TABELA -->
+				
+					
+					
+					
+					
+					
+					
+					
+					
+				</div> <!-- FINAL DO CORPO DO PAINEL -->
+			</div> <!-- FINAL DO FORMULARIO -->
+				
+			
+			
 			
 			</div> <!-- FINAL DO CORPO DO PAINEL -->
 		</div><!-- FINAL DO PAINEL GERAL -->

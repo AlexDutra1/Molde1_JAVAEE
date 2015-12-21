@@ -11,6 +11,7 @@ import br.com.modelo.Cliente;
 import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
+import br.com.modelo.Telefone;
 
 
 
@@ -26,6 +27,12 @@ public class ClienteFormulario implements Serializable{
 	
 	@Inject
 	private Endereco endereco;
+	
+	@Inject
+	private Telefone telefoneFixo;
+	
+	@Inject
+	private Telefone telefoneCelular;
 	
 	private List <Cliente> todosClientes;
 
@@ -84,6 +91,22 @@ public class ClienteFormulario implements Serializable{
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Telefone getTelefoneFixo() {
+		return telefoneFixo;
+	}
+
+	public void setTelefoneFixo(Telefone telefoneFixo) {
+		this.telefoneFixo = telefoneFixo;
+	}
+
+	public Telefone getTelefoneCelular() {
+		return telefoneCelular;
+	}
+
+	public void setTelefoneCelular(Telefone telefoneCelular) {
+		this.telefoneCelular = telefoneCelular;
 	}
 
 
