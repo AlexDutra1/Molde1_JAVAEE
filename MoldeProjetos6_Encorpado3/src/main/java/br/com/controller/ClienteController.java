@@ -61,13 +61,23 @@ public class ClienteController implements Serializable {
 
 		return "editarCliente.xhtml";
 	}
-	/*
-	public void salvarEdicao(){
+	
+	public void pesquisar(){
 		
-				//Salva no banco de dados
-				this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service.getNegocios().getDao().consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		
 	}
-	*/
+	
+	public String visualizaTelefones(Cliente cliente){
+		
+		return "visualizaTelefones.xhtml";
+	}
+	
+	public String visualizaInteresses(Cliente cliente){
+		
+		return "visualizaInteresses.xhtml";
+	}
 
 	@PostConstruct
 	public void init(){

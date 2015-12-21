@@ -1,0 +1,26 @@
+UNIDIRECIONAL
+
+@OneToMany
+
+Podemos fazer o relacionamento @OneToMany de dois modos, utilizando as anotaçoes:
+@JoinTable (Cria uma tabela adicional)
+ou
+@JoinColumn (Não cria uma tabela adicional)
+
+
+Forma 1 - JoinTable:
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@JoinTable(name="CUSTOMER_HAS_DOGS", joinColumns={@JoinColumn(name="CUSTOMER_ID", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="DOG_ID", referencedColumnName="id")})
+private List dogs;
+
+Forma 2 - JoinColumn:
+(Muito mais simples)
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@JoinColumn(name="CUSTOMER_ID")
+private List dogs;
+
+Obs: A coluna que liga as entidade será mapeado na entidade dogs e a coluna se
+chamará "CUSTOMER_ID"
+
+================================================
+BIDIRECIONAL

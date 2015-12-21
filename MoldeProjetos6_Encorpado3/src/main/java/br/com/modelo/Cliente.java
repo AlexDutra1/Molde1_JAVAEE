@@ -68,6 +68,11 @@ public class Cliente implements Serializable {
 	@JoinColumn(name="cliente_id_celular")
 	private List <Telefone> telefoneCelular;
 	
+	/*
+	@ManyToMany
+	private List <Interesse> interesses;
+	*/
+	
 	
 	public Long getIdCliente() {
 		return idCliente;

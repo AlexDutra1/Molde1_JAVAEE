@@ -57,6 +57,13 @@ public class ClienteDAO implements ClienteGerenciable {
 				
 		return consulta.getResultList();
 	}
+	
+	public List<Cliente> consultarPorNomeDAO(String nome) {
+		
+		Query consulta=manager.createQuery("select a from Cliente a where nome='"+nome+"'",Cliente.class);
+				
+		return consulta.getResultList();
+	}
 
 
 	//CONSULTA POR ID

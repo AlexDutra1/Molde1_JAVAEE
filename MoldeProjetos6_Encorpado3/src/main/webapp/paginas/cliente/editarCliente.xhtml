@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+<!-- FORM NECESSARIO -->
+<h:form>
+
+<!-- Teste do painel bootstrap -->
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3>Edição de Dados do Cliente</h3></div>
+		
+		<div class="panel-body">
+
+		<h:inputHidden value="#{clienteController.formulario.cliente.idCliente}"></h:inputHidden>
+		
+	<div class="col-md-11 form-group">
+				<p:outputLabel value="Nome"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
+			</div>
+			
+			<div class="col-md-12 form-group">
+				<p:outputLabel value="Data de Nascimento"></p:outputLabel>
+			</div>
+			
+			<div class="col-md-12 form-group">
+				<p:calendar showOn="button" id="txtDataNascimento" 
+					mask="99/99/9999" locale="pt" pattern="dd/MM/yyyy"
+					value="#{clienteController.formulario.cliente.dataNascimento}">
+				</p:calendar>
+			</div>
+			
+	<!-- Necessario row para voltar a esquerda o telefone -->		
+	<div class="row">
+		<div class="col-md-12 form-group">	
+			<div class="col-md-2 form-group">
+				<p:outputLabel value="DDD "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneFixo.ddd}"
+				></p:inputText>
+			</div>
+			<div class="col-md-4 form-group">
+				<p:outputLabel value="Telefone Fixo"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneFixo.numero}"
+				></p:inputText>
+			</div>
+		</div>
+	</div>
+			
+	<div class="row">
+		<div class="col-md-12 form-group">
+			<div class="col-md-2 form-group">
+				<p:outputLabel value="DDD "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneCelular.ddd}"
+				></p:inputText>
+			</div>
+			<div class="col-md-4 form-group">
+				<p:outputLabel value="Telefone Celular "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.telefoneCelular.ddd}"
+				></p:inputText>
+			</div>
+		</div>
+	</div>
+			
+			<div class="col-md-6 form-group">
+				<p:outputLabel value="Email "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.email}"></p:inputText>
+			</div>
+			
+			
+			<div class="col-md-7 form-group">
+				<p:outputLabel value="Renda Mensal"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{clienteController.formulario.cliente.rendaMensal}"></p:inputText>
+			</div>
+
+			<div class="col-md-10 form-group">
+				<h:outputLabel value="Género" />
+				<h:selectOneRadio value="#{clienteController.formulario.cliente.genero}">
+				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
+				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
+				</h:selectOneRadio>
+			</div>
+
+			<div class="col-md-12 form-group">
+				<p:commandButton value="Salvar" action="#{clienteController.acaoAposCadastrar}"></p:commandButton>
+			</div>
+
+
+</div> <!-- FINAL DO CORPO DO PAINEL -->
+	</div> <!-- FINAL DO PAINEL -->
+	
+</h:form>	
+	</ui:define>
+</ui:composition>
+
+</html>
