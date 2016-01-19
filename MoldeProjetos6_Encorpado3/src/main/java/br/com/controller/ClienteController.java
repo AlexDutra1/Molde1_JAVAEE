@@ -38,8 +38,13 @@ public class ClienteController implements Serializable {
 		listaTelefones.add(this.getFormulario().getTelefoneCelular());
 		listaTelefones.add(this.getFormulario().getTelefoneFixo());
 		
-		//Configura os telefones no usuario
+		//Configura os telefones no cliente
 		this.formulario.getCliente().setTelefoneCelular(listaTelefones);
+		
+		//Configura os interesses no cliente
+		//this.formulario.getCliente().setInteresses(this.getFormulario().getListaInteresses());
+		
+		
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
@@ -61,7 +66,7 @@ public class ClienteController implements Serializable {
 
 		return "editarCliente.xhtml";
 	}
-	
+		
 	public void pesquisar(){
 		
 		//Faz consulta pelo nome
@@ -75,6 +80,8 @@ public class ClienteController implements Serializable {
 	}
 	
 	public String visualizaInteresses(Cliente cliente){
+		
+		this.formulario.setCliente(cliente);
 		
 		return "visualizaInteresses.xhtml";
 	}

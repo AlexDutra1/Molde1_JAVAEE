@@ -12,6 +12,7 @@ import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
+import br.com.modelo.enums.EnumInteresses;
 
 
 
@@ -42,7 +43,7 @@ public class ClienteFormulario implements Serializable{
 	
 	private Long idEstadoSelecionado;
 	
-	
+	private EnumInteresses enumInteresses;
 	
 	
 	public Cliente getCliente() {
@@ -107,6 +108,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setTelefoneCelular(Telefone telefoneCelular) {
 		this.telefoneCelular = telefoneCelular;
+	}
+
+	public EnumInteresses getEnumInteresses() {
+		return enumInteresses;
+	}
+
+	public void setEnumInteresses(EnumInteresses enumInteresses) {
+		this.enumInteresses = enumInteresses;
 	}
 
 

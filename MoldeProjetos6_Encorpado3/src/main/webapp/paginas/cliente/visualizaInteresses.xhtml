@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
 
-</body>
+<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+<!-- FORM NECESSARIO -->
+<h:form>
+
+<div class="panel panel-default">
+		<div class="panel-heading"><h4>VISUALIZAR INTERESSES</h4></div>
+		<div class="panel-body">
+		
+			<!-- TABELA PARA INTERESSES -->
+				
+				<p:dataTable value="#{clienteController.formulario.cliente.telefoneCelular}"
+					var="telefoneCelular" id="tabelaTelefonesCelulares">
+					
+					<p:column headerText="Interesse A" style="text-align: center;">
+							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
+							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="Interesse B" style="text-align: center;">
+							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
+							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="Interesse C" style="text-align: center;">
+							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
+							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="Interesse D" style="text-align: center;">
+							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
+							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					</p:column>
+					
+				</p:dataTable>			
+			<!-- FIM DA TABELA -->
+			
+
+			
+		</div> <!-- FINAL DO CORPO DO PAINEL -->
+		</div> <!-- FINAL DO PAINEL -->
+	
+</h:form>	
+	</ui:define>
+</ui:composition>
+
+
 </html>

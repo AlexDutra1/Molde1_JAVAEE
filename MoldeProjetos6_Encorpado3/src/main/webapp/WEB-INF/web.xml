@@ -67,7 +67,7 @@
 	<!-- Mapeamento do arquivo facelets.taglib.xml (Arquivo que mapeia templates)-->
 	<context-param>
 		<param-name>facelets.LIBRARIES</param-name>
-		<param-value>/templates/facelets.taglib.xml</param-value>
+		<param-value>/resources/componentes/facelets.taglib.xml</param-value>
 	</context-param>
 
 	<!-- Filtro que encapsula a complexidade do upload de arquivos do Primefaces -->

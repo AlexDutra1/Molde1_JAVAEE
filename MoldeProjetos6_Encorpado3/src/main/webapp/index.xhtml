@@ -4,7 +4,9 @@
 xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html" 
 xmlns:p="http://primefaces.org/ui" 
-xmlns:f="http://java.sun.com/jsf/core">
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:andii="http://componentes.customizados.com"
+xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -21,6 +23,31 @@ xmlns:f="http://java.sun.com/jsf/core">
 <a href="paginas/cliente/cadastroCliente.xhtml">Cadastrar Cliente</a><br></br>
 <a href="paginas/usuario/cadastroUsuario.xhtml">Cadastrar Usuário</a><br></br>
 Obs: precisa passar pelo faces-confg
+
+
+
+<h1>Componente Panel</h1>
+
+
+
+
+<andii:compPanel >
+
+<ui:define name="tituloDoPainel">
+Titulo do painel
+</ui:define>
+
+<ui:define name="corpoDoPainel">
+Corpo do painel
+</ui:define>
+
+</andii:compPanel>
+
+
+
+
+
+<h1>Fim do Componente Panel</h1>
 
 </h:form>
 

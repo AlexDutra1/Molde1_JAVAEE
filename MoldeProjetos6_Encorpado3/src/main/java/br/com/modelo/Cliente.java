@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -68,10 +69,10 @@ public class Cliente implements Serializable {
 	@JoinColumn(name="cliente_id_celular")
 	private List <Telefone> telefoneCelular;
 	
-	/*
+	
 	@ManyToMany
 	private List <Interesse> interesses;
-	*/
+	
 	
 	
 	public Long getIdCliente() {
@@ -136,6 +137,14 @@ public class Cliente implements Serializable {
 
 	public void setTelefoneCelular(List<Telefone> telefoneCelular) {
 		this.telefoneCelular = telefoneCelular;
+	}
+
+	public List<Interesse> getInteresses() {
+		return interesses;
+	}
+
+	public void setInteresses(List<Interesse> interesses) {
+		this.interesses = interesses;
 	}
 
 

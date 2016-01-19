@@ -15,5 +15,10 @@
         <tag-name>compPrincipal</tag-name>
         <source>principal.xhtml</source>
     </tag>
+    
+    <tag>
+        <tag-name>compPanel</tag-name>
+        <source>panel.xhtml</source>
+    </tag>
 
 </facelet-taglib>
