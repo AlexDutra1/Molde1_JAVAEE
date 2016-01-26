@@ -9,7 +9,7 @@
 
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>resultadoCheckbox</from-outcome>
+			<from-outcome>mostraCheckbox</from-outcome>
 			<to-view-id>/testes/componentes/resultadoCheckbox.xhtml</to-view-id>
 		<redirect />
 		</navigation-case>
