@@ -5,47 +5,17 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
-<!-- 	<navigation-rule>
-	
-		<from-view-id>/index.xhtml</from-view-id>
+<navigation-rule>
+
+		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>cadastrarCliente</from-outcome>
-			<to-view-id>/cadastroCliente.xhtml</to-view-id>
-			<redirect />
+			<from-outcome>resultadoCheckbox</from-outcome>
+			<to-view-id>/testes/componentes/resultadoCheckbox.xhtml</to-view-id>
+		<redirect />
 		</navigation-case>
-	
-	</navigation-rule>
 
-	<navigation-rule>
+</navigation-rule>
 
-			<from-view-id>/index.xhtml</from-view-id>
-			<navigation-case>
-				<from-outcome>pesquisaCliente</from-outcome>
-				<to-view-id>/pesquisaCliente.xhtml</to-view-id>
-				<redirect />
-			</navigation-case>
 
-	</navigation-rule>
-	
-	<navigation-rule>
-
-			<from-view-id>/index.xhtml</from-view-id>
-			<navigation-case>
-				<from-outcome>pesquisaUsuario</from-outcome>
-				<to-view-id>/pesquisaUsuario.xhtml</to-view-id>
-				<redirect />
-			</navigation-case>
-
-	</navigation-rule>
-	<navigation-rule>
-
-			<from-view-id>/index.xhtml</from-view-id>
-			<navigation-case>
-				<from-outcome>cadastroUsuario</from-outcome>
-				<to-view-id>/cadastroUsuario.xhtml</to-view-id>
-				<redirect />
-			</navigation-case>
-
-	</navigation-rule> -->
 
 </faces-config>

@@ -53,6 +53,11 @@ public class ClienteController implements Serializable {
 		
 	}
 	
+	public String abreCadastro(){
+		
+		return "cadastroCliente";
+	}
+	
 	public void excluirRegistro(Cliente clienteExcluir){
 		
 		this.service.getNegocios().getDao().excluir(clienteExcluir);
