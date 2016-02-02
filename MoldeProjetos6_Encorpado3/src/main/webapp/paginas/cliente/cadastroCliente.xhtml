@@ -64,7 +64,7 @@
 				></p:inputText>
 			</div>
 			<div class="col-md-4 form-group">
-				<p:outputLabel value="Telefone Fixo"></p:outputLabel>
+				<p:outputLabel value="Número"></p:outputLabel>
 				<p:inputText styleClass="form-control"
 				id="id_numero"
 				value="#{clienteController.formulario.telefone.numero}"
@@ -93,6 +93,10 @@
 				
 				<p:column headerText="Número" style="text-align: center;">
 					<h:outputText value="#{telefone.numero}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="AÇÕES" style="text-align: center;">
+					<p:commandButton value="Excluir"></p:commandButton>
 				</p:column>
 				
    				</p:dataTable>
@@ -153,20 +157,21 @@
 				<ui:define name="tituloDoPainel"><h4>Cadastro de Interesses</h4></ui:define>
 		
 		<ui:define name="corpoDoPainel">
-		<h:form>
 				<div class="col-md-12 form-group">
 					<p:outputLabel value="Interesse"></p:outputLabel>
    				</div>
    				
    				<div class="col-md-12 form-group">
-	   				<p:inputText id="inputInteresse" value="#{clienteController.formulario.interesse.nome}"></p:inputText>
+	   				<p:inputText id="inp_interesse" 
+	   				value="#{clienteController.formulario.interesse_temp}"></p:inputText>
 	   				
 				</div>
 				
 				<div class="col-md-12 form-group">
-					<p:commandButton value="Salvar" action="#{clienteController.adicionaInteresse}">
-						<f:ajax execute="inputInteresse " render="tabelaInteresses" />
-					</p:commandButton>
+					
+					<h:commandButton  value="Salvar" action="#{clienteController.adicionaInteresse}">
+						<f:ajax execute="inp_interesse " render="  tabelaInteresses" />
+					</h:commandButton>
 					
 				</div>
 				
@@ -176,11 +181,16 @@
 				var="interesse" id="tabelaInteresses">
 					
 				<p:column headerText="Interesses" style="text-align: center;">
-					<h:outputText value="#{interesse.nome}"></h:outputText>
+					<h:outputText value="#{interesse}"></h:outputText>
 				</p:column>
+				
+				<p:column headerText="AÇÕES" style="text-align: center;">
+					<p:commandButton value="Excluir"></p:commandButton>
+				</p:column>
+				
+				
    				</p:dataTable>
    				</div>
-   			</h:form>
    			
 		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
 		</andii:compPanel> <!-- FIM DO PAINEL -->
@@ -270,6 +280,7 @@
 				
 			
 		</h:form>	
+		
 			</ui:define> <!-- FIM DO CORPO DA PAGINA -->
 		</ui:composition>
 

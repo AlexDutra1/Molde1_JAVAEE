@@ -53,11 +53,6 @@ public class Cliente implements Serializable {
 	@Column(precision=7,scale=3, name="renda")
 	private BigDecimal rendaMensal;
 	
-	/*
-	@Column(name="preferencias")
-	private List <String> listaPreferencias;
-	*/
-	
 	//RELACIONAMENTO ENDERECO OK
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="endereco_id", nullable=false)
@@ -72,7 +67,10 @@ public class Cliente implements Serializable {
 	@ManyToMany
 	private List <Interesse> interesses;
 	
-	
+	/*
+	@Column(name="preferencias")
+	private List <String> listaPreferencias;
+	*/
 
 
 	public Long getIdCliente() {

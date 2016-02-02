@@ -3,6 +3,7 @@ package br.com.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,6 @@ import org.primefaces.context.RequestContext;
 
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
-import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
 
@@ -33,20 +33,17 @@ public class ClienteController implements Serializable {
 	
 	
 	public void acaoAposCadastrar(){
+	
+		//Configura os telefones no cliente
+		this.formulario.getCliente().setTelefone(this.formulario.getListaTelefones());
+	
 		
 		//Configura endereco do usuario
 		this.formulario.getCliente().setEndereco(formulario.getEndereco());
 		
-		//Pega o telefone fixo e o celular e insere em um array
-		List <Telefone> listaTelefones=new ArrayList();
-		listaTelefones.add(this.getFormulario().getTelefone());
-		
-		//Configura os telefones no cliente
-		this.formulario.getCliente().setTelefone(listaTelefones);
-		
+	
 		//Configura os interesses no cliente
 		//this.formulario.getCliente().setInteresses(this.getFormulario().getListaInteresses());
-		
 		
 		
 		//Salva no banco de dados
@@ -61,26 +58,33 @@ public class ClienteController implements Serializable {
 	
 	public void adicionaTelefone(){
 		
-		List <Telefone> lista=new ArrayList<Telefone>();
-		lista.add(this.formulario.getTelefone());
-		this.formulario.setListaTelefones(lista);
+		this.formulario.getListaTelefones().add(this.formulario.getTelefone());
 		
 		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente:tabelaTelefones"));
 		
+		
+		//TESTE
+		
+		List <Telefone> listaTeste=new ArrayList<Telefone>();
+		listaTeste=this.formulario.getListaTelefones();
+		for (Telefone telefone : listaTeste) {
+			System.out.println("DDD: "+telefone.getDdd()+"NÚMERO: "+telefone.getNumero());
+		}
 		System.out.println("TELEFONE ADICIONADO");
+
+		//Limpa campo
+		//this.formulario.getTelefone().setDdd(null);
+		//this.formulario.getTelefone().setNumero(null);
+	
 	}
 	
 	public void adicionaInteresse(){
-	
-		//this.formulario.getListaInteresses().add(this.formulario.getInteresse());
-
- 		List <Interesse> listaB=new ArrayList<Interesse>();
-		listaB.add(this.formulario.getInteresse());
-		this.formulario.setListaInteresses(listaB);
+		
+		System.out.println("ADICIONADO INT"+this.formulario.getInteresse_temp());
+		
+		this.formulario.getListaInteresses().add(this.formulario.getInteresse_temp());
 		
 		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente:tabelaInteresses"));
-		
-		System.out.println("INTERESSE ADICIONADO");
 		
 	}
 	

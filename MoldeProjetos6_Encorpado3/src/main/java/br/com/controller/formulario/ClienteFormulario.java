@@ -34,26 +34,36 @@ public class ClienteFormulario implements Serializable{
 	private Telefone telefone;
 	
 	@Inject
-	private Telefone telefoneCelular;
-	
-	@Inject
 	private Interesse interesse;
+	
+	
+	
 	
 	private List <Cliente> todosClientes;
 
 	private List <Estado> todosEstados;
 	
-	private List <Interesse> listaInteresses= new ArrayList<Interesse>();
+	private String interesse_temp;
+	
+	private List <String> listaInteresses= new ArrayList<String>();
 	
 	private List <String> listaPreferencias;
 	
-	private List <Telefone> listaTelefones;
+	private List <Telefone> listaTelefones= new ArrayList<Telefone>();
 	
 	private Long idEstadoSelecionado;
 	
 	private EnumPreferencias enumPreferencias;
 	
 	
+	public String getInteresse_temp() {
+		return interesse_temp;
+	}
+
+	public void setInteresse_temp(String interesse_temp) {
+		this.interesse_temp = interesse_temp;
+	}
+
 	public Interesse getInteresse() {
 		return interesse;
 	}
@@ -118,11 +128,11 @@ public class ClienteFormulario implements Serializable{
 		this.todosClientes = todosClientes;
 	}
 
-	public List<Interesse> getListaInteresses() {
+	public List<String> getListaInteresses() {
 		return listaInteresses;
 	}
 
-	public void setListaInteresses(List<Interesse> listaInteresses) {
+	public void setListaInteresses(List<String> listaInteresses) {
 		this.listaInteresses = listaInteresses;
 	}
 
@@ -140,14 +150,6 @@ public class ClienteFormulario implements Serializable{
 
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
-	}
-
-	public Telefone getTelefoneCelular() {
-		return telefoneCelular;
-	}
-
-	public void setTelefoneCelular(Telefone telefoneCelular) {
-		this.telefoneCelular = telefoneCelular;
 	}
 
 	public EnumPreferencias getEnumInteresses() {
