@@ -1,6 +1,7 @@
 package br.com.controller.formulario;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,7 +13,7 @@ import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
-import br.com.modelo.enums.EnumInteresses;
+import br.com.modelo.enums.EnumPreferencias;
 
 
 
@@ -30,22 +31,61 @@ public class ClienteFormulario implements Serializable{
 	private Endereco endereco;
 	
 	@Inject
-	private Telefone telefoneFixo;
+	private Telefone telefone;
 	
 	@Inject
 	private Telefone telefoneCelular;
+	
+	@Inject
+	private Interesse interesse;
 	
 	private List <Cliente> todosClientes;
 
 	private List <Estado> todosEstados;
 	
-	private List <Interesse> listaInteresses;
+	private List <Interesse> listaInteresses= new ArrayList<Interesse>();
+	
+	private List <String> listaPreferencias;
+	
+	private List <Telefone> listaTelefones;
 	
 	private Long idEstadoSelecionado;
 	
-	private EnumInteresses enumInteresses;
+	private EnumPreferencias enumPreferencias;
 	
 	
+	public Interesse getInteresse() {
+		return interesse;
+	}
+
+	public void setInteresse(Interesse interesse) {
+		this.interesse = interesse;
+	}
+	
+	public List<Telefone> getListaTelefones() {
+		return listaTelefones;
+	}
+
+	public void setListaTelefones(List<Telefone> listaTelefones) {
+		this.listaTelefones = listaTelefones;
+	}
+
+	public EnumPreferencias getEnumPreferencias() {
+		return enumPreferencias;
+	}
+
+	public void setEnumPreferencias(EnumPreferencias enumPreferencias) {
+		this.enumPreferencias = enumPreferencias;
+	}
+
+	public List<String> getListaPreferencias() {
+		return listaPreferencias;
+	}
+
+	public void setListaPreferencias(List<String> listaPreferencias) {
+		this.listaPreferencias = listaPreferencias;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -94,12 +134,12 @@ public class ClienteFormulario implements Serializable{
 		this.endereco = endereco;
 	}
 
-	public Telefone getTelefoneFixo() {
-		return telefoneFixo;
+	public Telefone getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefoneFixo(Telefone telefoneFixo) {
-		this.telefoneFixo = telefoneFixo;
+	public void setTelefone(Telefone telefone) {
+		this.telefone = telefone;
 	}
 
 	public Telefone getTelefoneCelular() {
@@ -110,12 +150,12 @@ public class ClienteFormulario implements Serializable{
 		this.telefoneCelular = telefoneCelular;
 	}
 
-	public EnumInteresses getEnumInteresses() {
-		return enumInteresses;
+	public EnumPreferencias getEnumInteresses() {
+		return enumPreferencias;
 	}
 
-	public void setEnumInteresses(EnumInteresses enumInteresses) {
-		this.enumInteresses = enumInteresses;
+	public void setEnumInteresses(EnumPreferencias enumPreferencias) {
+		this.enumPreferencias = enumPreferencias;
 	}
 
 

@@ -25,7 +25,6 @@
 	   				<p:inputText value="#{controllerCheckbox.outroInteresse}"></p:inputText>			
 					
 					<p:commandButton value="SALVAR NA TABELA ABAIXO OS INTERESSES" action="#{controllerCheckbox.exibeListaNoConsole}">
-						<p:ajax update="tabelaInteresses" rendered="@form"/>
 					</p:commandButton>
 				
 					<p:dataTable value="#{controllerCheckbox.listaInteresses}"

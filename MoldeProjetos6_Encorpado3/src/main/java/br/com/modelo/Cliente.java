@@ -53,6 +53,11 @@ public class Cliente implements Serializable {
 	@Column(precision=7,scale=3, name="renda")
 	private BigDecimal rendaMensal;
 	
+	/*
+	@Column(name="preferencias")
+	private List <String> listaPreferencias;
+	*/
+	
 	//RELACIONAMENTO ENDERECO OK
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name="endereco_id", nullable=false)
@@ -62,19 +67,14 @@ public class Cliente implements Serializable {
 	//Faz o mapeamento na entidade telefone. A coluna que faz a ligação foi nomeada com cliente_id_fixo
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="cliente_id_fixo")
-	private List <Telefone> telefoneFixo;
-	
-	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="cliente_id_celular")
-	private List <Telefone> telefoneCelular;
-	
-	
+	private List <Telefone> telefone;
+		
 	@ManyToMany
 	private List <Interesse> interesses;
 	
 	
-	
+
+
 	public Long getIdCliente() {
 		return idCliente;
 	}
@@ -131,12 +131,12 @@ public class Cliente implements Serializable {
 		this.rendaMensal = rendaMensal;
 	}
 
-	public List<Telefone> getTelefoneCelular() {
-		return telefoneCelular;
+	public List<Telefone> getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefoneCelular(List<Telefone> telefoneCelular) {
-		this.telefoneCelular = telefoneCelular;
+	public void setTelefone(List<Telefone> telefone) {
+		this.telefone = telefone;
 	}
 
 	public List<Interesse> getInteresses() {

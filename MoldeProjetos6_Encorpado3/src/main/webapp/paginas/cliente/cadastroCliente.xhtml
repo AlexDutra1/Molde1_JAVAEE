@@ -13,7 +13,7 @@
 	<ui:define name="corpo">
 
 <!-- FORM NECESSARIO -->
-<h:form>
+<h:form id="formCadastroCliente">
 
 
 
@@ -59,34 +59,44 @@
 			<div class="col-md-2 form-group">
 				<p:outputLabel value="DDD "></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				value="#{clienteController.formulario.telefoneFixo.ddd}"
+				id="id_ddd"
+				value="#{clienteController.formulario.telefone.ddd}"
 				></p:inputText>
 			</div>
 			<div class="col-md-4 form-group">
 				<p:outputLabel value="Telefone Fixo"></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				value="#{clienteController.formulario.telefoneFixo.numero}"
+				id="id_numero"
+				value="#{clienteController.formulario.telefone.numero}"
 				></p:inputText>
 			</div>
-		</div>
-	</div>
+		
+			<div class="col-md-1 form-group">
+				<p:outputLabel value=""></p:outputLabel>
+				<p:commandButton value="SALVAR TELEFONE" action="#{clienteController.adicionaTelefone}">
+				<f:ajax render="tabelaTelefones" execute="id_ddd id_numero" />
+				</p:commandButton>
+			</div>
+		
 			
-	<div class="row">
-		<div class="col-md-12 form-group">
-			<div class="col-md-2 form-group">
-				<p:outputLabel value="DDD "></p:outputLabel>
-				<p:inputText styleClass="form-control"
-				value="#{clienteController.formulario.telefoneCelular.ddd}"
-				></p:inputText>
-			</div>
-			<div class="col-md-4 form-group">
-				<p:outputLabel value="Telefone Celular "></p:outputLabel>
-				<p:inputText styleClass="form-control"
-				value="#{clienteController.formulario.telefoneCelular.ddd}"
-				></p:inputText>
-			</div>
 		</div>
 	</div>
+	
+			<div class="col-md-7 form-group">
+			
+				<p:dataTable value="#{clienteController.formulario.listaTelefones}"
+				var="telefone" id="tabelaTelefones">
+					
+				<p:column headerText="DDD" style="text-align: center;">
+					<h:outputText value="#{telefone.ddd}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Número" style="text-align: center;">
+					<h:outputText value="#{telefone.numero}"></h:outputText>
+				</p:column>
+				
+   				</p:dataTable>
+   			</div>
 			
 			<div class="col-md-6 form-group">
 				<p:outputLabel value="Email "></p:outputLabel>
@@ -120,13 +130,13 @@
 		<!-- PAINEL DE INTERESSES -->
 		<andii:compPanel>
 		
-				<ui:define name="tituloDoPainel"><h4>Interesses do Cliente</h4></ui:define>
+				<ui:define name="tituloDoPainel"><h4>Preferências do Cliente</h4></ui:define>
 		
 		<ui:define name="corpoDoPainel">
 		
 				<div class="col-md-12 form-group">
 					<h:selectManyCheckbox layout="pageDirection"
-					value="#{clienteController.formulario.listaInteresses}">
+					value="#{clienteController.formulario.listaPreferencias}">
 						<f:selectItem itemValue="Casa" itemLabel="Casa" />
 	   					<f:selectItem itemValue="Lote" itemLabel="Lote" />
 	   					<f:selectItem itemValue="Apartamento" itemLabel="Apartamento" />
@@ -137,7 +147,43 @@
 		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
 		</andii:compPanel> <!-- FIM DO PAINEL -->
 		
-	
+		<!-- PAINEL DE INTERESSES -->
+		<andii:compPanel>
+		
+				<ui:define name="tituloDoPainel"><h4>Cadastro de Interesses</h4></ui:define>
+		
+		<ui:define name="corpoDoPainel">
+		<h:form>
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Interesse"></p:outputLabel>
+   				</div>
+   				
+   				<div class="col-md-12 form-group">
+	   				<p:inputText id="inputInteresse" value="#{clienteController.formulario.interesse.nome}"></p:inputText>
+	   				
+				</div>
+				
+				<div class="col-md-12 form-group">
+					<p:commandButton value="Salvar" action="#{clienteController.adicionaInteresse}">
+						<f:ajax execute="inputInteresse " render="tabelaInteresses" />
+					</p:commandButton>
+					
+				</div>
+				
+				
+				<div class="col-md-4 form-group">
+				<p:dataTable value="#{clienteController.formulario.listaInteresses}"
+				var="interesse" id="tabelaInteresses">
+					
+				<p:column headerText="Interesses" style="text-align: center;">
+					<h:outputText value="#{interesse.nome}"></h:outputText>
+				</p:column>
+   				</p:dataTable>
+   				</div>
+   			</h:form>
+   			
+		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
+		</andii:compPanel> <!-- FIM DO PAINEL -->
 
 
 
