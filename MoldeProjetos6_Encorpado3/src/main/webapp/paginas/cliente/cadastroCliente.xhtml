@@ -163,7 +163,7 @@
    				
    				<div class="col-md-12 form-group">
 	   				<p:inputText id="inp_interesse" 
-	   				value="#{clienteController.formulario.interesse_temp}"></p:inputText>
+	   				value="#{clienteController.formulario.interesse.nome}"></p:inputText>
 	   				
 				</div>
 				
@@ -181,7 +181,7 @@
 				var="interesse" id="tabelaInteresses">
 					
 				<p:column headerText="Interesses" style="text-align: center;">
-					<h:outputText value="#{interesse}"></h:outputText>
+					<h:outputText value="#{interesse.nome}"></h:outputText>
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">

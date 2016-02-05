@@ -43,9 +43,7 @@ public class ClienteFormulario implements Serializable{
 
 	private List <Estado> todosEstados;
 	
-	private String interesse_temp;
-	
-	private List <String> listaInteresses= new ArrayList<String>();
+	private List <Interesse> listaInteresses= new ArrayList<Interesse>();
 	
 	private List <String> listaPreferencias;
 	
@@ -55,15 +53,6 @@ public class ClienteFormulario implements Serializable{
 	
 	private EnumPreferencias enumPreferencias;
 	
-	
-	public String getInteresse_temp() {
-		return interesse_temp;
-	}
-
-	public void setInteresse_temp(String interesse_temp) {
-		this.interesse_temp = interesse_temp;
-	}
-
 	public Interesse getInteresse() {
 		return interesse;
 	}
@@ -128,14 +117,6 @@ public class ClienteFormulario implements Serializable{
 		this.todosClientes = todosClientes;
 	}
 
-	public List<String> getListaInteresses() {
-		return listaInteresses;
-	}
-
-	public void setListaInteresses(List<String> listaInteresses) {
-		this.listaInteresses = listaInteresses;
-	}
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -158,6 +139,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setEnumInteresses(EnumPreferencias enumPreferencias) {
 		this.enumPreferencias = enumPreferencias;
+	}
+
+	public List<Interesse> getListaInteresses() {
+		return listaInteresses;
+	}
+
+	public void setListaInteresses(List<Interesse> listaInteresses) {
+		this.listaInteresses = listaInteresses;
 	}
 
 

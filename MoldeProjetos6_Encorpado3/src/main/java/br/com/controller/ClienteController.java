@@ -1,20 +1,15 @@
 package br.com.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.context.RequestContext;
-
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
+import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
 
@@ -31,53 +26,48 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteFormulario formulario;
 	
-	@Inject
-	private Telefone tel1;
-	
-	@Inject
-	private Telefone tel2;
-	
 	public void acaoAposCadastrar(){
 	
 		//Configura os telefones no cliente
 		this.formulario.getCliente().setTelefone(this.formulario.getListaTelefones());
 	
-		
 		//Configura endereco do usuario
-		this.formulario.getCliente().setEndereco(formulario.getEndereco());
-		
+		this.formulario.getCliente().setEndereco(this.formulario.getEndereco());
 	
 		//Configura os interesses no cliente
-		//this.formulario.getCliente().setInteresses(this.getFormulario().getListaInteresses());
+		//this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
 		
+		//Cria outro objeto cliente para ser preenchido novamente
+		this.formulario.setCliente(new Cliente());
+		
+		/*
 		//Limpa o formulario
 		this.formulario=null;
 		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
-		
+		*/
 		
 	}
 	
 	public void adicionaTelefone(){
-//		
-//		List <Telefone> listaT=new ArrayList<Telefone>();
-//		listaT=this.formulario.getListaTelefones();
-//		
+	
 		this.formulario.getListaTelefones().add(this.formulario.getTelefone());
 		
-		//Cria outro objeto telefone
-		this.formulario.setTelefone(new Telefone());;
+		//Cria outro objeto telefone para ser preenchido
+		this.formulario.setTelefone(new Telefone());
 	
 	}
 	
 	public void adicionaInteresse(){
 		
-		System.out.println("ADICIONADO INT"+this.formulario.getInteresse_temp());
+		System.out.println("ADICIONADO INT"+this.formulario.getInteresse());
 		
-		this.formulario.getListaInteresses().add(this.formulario.getInteresse_temp());
+		this.formulario.getListaInteresses().add(this.formulario.getInteresse());
 		
+		//Cria outro objeto interesse para ser preenchido
+		this.formulario.setInteresse(new Interesse());
 	}
 	
 	public String abreCadastro(){
