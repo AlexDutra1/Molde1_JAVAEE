@@ -31,6 +31,11 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteFormulario formulario;
 	
+	@Inject
+	private Telefone tel1;
+	
+	@Inject
+	private Telefone tel2;
 	
 	public void acaoAposCadastrar(){
 	
@@ -45,7 +50,6 @@ public class ClienteController implements Serializable {
 		//Configura os interesses no cliente
 		//this.formulario.getCliente().setInteresses(this.getFormulario().getListaInteresses());
 		
-		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
 		
@@ -57,24 +61,14 @@ public class ClienteController implements Serializable {
 	}
 	
 	public void adicionaTelefone(){
-		
+//		
+//		List <Telefone> listaT=new ArrayList<Telefone>();
+//		listaT=this.formulario.getListaTelefones();
+//		
 		this.formulario.getListaTelefones().add(this.formulario.getTelefone());
 		
-		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente:tabelaTelefones"));
-		
-		
-		//TESTE
-		
-		List <Telefone> listaTeste=new ArrayList<Telefone>();
-		listaTeste=this.formulario.getListaTelefones();
-		for (Telefone telefone : listaTeste) {
-			System.out.println("DDD: "+telefone.getDdd()+"NÚMERO: "+telefone.getNumero());
-		}
-		System.out.println("TELEFONE ADICIONADO");
-
-		//Limpa campo
-		//this.formulario.getTelefone().setDdd(null);
-		//this.formulario.getTelefone().setNumero(null);
+		//Cria outro objeto telefone
+		this.formulario.setTelefone(new Telefone());;
 	
 	}
 	
@@ -83,8 +77,6 @@ public class ClienteController implements Serializable {
 		System.out.println("ADICIONADO INT"+this.formulario.getInteresse_temp());
 		
 		this.formulario.getListaInteresses().add(this.formulario.getInteresse_temp());
-		
-		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente:tabelaInteresses"));
 		
 	}
 	

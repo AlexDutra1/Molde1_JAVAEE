@@ -10,6 +10,8 @@
 		<div class="panel-body">
 		
 <h:form id="menuForm">
+
+
 		<nav class="navbar navbar-custom" style="margin: 10px 0">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -24,26 +26,26 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      	<ul class="nav navbar-nav">
 			      		<li class="dropdown" style="">
-			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
 			      			aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
 			      			<ul class="dropdown-menu">
-			            		<li><h:commandLink action="#{clienteController.abreCadastro}" value="Cadastrar Cliente" /></li>
-			            		<li><h:commandLink action="#{clienteController.abrePesquisa}" value="Pesquisar Cliente" /></li>
+			            		<li><h:commandLink action="cadastroCliente" value="Cadastrar Cliente" /></li>
+			            		<li><h:commandLink action="pesquisaCliente" value="Pesquisar Cliente" /></li>
 			          		</ul>
 			      		</li>
 			      		
 			      		<li class="dropdown" style="">
-			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
 			      			aria-haspopup="true" aria-expanded="false">Usuários<span class="caret"></span></a>
 			      			<ul class="dropdown-menu">
-			            		<li><h:commandLink action="#{usuarioController.abreCadastro}" value="Cadastrar Usuários" /></li>
-			            		<li><h:commandLink action="#{usuarioController.abrePesquisa}" value="Pesquisar Usuários" /></li>
+			            		<li><h:commandLink action="cadastroUsuario" value="Cadastrar Usuários" /></li>
+			            		<li><h:commandLink action="pesquisaUsuario" value="Pesquisar Usuários" /></li>
 			          		</ul>
 			      		</li>
 			      		
-			      		<li style=""><h:commandLink action="#{empenhoController.abreIniciar()}" value="teste 6" /></li>
+			      		<li style=""><h:commandLink action="#" value="teste 6" /></li>
 			      		<li class="dropdown" style="">
-			      			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tabelas de Apoio <span class="caret"></span></a>
+			      			<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tabelas de Apoio <span class="caret"></span></a>
 			      			<ul class="dropdown-menu">
 			            		<li><h:commandLink action="#" value="Manter Natureza de Despesa" /></li>
 			          		</ul>
@@ -53,6 +55,9 @@
 				</div>
 			</div><!-- FIM DO CONTAINER-FLUID -->
 		</nav>
+		
+		
+		
     </h:form>
     </div><!-- FINAL DO CORPO DO PAINEL -->
 </div><!-- FINAL DO PAINEL -->
