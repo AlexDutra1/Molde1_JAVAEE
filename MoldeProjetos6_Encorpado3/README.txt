@@ -60,7 +60,10 @@ No minimo 0 e no maximo N
 Resultado N
 
 Muitos x Muitos
+=====================================================
+Exemplo com a relação TEM-UM de 3 nivel
 
+Cliente TEM-UM Endereço que TEM-UM Estado
 =====================================================
 Exemplo com os tipos de dados:
 

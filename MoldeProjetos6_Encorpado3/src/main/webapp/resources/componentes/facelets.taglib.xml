@@ -20,5 +20,10 @@
         <tag-name>compPanel</tag-name>
         <source>panel.xhtml</source>
     </tag>
+    
+    <tag>
+        <tag-name>compModal</tag-name>
+        <source>modal.xhtml</source>
+    </tag>
 
 </facelet-taglib>

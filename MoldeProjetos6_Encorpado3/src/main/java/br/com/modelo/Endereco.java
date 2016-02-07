@@ -95,6 +95,14 @@ public class Endereco implements Serializable{
 		this.bairro = bairro;
 	}
 
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+
 	
 
 }

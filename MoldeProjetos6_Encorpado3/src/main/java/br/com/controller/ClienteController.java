@@ -35,7 +35,10 @@ public class ClienteController implements Serializable {
 		this.formulario.getCliente().setEndereco(this.formulario.getEndereco());
 	
 		//Configura os interesses no cliente
-		//this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());
+		this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());
+		
+		System.out.println("LAGRADOURO ENDERECO: "+this.formulario.getEndereco().getLagradouro());
+		System.out.println("LAGRADOURO CLIENTE: "+this.formulario.getCliente().getEndereco().getLagradouro());
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
@@ -62,7 +65,7 @@ public class ClienteController implements Serializable {
 	
 	public void adicionaInteresse(){
 		
-		System.out.println("ADICIONADO INT"+this.formulario.getInteresse());
+		System.out.println("ADICIONADO INT "+this.formulario.getInteresse().getNome());
 		
 		this.formulario.getListaInteresses().add(this.formulario.getInteresse());
 		

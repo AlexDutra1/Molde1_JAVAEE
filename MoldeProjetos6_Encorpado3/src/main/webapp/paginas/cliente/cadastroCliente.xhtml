@@ -245,21 +245,39 @@
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Estado" />
 						<h:selectOneMenu id="estado" styleClass="form-control"
-						value="#{clienteController.formulario.idEstadoSelecionado}" >
+						value="#{clienteController.formulario.endereco.estado}" >
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
 						</h:selectOneMenu>	
-						
+						 
 						<p:commandButton value="Cadastrar Estado"></p:commandButton>
+						
+<!-- Gatilho para modal -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Cadastrar Estado</button>
+
+<!-- Modal -->
+<andii:compModal>
+<ui:define name="tituloDoModal"><h4>Cadastro de Estado</h4></ui:define>
+<ui:define name="conteudoDoModal">
+
+<p:outputLabel value="Nome do Estado"></p:outputLabel><br></br>
+<p:inputText value=""/><br></br>
+<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
+<p:inputText value=""/>
+
+</ui:define>
+</andii:compModal>
+
 				</div>
 				
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Cidade" />
+					<!-- 
 						<h:selectOneMenu id="cidade" styleClass="form-control">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems var="cidades" itemValue="#{cidade}" itemLabel="#{cidade.nome}"></f:selectItems>
 						</h:selectOneMenu>	
-						
+					 -->	
 						<p:commandButton value="Cadastrar Cidade"></p:commandButton>
 				</div>
 		

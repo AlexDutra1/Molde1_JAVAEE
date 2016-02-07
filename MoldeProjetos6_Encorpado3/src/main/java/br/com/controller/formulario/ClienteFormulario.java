@@ -117,14 +117,6 @@ public class ClienteFormulario implements Serializable{
 		this.todosClientes = todosClientes;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
 	public Telefone getTelefone() {
 		return telefone;
 	}
@@ -147,6 +139,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setListaInteresses(List<Interesse> listaInteresses) {
 		this.listaInteresses = listaInteresses;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 
