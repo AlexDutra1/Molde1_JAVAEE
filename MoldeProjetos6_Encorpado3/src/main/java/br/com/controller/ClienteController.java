@@ -1,14 +1,17 @@
 package br.com.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
+
 import br.com.controller.formulario.ClienteFormulario;
-import br.com.controller.formulario.EstadoFormulario;
 import br.com.modelo.Cliente;
 import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
@@ -27,9 +30,6 @@ public class ClienteController implements Serializable {
 	
 	@Inject
 	private ClienteFormulario formulario;
-	
-	@Inject
-	private EstadoFormulario formularioEstado;
 	
 	@Inject
 	private EstadoService serviceEstado;
@@ -73,18 +73,24 @@ public class ClienteController implements Serializable {
 	
 	public void adicionaInteresse(){
 		
-		System.out.println("ADICIONADO INT "+this.formulario.getInteresse().getNome());
-		
 		this.formulario.getListaInteresses().add(this.formulario.getInteresse());
 		
 		//Cria outro objeto interesse para ser preenchido
 		this.formulario.setInteresse(new Interesse());
 	}
-	/*
-	public void cadastraEstado(){
-		this.serviceEstado.getNegocios().getDao().guardar(this.getFormularioEstado().getEstado());
+	
+	public void excluiInteresse(String nomeInteresse){
+	
+		List <Interesse> lista= this.formulario.getListaInteresses();
+	
+		for (Interesse interesse : lista) {
+			
+			if(nomeInteresse.equals(interesse.getNome())){
+				lista.remove(lista.lastIndexOf(interesse));
+			}
+		}
+		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
 	}
-	 */
 	
 	public String abreCadastro(){
 		
@@ -169,14 +175,6 @@ public class ClienteController implements Serializable {
 
 	public void setFormulario(ClienteFormulario formulario) {
 		this.formulario = formulario;
-	}
-
-	public EstadoFormulario getFormularioEstado() {
-		return formularioEstado;
-	}
-
-	public void setFormularioEstado(EstadoFormulario formularioEstado) {
-		this.formularioEstado = formularioEstado;
 	}
 
 	public EstadoService getServiceEstado() {

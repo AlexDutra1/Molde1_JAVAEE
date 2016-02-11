@@ -25,68 +25,13 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 Obs: precisa passar pelo faces-confg
 
 
-
-<h1>Componente Panel</h1>
-
-
-
-
-<andii:compPanel >
-
-<ui:define name="tituloDoPainel">
-Titulo do painel
-</ui:define>
-
-<ui:define name="corpoDoPainel">
-Corpo do painel
-</ui:define>
-
-</andii:compPanel>
-
-
-
-
-
-<h1>Fim do Componente Panel</h1>
-
 </h:form>
-
-
-
-
-
 
 <h:outputLabel>Testa Bootstrap</h:outputLabel>
 <button type="button" class="btn btn-default navbar-btn">Sign in</button>
 <span class="label label-default">Default</span>
 <span class="label label-primary">Primary</span>
 <span class="label label-success">Success</span>
-
-<br></br>
-<h:outputLabel>=====================================================</h:outputLabel>
-
-
-<!-- 
-TESTE CDI 
--->
-<h:form>
-<h:outputLabel>Testa CDI</h:outputLabel><br></br>
-<h:outputLabel>NOME:</h:outputLabel>
-<h:inputText value="#{testeCDI.cliente.nome}"></h:inputText>
-<h:commandButton value="Testar CDI" action="#{testeCDI.exibirMensagemNoConsole}"></h:commandButton>
-</h:form>
-
-
-<br></br>
-<h:outputLabel>=====================================================</h:outputLabel>
-<br></br>
-
-<!-- 
-TESTA REDIRECIONAMENTO DO FACES CONFIG
- -->
-<h:outputLabel>Testa funcionamento do Faces Config</h:outputLabel>
-<h:outputLabel>Se o valor do input for 123 a pagina é mudada, senão permanece no mesmo local </h:outputLabel>
-
 
 
 

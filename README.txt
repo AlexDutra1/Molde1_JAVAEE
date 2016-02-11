@@ -83,6 +83,7 @@ JPA
 Configuração do Ambiente:
 
 Eclipse Luna
+PostgreeSQL 9.4.5
 Tomcat 8.0
 Dynamic Web Module 3.1
 JRE 1.7
