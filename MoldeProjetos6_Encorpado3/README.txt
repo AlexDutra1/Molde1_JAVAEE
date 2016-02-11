@@ -61,9 +61,9 @@ Resultado N
 
 Muitos x Muitos
 =====================================================
-Exemplo com a relação TEM-UM de 3 nivel
+Exemplo com a relação TEM-UM de 4 nivel
 
-Cliente TEM-UM Endereço que TEM-UM Estado
+Cliente TEM-UM Endereço que TEM-UM Estado que TEM-UMA Cidade
 =====================================================
 Exemplo com os tipos de dados:
 

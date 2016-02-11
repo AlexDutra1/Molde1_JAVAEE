@@ -2,10 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
  
  <ui:component>
- <h:form>
+ 
+<!-- Gatilho para modal estado -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+<ui:insert name="botaoDoModal" />
+</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -15,27 +20,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">
-        
-        <ui:insert name="tituloDoModal" />
-        
-        </h4>
+        		<h4 class="modal-title"><ui:insert name="tituloDoModal" /></h4>
       </div>
       <div class="modal-body">
-      
-        <ui:insert name="conteudoDoModal" />
-      
+        		<ui:insert name="conteudoDoModal" />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Salvar</button>
-      </div>
+				<ui:insert name="rodapeModal"/>
+       </div>
     </div>
-
   </div>
 </div>
 
 <!-- FIM MODAL -->
-</h:form>
+
 </ui:component>
 </html>

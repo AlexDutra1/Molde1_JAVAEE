@@ -46,8 +46,6 @@
 		</navigation-case>
 	</navigation-rule>
 
-	<!-- Navegação com WILDCARD-->
-	<!-- O asterisco fala que qualquer pagina com action oi -->
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -64,5 +62,12 @@
 		</navigation-case>
 	</navigation-rule>
 	
-
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroEstado</from-outcome>
+			<to-view-id>/paginas/estado/cadastroEstado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

@@ -8,10 +8,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.controller.formulario.ClienteFormulario;
+import br.com.controller.formulario.EstadoFormulario;
 import br.com.modelo.Cliente;
 import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
+import br.com.servico.EstadoService;
 
 
 @Named("clienteController")
@@ -25,6 +27,12 @@ public class ClienteController implements Serializable {
 	
 	@Inject
 	private ClienteFormulario formulario;
+	
+	@Inject
+	private EstadoFormulario formularioEstado;
+	
+	@Inject
+	private EstadoService serviceEstado;
 	
 	public void acaoAposCadastrar(){
 	
@@ -72,6 +80,11 @@ public class ClienteController implements Serializable {
 		//Cria outro objeto interesse para ser preenchido
 		this.formulario.setInteresse(new Interesse());
 	}
+	/*
+	public void cadastraEstado(){
+		this.serviceEstado.getNegocios().getDao().guardar(this.getFormularioEstado().getEstado());
+	}
+	 */
 	
 	public String abreCadastro(){
 		
@@ -124,8 +137,14 @@ public class ClienteController implements Serializable {
 		return "pesquisaCliente";
 	}
 
-
-
+/*
+	public String testeEstado(){
+		
+		System.out.println("TESTE ESTADO");
+		
+		return "cadastroEstadoDeCliente?faces-redirect=true";
+	}
+*/
 
 	public ClienteService getService() {
 		return service;
@@ -150,6 +169,22 @@ public class ClienteController implements Serializable {
 
 	public void setFormulario(ClienteFormulario formulario) {
 		this.formulario = formulario;
+	}
+
+	public EstadoFormulario getFormularioEstado() {
+		return formularioEstado;
+	}
+
+	public void setFormularioEstado(EstadoFormulario formularioEstado) {
+		this.formularioEstado = formularioEstado;
+	}
+
+	public EstadoService getServiceEstado() {
+		return serviceEstado;
+	}
+
+	public void setServiceEstado(EstadoService serviceEstado) {
+		this.serviceEstado = serviceEstado;
 	}
 
 

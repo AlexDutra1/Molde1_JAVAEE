@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:andii="http://componentes.customizados.com"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
+
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form id="formCadastroEstado">
+
+
+			<!--PAINEL GERAL -->
+			<andii:compPanel>
+
+				<ui:define name="tituloDoPainel">
+					<h3>Cadastro do Estado</h3>
+				</ui:define>
+
+				<ui:define name="corpoDoPainel">
+
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Nome do Estado"></p:outputLabel>
+					<br></br>
+					<p:inputText styleClass="form-control"
+						value="#{estadoController.formulario.estado.nome}"></p:inputText>
+					<br></br>
+					</div>
+
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Sigla do Estado"></p:outputLabel>
+					<br></br>
+					<p:inputText styleClass="form-control"
+						value="#{estadoController.formulario.estado.sigla}"></p:inputText>
+				</div>
+				
+				<div class="col-md-12 form-group">
+					<p:commandButton value="Cadastrar"
+						action="#{estadoController.acaoAposCadastrar}" />
+				</div>
+
+				</ui:define>
+				<!-- FIM DO CORPO DO PAINEL GERAL -->
+			</andii:compPanel>
+			<!-- FIM DO PAINEL GERAL-->
+
+		</h:form>
+
+	</ui:define>
+	<!-- FIM DO CORPO DA PAGINA -->
+</ui:composition>
+</html>

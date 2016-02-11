@@ -1,0 +1,20 @@
+
+<!-- Modal para cadastrar estado-->
+<!-- 
+<andii:compModal>
+<ui:define name="botaoDoModal"><h4>Cadastrar Estado</h4></ui:define>
+<ui:define name="tituloDoModal"><h4>Cadastro de Estado</h4></ui:define>
+<ui:define name="conteudoDoModal">
+
+<p:outputLabel value="Nome do Estado"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control" 
+value="#{estadoController.formulario.estado.nome}"></p:inputText><br></br>
+
+<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control"
+value="#{estadoController.formulario.estado.sigla}"></p:inputText>
+
+</ui:define>
+</andii:compModal>
+ -->
+ <!-- FIM MODAL -->

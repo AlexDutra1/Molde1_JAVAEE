@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import br.com.modelo.Estado;
@@ -18,6 +19,18 @@ public class EstadoDAO implements EstadoGerenciable{
 		this.manager = manager;
 	}
 	
+	@Override
+	public void guardar(Estado estado) {
+
+		EntityTransaction trx = this.manager.getTransaction();
+		trx.begin();
+		
+		estado=this.manager.merge(estado);
+		this.manager.merge(estado);
+		
+		trx.commit();
+		
+	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
