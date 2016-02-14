@@ -36,7 +36,8 @@ public class ClienteFormulario implements Serializable{
 	@Inject
 	private Interesse interesse;
 	
-	
+	@Inject
+	private Estado estadoSelecionado;
 	
 	
 	private List <Cliente> todosClientes;
@@ -49,7 +50,7 @@ public class ClienteFormulario implements Serializable{
 	
 	private List <Telefone> listaTelefones= new ArrayList<Telefone>();
 	
-	private Long idEstadoSelecionado;
+	
 	
 	private EnumPreferencias enumPreferencias;
 	
@@ -101,14 +102,6 @@ public class ClienteFormulario implements Serializable{
 		this.todosEstados = todosEstados;
 	}
 
-	public Long getIdEstadoSelecionado() {
-		return idEstadoSelecionado;
-	}
-
-	public void setIdEstadoSelecionado(Long idEstadoSelecionado) {
-		this.idEstadoSelecionado = idEstadoSelecionado;
-	}
-
 	public List<Cliente> getTodosClientes() {
 		return todosClientes;
 	}
@@ -148,6 +141,16 @@ public class ClienteFormulario implements Serializable{
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+	public Estado getEstadoSelecionado() {
+		return estadoSelecionado;
+	}
+
+	public void setEstadoSelecionado(Estado estadoSelecionado) {
+		this.estadoSelecionado = estadoSelecionado;
+	}
+
+	
 
 
 

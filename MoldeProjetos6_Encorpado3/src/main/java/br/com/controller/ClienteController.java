@@ -13,10 +13,10 @@ import org.primefaces.context.RequestContext;
 
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
+import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
-import br.com.servico.EstadoService;
 
 
 @Named("clienteController")
@@ -32,13 +32,18 @@ public class ClienteController implements Serializable {
 	private ClienteFormulario formulario;
 	
 	@Inject
-	private EstadoService serviceEstado;
-	
+	private Estado estadoSelecionado;
+		
 	public void acaoAposCadastrar(){
 	
 		//Configura os telefones no cliente
 		this.formulario.getCliente().setTelefone(this.formulario.getListaTelefones());
 	
+		//Configura o estado no endereco
+		//this.formulario.getCliente().getEndereco().setEstado(this.formulario.getEstadoSelecionado());
+		System.out.println("ESTADO SELECIONADO: "+this.formulario.getEstadoSelecionado());
+		
+		
 		//Configura endereco do usuario
 		this.formulario.getCliente().setEndereco(this.formulario.getEndereco());
 	
@@ -77,6 +82,21 @@ public class ClienteController implements Serializable {
 		
 		//Cria outro objeto interesse para ser preenchido
 		this.formulario.setInteresse(new Interesse());
+	}
+	
+	public void excluiTelefone(String ddd, String numero){
+		
+		List <Telefone> lista= this.formulario.getListaTelefones();
+		
+		for (Telefone telefone : lista) {
+			
+			if(ddd.equals(telefone.getDdd())){
+				if(numero.equals(telefone.getNumero())){
+					lista.remove(lista.lastIndexOf(telefone));
+				}
+			}
+		}
+		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
 	}
 	
 	public void excluiInteresse(String nomeInteresse){
@@ -143,15 +163,6 @@ public class ClienteController implements Serializable {
 		return "pesquisaCliente";
 	}
 
-/*
-	public String testeEstado(){
-		
-		System.out.println("TESTE ESTADO");
-		
-		return "cadastroEstadoDeCliente?faces-redirect=true";
-	}
-*/
-
 	public ClienteService getService() {
 		return service;
 	}
@@ -177,13 +188,15 @@ public class ClienteController implements Serializable {
 		this.formulario = formulario;
 	}
 
-	public EstadoService getServiceEstado() {
-		return serviceEstado;
+	public Estado getEstadoSelecionado() {
+		return estadoSelecionado;
 	}
 
-	public void setServiceEstado(EstadoService serviceEstado) {
-		this.serviceEstado = serviceEstado;
+	public void setEstadoSelecionado(Estado estadoSelecionado) {
+		this.estadoSelecionado = estadoSelecionado;
 	}
+
+	
 
 
 

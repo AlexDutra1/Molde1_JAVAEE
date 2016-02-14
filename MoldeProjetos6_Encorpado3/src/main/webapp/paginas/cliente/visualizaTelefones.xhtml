@@ -17,14 +17,14 @@
 				</div>
 				<div class="panel-body">
 					
-			<!-- TABELA PARA TELEFONE CELULARES -->
+			<!-- TABELA PARA TELEFONE -->
 				
-				<p:dataTable value="#{clienteController.formulario.cliente.telefoneCelular}"
-					var="telefoneCelular" id="tabelaTelefonesCelulares">
+				<p:dataTable value="#{clienteController.formulario.listaTelefones}"
+					var="telefone" id="tabelaTelefones">
 					
 					<p:column headerText="Numero" style="text-align: center;">
-							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
-							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+							<h:outputText value="#{telefone.ddd}"></h:outputText>
+							<h:outputText value="#{telefone.numero}"></h:outputText>
 					</p:column>
 					
 				</p:dataTable>			

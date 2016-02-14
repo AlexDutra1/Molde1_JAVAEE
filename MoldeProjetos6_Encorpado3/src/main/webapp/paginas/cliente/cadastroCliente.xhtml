@@ -96,7 +96,7 @@
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">
-					<p:commandButton value="Excluir"></p:commandButton>
+					<p:commandButton value="Excluir" action="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></p:commandButton>
 				</p:column>
 				
    				</p:dataTable>
@@ -245,7 +245,7 @@
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Estado" />
 						<h:selectOneMenu id="estado" styleClass="form-control"
-						value="#{clienteController.formulario.endereco.estado}" >
+						value="#{clienteController.formulario.estadoSelecionado}" >
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
 						</h:selectOneMenu>	

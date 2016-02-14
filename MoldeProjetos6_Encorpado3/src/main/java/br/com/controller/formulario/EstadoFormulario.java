@@ -8,8 +8,9 @@ import javax.inject.Named;
 
 import br.com.modelo.Estado;
 
-@ApplicationScoped
+
 @Named
+@ApplicationScoped
 public class EstadoFormulario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

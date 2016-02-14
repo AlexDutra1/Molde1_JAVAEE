@@ -19,27 +19,15 @@
 		
 			<!-- TABELA PARA INTERESSES -->
 				
-				<p:dataTable value="#{clienteController.formulario.cliente.telefoneCelular}"
-					var="telefoneCelular" id="tabelaTelefonesCelulares">
+				<p:dataTable value="#{clienteController.formulario.listaInteresses}"
+					var="interesse" id="tabelaInteresses">
 					
-					<p:column headerText="Interesse A" style="text-align: center;">
-							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
-							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					<p:column headerText="Nome" style="text-align: center;">
+							<h:outputText value="#{clienteController.formulario.cliente.nome}"></h:outputText>
 					</p:column>
 					
-					<p:column headerText="Interesse B" style="text-align: center;">
-							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
-							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
-					</p:column>
-					
-					<p:column headerText="Interesse C" style="text-align: center;">
-							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
-							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
-					</p:column>
-					
-					<p:column headerText="Interesse D" style="text-align: center;">
-							<h:outputText value="#{telefoneCelular.ddd}"></h:outputText>
-							<h:outputText value="#{telefoneCelular.numero}"></h:outputText>
+					<p:column headerText="Interesse" style="text-align: center;">
+							<h:outputText value="#{interesse.nome}"></h:outputText>
 					</p:column>
 					
 				</p:dataTable>			
