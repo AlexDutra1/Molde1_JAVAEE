@@ -5,6 +5,21 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+	<!-- Mapeamento de converter para combo -->
+	<converter>
+		<display-name>SimpleEntityConverter</display-name>
+		<converter-id>SimpleEntityConverter</converter-id>
+		<converter-class>br.com.controller.util.SimpleEntityConverter</converter-class>
+	</converter>
+	
+	<!-- Mapeamento de converter para combo -->
+	<converter>
+		<display-name>SimpleIndexConverter</display-name>
+		<converter-id>SimpleIndexConverter</converter-id>
+		<converter-class>br.com.controller.util.SimpleIndexConverter</converter-class>
+	</converter>
+
+
 <navigation-rule>
 
 		<from-view-id>*</from-view-id>
@@ -78,6 +93,13 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroMunicipio</from-outcome>
+			<to-view-id>/paginas/municipio/cadastroMunicipio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
 	<navigation-rule>
 		<from-view-id>*</from-view-id>

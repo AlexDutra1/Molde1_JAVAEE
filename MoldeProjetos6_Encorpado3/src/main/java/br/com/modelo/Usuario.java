@@ -24,9 +24,10 @@ public class Usuario implements Serializable{
 	
 	private String email;
 	
-	@OneToOne
+	/*@OneToOne
 	@Lob
 	private Imagem imagem;
+	*/
 
 	public Long getIdUsuario() {
 		return idUsuario;
@@ -58,14 +59,6 @@ public class Usuario implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Imagem getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(Imagem imagem) {
-		this.imagem = imagem;
 	}
 
 	

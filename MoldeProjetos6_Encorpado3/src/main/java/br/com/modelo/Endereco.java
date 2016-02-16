@@ -34,22 +34,10 @@ public class Endereco implements Serializable{
 	
 	private String bairro;
 	
-	
 	//RELACIONAMENTO ESTADO
-	/*
-	@ManyToOne
-    @JoinColumn(name = "estado_id")
-	private Estado estado;
-	*/
-	/*
-	@ManyToOne
-	@JoinColumn(name="idEstado", referencedColumnName="idEstado")
-	*/
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idEstado")
 	private Estado estado;
-	
-
 	
 	public Long getIdEndereco() {
 		return idEndereco;

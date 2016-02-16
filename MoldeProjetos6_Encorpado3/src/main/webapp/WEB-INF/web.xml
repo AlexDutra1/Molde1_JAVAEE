@@ -13,12 +13,12 @@
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
-
+<!-- 
 	<context-param>
 		<param-name>facelets.LIBRARIES</param-name>
 		<param-value>/WEB-INF/ComponentesFacelets/facelets.taglib.xml</param-value>
 	</context-param>
-	
+ -->	
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -52,11 +52,12 @@
 
 
 
-	<!-- Onde será renderezada a arvore de componentes, server ou clinte -->
+	<!-- Onde será renderezada a arvore de componentes, server ou cliente -->
 	<context-param>
 		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
 		<param-value>server</param-value>
 	</context-param>
+	
 
 	<!-- Melhora a forma de carregar o sistema no ambiente de desenvolvimento -->
 	<context-param>
@@ -70,7 +71,7 @@
 		<param-value>/resources/componentes/facelets.taglib.xml</param-value>
 	</context-param>
 
-	<!-- Filtro que encapsula a complexidade do upload de arquivos do Primefaces -->
+	<!-- Filtro que encapsula a complexidade do upload de arquivos do Primefaces 
 	 <filter>
         <filter-name>primeUploadFilter</filter-name>
         <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
@@ -79,6 +80,7 @@
         <filter-name>primeUploadFilter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
+    -->
     <!-- FIM DO FILTRO -->
 
 
