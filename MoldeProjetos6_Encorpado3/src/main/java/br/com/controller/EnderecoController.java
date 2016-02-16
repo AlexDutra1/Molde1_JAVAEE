@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.controller.formulario.EnderecoFormulario;
+import br.com.modelo.Estado;
 import br.com.servico.EnderecoService;
 
 @Named("enderecoController")
@@ -22,6 +23,9 @@ public class EnderecoController  implements Serializable {
 	@Inject
 	private EnderecoFormulario formulario;
 	
+	@Inject
+	private Estado estadoTeste;
+	
 	@PostConstruct
 	public void init(){
 		
@@ -32,8 +36,19 @@ public class EnderecoController  implements Serializable {
 		
 		System.out.println("Clicado");
 		
+		
+		//TESTE
+		/*
+		estadoTeste.setNome("Estado teste 1");
+		this.formulario.getEndereco().setEstado(estadoTeste);
+		*/
+		
+		System.out.println("VALOR: "+this.formulario.getEstadoSelecionado());
+		
+		//FORMA CORRETA ABAIXO
 		//Configura Estado ao Endereço
-		//this.formulario.getCliente().getEndereco().setEstado(this.formulario.getEstadoSelecionado());
+		this.formulario.getEndereco().setEstado(this.formulario.getEstadoSelecionado());
+		
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.formulario.getEndereco());
@@ -54,6 +69,14 @@ public class EnderecoController  implements Serializable {
 
 	public void setFormulario(EnderecoFormulario formulario) {
 		this.formulario = formulario;
+	}
+
+	public Estado getEstadoTeste() {
+		return estadoTeste;
+	}
+
+	public void setEstadoTeste(Estado estadoTeste) {
+		this.estadoTeste = estadoTeste;
 	}
 
 }

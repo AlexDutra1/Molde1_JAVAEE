@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
 xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -17,20 +18,32 @@ xmlns:p="http://primefaces.org/ui">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 
 </h:head>
-<h:body>
+<h:body align="center">
+
+<div align="center">
 
 <div class="col-md-12 form-group">
-	<p:outputLabel value="LOGIN"></p:outputLabel>
-</div>
+<p align="center"> 
+<p:panelGrid columns="2">
+    <f:facet name="header">
+        <p:outputLabel value="LOGIN"></p:outputLabel>
+    </f:facet>
 
-<div class="col-md-12 form-group">
 	<p:outputLabel value="Usuário"></p:outputLabel>
-	<p:inputText ></p:inputText>
+	<p:inputText value="#{loginFormulario.usuario.usuario}"></p:inputText>
+
+	<p:outputLabel value="Senha"></p:outputLabel>
+	<p:inputText value="#{loginFormulario.usuario.senha}"></p:inputText>
+	
+</p:panelGrid>
+</p>
 </div>
 
 <div class="col-md-12 form-group">
-	<p:outputLabel value="Senha"></p:outputLabel>
-	<p:inputText ></p:inputText>
+	<p:commandButton value="Logar"
+	action="#{loginController.autenticar}"></p:commandButton>
+</div>
+
 </div>
 
 </h:body>

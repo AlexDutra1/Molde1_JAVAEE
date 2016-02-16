@@ -10,7 +10,7 @@ import javax.inject.Named;
 import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 
-@Named
+@Named("enderecoFormulario")
 @ApplicationScoped
 public class EnderecoFormulario implements Serializable {
 

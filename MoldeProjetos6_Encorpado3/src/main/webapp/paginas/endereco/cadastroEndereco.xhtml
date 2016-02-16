@@ -64,11 +64,10 @@
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Estado" />
 						<h:selectOneMenu id="estado" styleClass="form-control"
-						value="#{enderecoController.formulario.estadoSelecionado}" >
+						value="#{enderecoController.formulario.estadoSelecionado}">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{enderecoController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
 						</h:selectOneMenu>	
-						
 				</div>
 
 				<div class="col-md-6 form-group">

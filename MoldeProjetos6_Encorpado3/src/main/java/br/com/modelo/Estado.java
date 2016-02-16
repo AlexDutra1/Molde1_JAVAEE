@@ -23,8 +23,6 @@ public class Estado implements Serializable {
 	
 	private String Sigla;
 
-	
-	
 	public Long getIdEstado() {
 		return idEstado;
 	}
@@ -48,4 +46,5 @@ public class Estado implements Serializable {
 	public void setSigla(String sigla) {
 		Sigla = sigla;
 	}
+
 }

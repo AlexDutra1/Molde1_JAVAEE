@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +36,17 @@ public class Endereco implements Serializable{
 	
 	
 	//RELACIONAMENTO ESTADO
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	/*
+	@ManyToOne
+    @JoinColumn(name = "estado_id")
+	private Estado estado;
+	*/
+	/*
+	@ManyToOne
+	@JoinColumn(name="idEstado", referencedColumnName="idEstado")
+	*/
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idEstado")
 	private Estado estado;
 	
 
