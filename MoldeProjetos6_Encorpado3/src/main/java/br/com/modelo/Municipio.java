@@ -2,9 +2,12 @@ package br.com.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,11 @@ public class Municipio implements Serializable {
 	private Long idMunicipio;
 	
 	private String nome;
+	
+	//RELACIONAMENTO ESTADO
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idEstado")
+	private Estado estado;
 
 	public Long getIdMunicipio() {
 		return idMunicipio;
@@ -32,5 +40,13 @@ public class Municipio implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 }

@@ -25,7 +25,17 @@ public class MunicipioController implements Serializable {
 
 	public void acaoAposCadastrar(){
 		
+		System.out.println("Clicado");
+		System.out.println("NOME MUNICIPIO"+this.formulario.getMunicipio().getNome());
+		System.out.println("MUNICIPIO: "+this.formulario.getMunicipio());
+		System.out.println("ESTADO: "+this.formulario.getEstadoSelecionado());
+		System.out.println("ESTADO SIGLA: "+this.formulario.getEstadoSelecionado().getSigla());
 		
+		//Associa municipio ao estado
+		this.formulario.getMunicipio().setEstado(this.formulario.getEstadoSelecionado());
+		
+		//Salva no banco de dados o municipio associado ao estado
+		this.service.getNegocios().getDao().guardar(this.getFormulario().getMunicipio());
 	}
 	
 	@PostConstruct
