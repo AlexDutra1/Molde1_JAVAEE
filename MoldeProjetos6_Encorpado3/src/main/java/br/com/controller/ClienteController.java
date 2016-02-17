@@ -38,14 +38,13 @@ public class ClienteController implements Serializable {
 	
 		//Configura os telefones no cliente
 		this.formulario.getCliente().setTelefone(this.formulario.getListaTelefones());
-	
-		//Configura o estado no endereco
-		//this.formulario.getCliente().getEndereco().setEstado(this.formulario.getEstadoSelecionado());
-		System.out.println("ESTADO SELECIONADO: "+this.formulario.getEstadoSelecionado());
-		
 		
 		//Configura endereco do usuario
 		this.formulario.getCliente().setEndereco(this.formulario.getEndereco());
+		
+		//Configura o estado no endereco
+		this.formulario.getCliente().getEndereco().setEstado(this.formulario.getEstadoSelecionado());
+		System.out.println("ESTADO SELECIONADO: "+this.formulario.getEstadoSelecionado().getNome());
 	
 		//Configura os interesses no cliente
 		this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());

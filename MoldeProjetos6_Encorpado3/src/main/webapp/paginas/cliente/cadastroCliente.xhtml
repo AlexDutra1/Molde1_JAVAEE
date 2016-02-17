@@ -236,9 +236,10 @@
 				</div>
 				
 				<div class="col-md-6 form-group">
-					<h:outputLabel value="Estado" />
+					<h:outputLabel value="Estado" for="estado"/>
 						<h:selectOneMenu id="estado" styleClass="form-control"
-						value="#{clienteController.formulario.estadoSelecionado}" >
+						value="#{clienteController.formulario.estadoSelecionado}" 
+						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
 						</h:selectOneMenu>	

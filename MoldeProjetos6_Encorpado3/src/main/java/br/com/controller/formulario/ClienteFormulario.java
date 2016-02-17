@@ -50,8 +50,6 @@ public class ClienteFormulario implements Serializable{
 	
 	private List <Telefone> listaTelefones= new ArrayList<Telefone>();
 	
-	
-	
 	private EnumPreferencias enumPreferencias;
 	
 	public Interesse getInteresse() {

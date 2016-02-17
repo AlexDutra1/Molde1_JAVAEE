@@ -19,7 +19,7 @@ xmlns:p="http://primefaces.org/ui">
 
 </h:head>
 <h:body align="center">
-<h:form>
+<h:form id="loginFormulario">
 
 <div align="center">
 
@@ -42,9 +42,13 @@ xmlns:p="http://primefaces.org/ui">
 
 <div class="col-md-12 form-group">
 	<p:commandButton value="Logar"
-	action="#{loginController.autenticar}"/>
+	action="#{loginController.autenticar}">
+	</p:commandButton>
 </div>
 
+<!--LIMPA ANTES DE PROCESSAR 
+ <p:ajax update="loginFormulario" resetValues="true" />
+ -->
 </div>
 
 </h:form>

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import br.com.modelo.Cliente;
 import br.com.modelo.Usuario;
 import br.com.persistencia.interfaces.UsuarioGerenciable;
 
@@ -30,17 +29,11 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		@SuppressWarnings("unchecked")
 		List <Usuario> lista =consulta.getResultList();
 				
-		String resultadoAutenticacao;
-		
 		if(lista.isEmpty()==true){
-			resultadoAutenticacao="recusado";
+			return "recusado";
 		}else{
-			resultadoAutenticacao="autenticado";
+			return "autenticado";
 		}
-	
-		System.out.println("STATUS AUTENTICACAO: "+resultadoAutenticacao);
-		
-		return resultadoAutenticacao;
 	}
 	
 	@Override
