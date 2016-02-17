@@ -23,6 +23,13 @@ public class LoginController implements Serializable{
 	private LoginFormulario formulario;
 	
 	public void autenticar(){
+		System.out.println("Clicado");
+		System.out.println("Usuario: "+this.formulario.getUsuario().getUsuario());
+		System.out.println("Senha: "+this.formulario.getUsuario().getSenha());
+		
+		//Acessa o metodo de autenticacao do UsuarioDAO
+		this.service.getUsuarioService().getNegocios().getDao().autenticar(this.formulario.getUsuario());
+		
 		
 	}
 

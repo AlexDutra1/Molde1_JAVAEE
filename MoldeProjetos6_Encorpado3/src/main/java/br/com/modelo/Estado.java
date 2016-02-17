@@ -1,11 +1,13 @@
 package br.com.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +26,12 @@ public class Estado implements BaseEntity,Serializable {
 	private String nome;
 	
 	private String sigla;
+	
+	//UM ESTADO TEM MUITOS MUNICIPIOS
+	/*
+	@OneToMany
+	private List<Municipio> municipios;
+	*/
 	
 	/*
 	@Override

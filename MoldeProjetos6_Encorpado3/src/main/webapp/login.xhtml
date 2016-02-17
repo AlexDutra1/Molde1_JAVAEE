@@ -19,6 +19,7 @@ xmlns:p="http://primefaces.org/ui">
 
 </h:head>
 <h:body align="center">
+<h:form>
 
 <div align="center">
 
@@ -30,10 +31,10 @@ xmlns:p="http://primefaces.org/ui">
     </f:facet>
 
 	<p:outputLabel value="Usuário"></p:outputLabel>
-	<p:inputText value="#{loginFormulario.usuario.usuario}"></p:inputText>
+	<p:inputText value="#{loginController.formulario.usuario.usuario}"></p:inputText>
 
 	<p:outputLabel value="Senha"></p:outputLabel>
-	<p:inputText value="#{loginFormulario.usuario.senha}"></p:inputText>
+	<p:inputText value="#{loginController.formulario.usuario.senha}"></p:inputText>
 	
 </p:panelGrid>
 </p>
@@ -41,10 +42,11 @@ xmlns:p="http://primefaces.org/ui">
 
 <div class="col-md-12 form-group">
 	<p:commandButton value="Logar"
-	action="#{loginController.autenticar}"></p:commandButton>
+	action="#{loginController.autenticar}"/>
 </div>
 
 </div>
 
+</h:form>
 </h:body>
 </html>

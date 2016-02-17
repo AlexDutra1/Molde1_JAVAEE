@@ -1,5 +1,17 @@
 package br.com.servico;
 
-public class LoginService {
+import javax.inject.Inject;
 
+public class LoginService {
+	
+	@Inject
+	private UsuarioService usuarioService;
+
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
+	}
+
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
 }
