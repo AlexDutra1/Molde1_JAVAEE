@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
+import br.com.modelo.Municipio;
 
 @Named("enderecoFormulario")
 @ApplicationScoped
@@ -21,8 +22,13 @@ public class EnderecoFormulario implements Serializable {
 
 	@Inject
 	private Estado estadoSelecionado;
+
+	@Inject
+	private Municipio municipioSelecionado;
 	
 	private List <Estado> todosEstados;
+	
+	private List <Municipio> todosMunicipios;
 	
 	public Endereco getEndereco() {
 		return endereco;
@@ -46,5 +52,21 @@ public class EnderecoFormulario implements Serializable {
 
 	public void setEstadoSelecionado(Estado estadoSelecionado) {
 		this.estadoSelecionado = estadoSelecionado;
+	}
+
+	public List<Municipio> getTodosMunicipios() {
+		return todosMunicipios;
+	}
+
+	public void setTodosMunicipios(List<Municipio> todosMunicipios) {
+		this.todosMunicipios = todosMunicipios;
+	}
+
+	public Municipio getMunicipioSelecionado() {
+		return municipioSelecionado;
+	}
+
+	public void setMunicipioSelecionado(Municipio municipioSelecionado) {
+		this.municipioSelecionado = municipioSelecionado;
 	}
 }

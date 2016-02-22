@@ -3,10 +3,13 @@ package br.com.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -28,10 +31,9 @@ public class Estado implements BaseEntity,Serializable {
 	private String sigla;
 	
 	//UM ESTADO TEM MUITOS MUNICIPIOS
-	/*
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="estado_id_municipios")
 	private List<Municipio> municipios;
-	*/
 	
 	/*
 	@Override
@@ -85,6 +87,14 @@ public class Estado implements BaseEntity,Serializable {
 
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
+	}
+
+	public List<Municipio> getMunicipios() {
+		return municipios;
+	}
+
+	public void setMunicipios(List<Municipio> municipios) {
+		this.municipios = municipios;
 	}
 
 	

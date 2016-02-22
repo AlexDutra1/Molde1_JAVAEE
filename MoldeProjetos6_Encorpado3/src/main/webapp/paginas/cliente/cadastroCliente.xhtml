@@ -247,12 +247,16 @@
 				</div>
 
 				<div class="col-md-6 form-group">
-					<h:outputLabel value="Cidade" />
-						<h:selectOneMenu id="cidade" styleClass="form-control">
+					<h:outputLabel value="Municipio" />
+						<h:selectOneMenu id="municipio" styleClass="form-control"
+						value="#{clienteController.formulario.municipioSelecionado}" 
+						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
-						   <f:selectItems var="cidades" itemValue="#{cidade}" itemLabel="#{cidade.nome}"></f:selectItems>
+						   <f:selectItems value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
 						</h:selectOneMenu>	
 				</div>
+				
+																					
 				
 <div class="col-md-6 form-group">
 <!-- Modal para cadastrar estado-->

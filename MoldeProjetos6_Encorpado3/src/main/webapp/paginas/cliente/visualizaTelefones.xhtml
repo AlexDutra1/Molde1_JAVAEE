@@ -4,37 +4,41 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:andii="http://componentes.customizados.com"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
-</h:head>
-<h:body>
+<ui:composition template="/WEB-INF/templates/layout.xhtml">
 
-<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3>Consulta de números</h3>
-				</div>
-				<div class="panel-body">
-					
+	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	<ui:define name="corpo">
+
+		<!-- FORM NECESSARIO -->
+		<h:form id="formCadastroEndereco">
+
+			<!--PAINEL GERAL -->
+			<andii:compPanel>
+
+				<ui:define name="tituloDoPainel"><h3>Exibição de Telefones</h3></ui:define>
+
+				<ui:define name="corpoDoPainel">
+		
+		<div class="col-md-3 form-group">		
 			<!-- TABELA PARA TELEFONE -->
-				
 				<p:dataTable value="#{clienteController.formulario.listaTelefones}"
 					var="telefone" id="tabelaTelefones">
 					
-					<p:column headerText="Numero" style="text-align: center;">
-							<h:outputText value="#{telefone.ddd}"></h:outputText>
+					<p:column headerText="Números" style="text-align: center;">
+							<h:outputText value="(#{telefone.ddd}) "></h:outputText>
 							<h:outputText value="#{telefone.numero}"></h:outputText>
 					</p:column>
 					
 				</p:dataTable>			
 			<!-- FIM DA TABELA -->
-				
-					
-					
-				</div> <!-- FINAL DO CORPO DO PAINEL -->
-			</div> <!-- FINAL DO PAINEL -->
-
-
-</h:body>
+		</div>
+			
+				</ui:define>
+		</andii:compPanel>
+			
+</h:form>
+</ui:define>
+</ui:composition>
 </html>

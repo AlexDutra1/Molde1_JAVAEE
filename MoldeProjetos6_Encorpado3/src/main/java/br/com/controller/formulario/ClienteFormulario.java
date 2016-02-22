@@ -12,6 +12,7 @@ import br.com.modelo.Cliente;
 import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
+import br.com.modelo.Municipio;
 import br.com.modelo.Telefone;
 import br.com.modelo.enums.EnumPreferencias;
 
@@ -39,10 +40,14 @@ public class ClienteFormulario implements Serializable{
 	@Inject
 	private Estado estadoSelecionado;
 	
+	@Inject
+	private Municipio municipioSelecionado;
 	
 	private List <Cliente> todosClientes;
 
 	private List <Estado> todosEstados;
+	
+	private List <Municipio> todosMunicipios;
 	
 	private List <Interesse> listaInteresses= new ArrayList<Interesse>();
 	
@@ -146,6 +151,22 @@ public class ClienteFormulario implements Serializable{
 
 	public void setEstadoSelecionado(Estado estadoSelecionado) {
 		this.estadoSelecionado = estadoSelecionado;
+	}
+
+	public List<Municipio> getTodosMunicipios() {
+		return todosMunicipios;
+	}
+
+	public void setTodosMunicipios(List<Municipio> todosMunicipios) {
+		this.todosMunicipios = todosMunicipios;
+	}
+
+	public Municipio getMunicipioSelecionado() {
+		return municipioSelecionado;
+	}
+
+	public void setMunicipioSelecionado(Municipio municipioSelecionado) {
+		this.municipioSelecionado = municipioSelecionado;
 	}
 
 	

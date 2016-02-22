@@ -30,6 +30,8 @@ public class EnderecoController  implements Serializable {
 	public void init(){
 		
 		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.getFormulario().setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
+		
 	}
 	
 	public void acaoAposCadastrar(){

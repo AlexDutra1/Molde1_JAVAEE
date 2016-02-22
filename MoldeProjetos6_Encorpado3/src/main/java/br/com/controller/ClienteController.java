@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
+import br.com.modelo.Municipio;
 import br.com.modelo.Telefone;
 import br.com.servico.ClienteService;
 
@@ -33,7 +35,7 @@ public class ClienteController implements Serializable {
 	
 	@Inject
 	private Estado estadoSelecionado;
-		
+	
 	public void acaoAposCadastrar(){
 	
 		//Configura os telefones no cliente
@@ -41,16 +43,17 @@ public class ClienteController implements Serializable {
 		
 		//Configura endereco do usuario
 		this.formulario.getCliente().setEndereco(this.formulario.getEndereco());
-		
+
 		//Configura o estado no endereco
 		this.formulario.getCliente().getEndereco().setEstado(this.formulario.getEstadoSelecionado());
-		System.out.println("ESTADO SELECIONADO: "+this.formulario.getEstadoSelecionado().getNome());
 	
+		//Configura o municipio no estado
+		//this.formulario.getCliente().getEndereco().getEstado().(this.formulario.getMunicipioSelecionado());
+		System.out.println("MUNICIPIO SELECIONADO: "+this.formulario.getMunicipioSelecionado().getNome());
+		
+		
 		//Configura os interesses no cliente
 		this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());
-		
-		System.out.println("LAGRADOURO ENDERECO: "+this.formulario.getEndereco().getLagradouro());
-		System.out.println("LAGRADOURO CLIENTE: "+this.formulario.getCliente().getEndereco().getLagradouro());
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
@@ -111,6 +114,18 @@ public class ClienteController implements Serializable {
 		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
 	}
 	
+	//INCOMPLETO
+	public void carregaMunicipios(){
+		Estado estado=this.formulario.getEndereco().getEstado();
+		
+		List<Municipio> lista =this.service.getMunicipioService().getNegocios().getDao().consultaMunicipiosPeloEstado(estado);
+		
+		for (Municipio municipio : lista) {
+			System.out.println("Municipios do estado selecionado: "+municipio.getNome());
+		}
+		//this.formulario.setTodosMunicipios(this.service.getMunicipioService().getNegocios().getDao().consultaMunicipiosPeloEstado(estado));
+	}
+	
 	public String abreCadastro(){
 		
 		return "cadastroCliente";
@@ -138,13 +153,20 @@ public class ClienteController implements Serializable {
 	}
 	
 	public String visualizaTelefones(Cliente cliente){
+
+		//Consulta telefones por id do cliente Configura lista do formulario
+		this.formulario.setListaTelefones(this.service.getTelefoneService().getNegocios().getDao().consultarPorIdCliente(cliente.getIdCliente()));
 		
 		return "visualizaTelefones.xhtml";
 	}
 	
 	public String visualizaInteresses(Cliente cliente){
 		
-		this.formulario.setCliente(cliente);
+		//this.formulario.setCliente(cliente);
+		
+		//Consulta telefones por id do cliente Configura lista do formulario
+		this.formulario.setListaInteresses(this.service.getInteresseService().getNegocios().getDao().consultarPorIdCliente(cliente.getIdCliente()));
+				
 		
 		return "visualizaInteresses.xhtml";
 	}
@@ -154,6 +176,8 @@ public class ClienteController implements Serializable {
 		
 		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
 		this.getFormulario().setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
+		this.getFormulario().setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
+	
 	}
 
 

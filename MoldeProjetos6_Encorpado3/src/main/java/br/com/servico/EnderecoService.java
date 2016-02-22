@@ -11,6 +11,9 @@ public class EnderecoService {
 	
 	@Inject
 	private EstadoService estadoService;
+	
+	@Inject
+	private MunicipioService municipioService;
 
 	public EnderecoNegocios getNegocios() {
 		return negocios;
@@ -26,5 +29,13 @@ public class EnderecoService {
 
 	public void setEstadoService(EstadoService estadoService) {
 		this.estadoService = estadoService;
+	}
+
+	public MunicipioService getMunicipioService() {
+		return municipioService;
+	}
+
+	public void setMunicipioService(MunicipioService municipioService) {
+		this.municipioService = municipioService;
 	}
 }
