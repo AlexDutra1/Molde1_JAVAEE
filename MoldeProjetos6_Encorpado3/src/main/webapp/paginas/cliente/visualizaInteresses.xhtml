@@ -19,18 +19,21 @@
 		
 			<!-- TABELA PARA INTERESSES -->
 				
-				<p:dataTable value="#{clienteController.formulario.listaInteresses}"
-					var="interesse" id="tabelaInteresses">
-					
-					<p:column headerText="Nome" style="text-align: center;">
-							<h:outputText value="#{clienteController.formulario.cliente.nome}"></h:outputText>
-					</p:column>
-					
-					<p:column headerText="Interesse" style="text-align: center;">
-							<h:outputText value="#{interesse.nome}"></h:outputText>
-					</p:column>
-					
-				</p:dataTable>			
+				<div class="col-md-3 form-group">	
+					<h:outputText value="Nome: "></h:outputText>
+					<h:outputText value="#{clienteController.formulario.cliente.nome}"></h:outputText>
+				</div>
+				
+				<div class="col-md-3 form-group">	
+					<p:dataTable value="#{clienteController.formulario.listaInteresses}"
+						var="interesse" id="tabelaInteresses">
+						
+						<p:column headerText="Interesse" style="text-align: center;">
+								<h:outputText value="#{interesse.nome}"></h:outputText>
+						</p:column>
+						
+					</p:dataTable>			
+				</div>
 			<!-- FIM DA TABELA -->
 			
 

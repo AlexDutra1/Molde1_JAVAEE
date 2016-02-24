@@ -14,7 +14,7 @@
 <!-- UPLOAD DE ARQUIVOS TESTE		
 <h:form enctype="multipart/form-data">
 -->
-<h:form>
+<h:form id="formCadastroUsuario">
  
 <!-- Teste do painel bootstrap -->
 	<div class="panel panel-default">
@@ -63,7 +63,9 @@
 
 			
 			<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar" action="#{usuarioController.salvarCadastro}"></p:commandButton>
+				<p:commandButton value="Salvar"
+				update="formCadastroUsuario"
+				actionListener="#{usuarioController.salvarCadastro}"/>
 			</div>
 
 			

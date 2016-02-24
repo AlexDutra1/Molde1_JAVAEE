@@ -14,6 +14,7 @@ import org.primefaces.context.RequestContext;
 
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
+import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 import br.com.modelo.Municipio;
@@ -60,12 +61,14 @@ public class ClienteController implements Serializable {
 		
 		//Cria outro objeto cliente para ser preenchido novamente
 		this.formulario.setCliente(new Cliente());
-		
-		/*
-		//Limpa o formulario
-		this.formulario=null;
-		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
-		*/
+		this.formulario.setEndereco(new Endereco());
+		this.formulario.setInteresse(new Interesse());
+		this.formulario.setTelefone(new Telefone());
+		this.formulario.setListaTelefones(new ArrayList<Telefone>());
+		this.formulario.setListaInteresses(new ArrayList<Interesse>());
+		this.formulario.setListaPreferencias(new ArrayList<String>());
+		this.formulario.setEstadoSelecionado(new Estado());
+		this.formulario.setMunicipioSelecionado(new Municipio());
 		
 	}
 	
@@ -162,7 +165,7 @@ public class ClienteController implements Serializable {
 	
 	public String visualizaInteresses(Cliente cliente){
 		
-		//this.formulario.setCliente(cliente);
+		this.formulario.setCliente(cliente);
 		
 		//Consulta telefones por id do cliente Configura lista do formulario
 		this.formulario.setListaInteresses(this.service.getInteresseService().getNegocios().getDao().consultarPorIdCliente(cliente.getIdCliente()));

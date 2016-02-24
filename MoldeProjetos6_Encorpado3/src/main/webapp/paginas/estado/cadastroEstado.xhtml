@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:andii="http://componentes.customizados.com"
 	xmlns:p="http://primefaces.org/ui">
@@ -35,15 +35,14 @@
 				<div class="col-md-12 form-group">
 					<p:outputLabel value="Sigla do Estado"></p:outputLabel>
 					<br></br>
-					<p:inputText styleClass="form-control"
+					<p:inputText styleClass="form-control" id="inputSigla"
 						value="#{estadoController.formulario.estado.sigla}"></p:inputText>
 				</div>
 				
 				<div class="col-md-12 form-group">
-					<p:commandButton value="Cadastrar"
-						action="#{estadoController.acaoAposCadastrar}" />
+					<p:commandButton update="formCadastroEstado"  value="salvar" actionListener="#{estadoController.acaoAposCadastrar}"/>
 				</div>
-
+			
 				</ui:define>
 				<!-- FIM DO CORPO DO PAINEL GERAL -->
 			</andii:compPanel>

@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,6 +9,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.controller.formulario.MunicipioFormulario;
+import br.com.modelo.Estado;
+import br.com.modelo.Municipio;
 import br.com.servico.MunicipioService;
 
 
@@ -25,17 +28,16 @@ public class MunicipioController implements Serializable {
 
 	public void acaoAposCadastrar(){
 		
-		System.out.println("Clicado");
-		System.out.println("NOME MUNICIPIO"+this.formulario.getMunicipio().getNome());
-		System.out.println("MUNICIPIO: "+this.formulario.getMunicipio());
-		System.out.println("ESTADO: "+this.formulario.getEstadoSelecionado());
-		System.out.println("ESTADO SIGLA: "+this.formulario.getEstadoSelecionado().getSigla());
-		
 		//Associa municipio ao estado
 		this.formulario.getMunicipio().setEstado(this.formulario.getEstadoSelecionado());
 		
 		//Salva no banco de dados o municipio associado ao estado
 		this.service.getNegocios().getDao().guardar(this.getFormulario().getMunicipio());
+		
+		//Limpa campos do municipio
+		this.formulario.setMunicipio(new Municipio());
+		this.formulario.setEstadoSelecionado(new Estado());
+		this.formulario.setTodosEstados(new ArrayList<Estado>());
 	}
 	
 	@PostConstruct

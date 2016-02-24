@@ -10,6 +10,7 @@ import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import br.com.controller.formulario.UsuarioFormulario;
+import br.com.modelo.Usuario;
 import br.com.servico.UsuarioService;
 
 @RequestScoped
@@ -26,6 +27,8 @@ public class UsuarioController {
 	private byte[] imagem;
 	
 	public void salvarCadastro(){
+		
+		this.formulario.setUsuario(new Usuario());
 		
 		this.getService().getNegocios().getDao().guardar(this.getFormulario().getUsuario());
 		

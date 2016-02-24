@@ -62,7 +62,7 @@ public class Cliente implements Serializable {
 	
 	//Faz o mapeamento na entidade telefone. A coluna que faz a ligação foi nomeada com cliente_id_fixo
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="cliente_id_fixo")
+	@JoinColumn(name="cliente_id_telefone")
 	private List <Telefone> telefone;
 		
 	@ManyToMany(cascade = CascadeType.ALL)

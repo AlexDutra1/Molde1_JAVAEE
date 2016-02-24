@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -38,6 +41,12 @@ public class Endereco implements Serializable{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idEstado")
 	private Estado estado;
+	
+	//RELACIONAMENTO MUNICIPIO
+	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
+    @JoinColumn(name="municipio_id", nullable=false)
+    @PrimaryKeyJoinColumn
+	private Municipio municipio;
 	
 	public Long getIdEndereco() {
 		return idEndereco;
@@ -101,6 +110,14 @@ public class Endereco implements Serializable{
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
 	}
 
 	

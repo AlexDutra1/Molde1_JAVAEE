@@ -1,6 +1,7 @@
 package br.com.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,7 +9,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.controller.formulario.EnderecoFormulario;
+import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
+import br.com.modelo.Municipio;
 import br.com.servico.EnderecoService;
 
 @Named("enderecoController")
@@ -36,25 +39,20 @@ public class EnderecoController  implements Serializable {
 	
 	public void acaoAposCadastrar(){
 		
-		System.out.println("Clicado");
-		
-		
-		//TESTE
-		/*
-		estadoTeste.setNome("Estado teste 1");
-		this.formulario.getEndereco().setEstado(estadoTeste);
-		*/
-		
-		System.out.println("VALOR: "+this.formulario.getEstadoSelecionado());
-		
-		//FORMA CORRETA ABAIXO
 		//Configura Estado ao Endereço
 		this.formulario.getEndereco().setEstado(this.formulario.getEstadoSelecionado());
 		
+		//Configura Municipio ao Endereco
+		this.formulario.getEndereco().setMunicipio(this.formulario.getMunicipioSelecionado());
 		
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.formulario.getEndereco());
-		//this.service.getNegocios().getDao().guardar(this.getFormulario().getEndereco());
+		
+		//limpa os campos do endereco
+		this.formulario.setEndereco(new Endereco());
+		this.formulario.setTodosEstados(new ArrayList<Estado>());
+		this.formulario.setTodosMunicipios(new ArrayList<Municipio>());
+		
 	}
 
 	public EnderecoService getService() {

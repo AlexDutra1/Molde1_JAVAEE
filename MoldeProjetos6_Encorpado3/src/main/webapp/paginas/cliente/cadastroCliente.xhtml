@@ -66,11 +66,14 @@
 		
 			<div class="col-md-1 form-group">
 				<p:outputLabel value=""></p:outputLabel>
-				<p:commandButton value="SALVAR TELEFONE" action="#{clienteController.adicionaTelefone}">
-				<f:ajax render="tabelaTelefones" execute="id_ddd id_numero" />
+				<p:commandButton value="SALVAR TELEFONE" 
+				update="tabelaTelefones id_ddd id_numero"
+				actionListener="#{clienteController.adicionaTelefone}">
+				
+					<f:ajax render="tabelaTelefones" execute="id_ddd id_numero" />
+				
 				</p:commandButton>
 			</div>
-		
 			
 		</div>
 	</div>
@@ -89,7 +92,9 @@
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">
-					<p:commandButton value="Excluir" action="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></p:commandButton>
+					<p:commandButton value="Excluir" 
+					update="tabelaTelefones"
+					action="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></p:commandButton>
 				</p:column>
 				
    				</p:dataTable>
@@ -162,12 +167,15 @@
 				
 				<div class="col-md-12 form-group">
 					
-					<p:commandButton  value="Salvar" action="#{clienteController.adicionaInteresse}">
-						<f:ajax execute="inp_interesse " render="  tabelaInteresses" />
+					<p:commandButton  value="Salvar" 
+					update="tabelaInteresses inp_interesse"
+					actionListener="#{clienteController.adicionaInteresse}">
+					
+						<f:ajax execute="inp_interesse" render="tabelaInteresses" />
+					
 					</p:commandButton>
 					
 				</div>
-				
 				
 				<div class="col-md-4 form-group">
 				<p:dataTable value="#{clienteController.formulario.listaInteresses}"
@@ -178,7 +186,9 @@
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">
-					<p:commandButton value="Excluir" action="#{clienteController.excluiInteresse(interesse.nome)}"></p:commandButton>
+					<p:commandButton value="Excluir" 
+					update="tabelaInteresses"
+					action="#{clienteController.excluiInteresse(interesse.nome)}"/>
 				</p:column>
 				
 				
@@ -314,7 +324,9 @@ value="#{estadoController.formulario.estado.sigla}"></p:inputText>
 
 		
 		<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar" action="#{clienteController.acaoAposCadastrar}"></p:commandButton>
+				<p:commandButton value="Salvar"
+				update="formCadastroCliente"
+				actionListener="#{clienteController.acaoAposCadastrar}"/>
 		</div>
 		
 		

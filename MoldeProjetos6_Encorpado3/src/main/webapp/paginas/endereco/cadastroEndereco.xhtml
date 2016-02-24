@@ -83,9 +83,10 @@
 				
 				<div class="col-md-12 form-group">
 					<p:commandButton value="Cadastrar"
-						action="#{enderecoController.acaoAposCadastrar}"/>
+					update="formCadastroEndereco"
+					actionListener="#{enderecoController.acaoAposCadastrar}"/>
 				</div>
-
+				
 				</ui:define>
 				<!-- FIM DO CORPO DO PAINEL GERAL -->
 			</andii:compPanel>
