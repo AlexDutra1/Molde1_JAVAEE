@@ -2,15 +2,13 @@ package br.com.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.context.RequestContext;
 
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
@@ -36,6 +34,9 @@ public class ClienteController implements Serializable {
 	
 	@Inject
 	private Estado estadoSelecionado;
+	
+	@Inject 
+	Municipio m1,m2,m3; 
 	
 	public void acaoAposCadastrar(){
 	
@@ -97,11 +98,12 @@ public class ClienteController implements Serializable {
 			
 			if(ddd.equals(telefone.getDdd())){
 				if(numero.equals(telefone.getNumero())){
-					lista.remove(lista.lastIndexOf(telefone));
+					lista.remove(telefone);
 				}
 			}
 		}
-		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
+		//ABAIXO não está fazendo diferença
+		//RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente:tabelaTelefones"));
 	}
 	
 	public void excluiInteresse(String nomeInteresse){
@@ -114,19 +116,16 @@ public class ClienteController implements Serializable {
 				lista.remove(lista.lastIndexOf(interesse));
 			}
 		}
-		RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
+		//ABAIXO não está fazendo diferença
+		//RequestContext.getCurrentInstance().update(Arrays.asList("formCadastroCliente"));
 	}
 	
-	//INCOMPLETO
-	public void carregaMunicipios(){
-		Estado estado=this.formulario.getEndereco().getEstado();
+	public void atualizaComboMunicipio(AjaxBehaviorEvent event){
 		
-		List<Municipio> lista =this.service.getMunicipioService().getNegocios().getDao().consultaMunicipiosPeloEstado(estado);
+		this.formulario.setTodosMunicipios(this.service.getMunicipioService()
+				.getNegocios().getDao()
+				.consultaMunicipiosPeloEstado(this.formulario.getEstadoSelecionado()));
 		
-		for (Municipio municipio : lista) {
-			System.out.println("Municipios do estado selecionado: "+municipio.getNome());
-		}
-		//this.formulario.setTodosMunicipios(this.service.getMunicipioService().getNegocios().getDao().consultaMunicipiosPeloEstado(estado));
 	}
 	
 	public String abreCadastro(){

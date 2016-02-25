@@ -66,7 +66,7 @@
 		
 			<div class="col-md-1 form-group">
 				<p:outputLabel value=""></p:outputLabel>
-				<p:commandButton value="SALVAR TELEFONE" 
+				<p:commandButton value="SALVAR TELEFONE"
 				update="tabelaTelefones id_ddd id_numero"
 				actionListener="#{clienteController.adicionaTelefone}">
 				
@@ -92,11 +92,12 @@
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">
-					<p:commandButton value="Excluir" 
-					update="tabelaTelefones"
-					action="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></p:commandButton>
+					<p:commandButton value="Excluir"
+					ajax="false">
+						<f:ajax event="click" render="tabelaTelefones" listener="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></f:ajax>
+					</p:commandButton>
 				</p:column>
-				
+					
    				</p:dataTable>
    			</div>
 			
@@ -186,11 +187,11 @@
 				</p:column>
 				
 				<p:column headerText="Ações" style="text-align: center;">
-					<p:commandButton value="Excluir" 
-					update="tabelaInteresses"
-					action="#{clienteController.excluiInteresse(interesse.nome)}"/>
+					<p:commandButton value="Excluir"
+					ajax="false">
+						<f:ajax event="click" render="tabelaInteresses" listener="#{clienteController.excluiInteresse(interesse.nome)}"></f:ajax>
+					</p:commandButton>
 				</p:column>
-				
 				
    				</p:dataTable>
    				</div>
@@ -247,22 +248,25 @@
 				
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Estado" for="estado"/>
-						<h:selectOneMenu id="estado" styleClass="form-control"
+					<h:selectOneMenu id="estado" styleClass="form-control"
 						value="#{clienteController.formulario.estadoSelecionado}" 
 						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
-						</h:selectOneMenu>	
+						
+						<f:ajax event="change" render="municipio_combo" listener="#{clienteController.atualizaComboMunicipio}"></f:ajax>
+					
+					</h:selectOneMenu>	
 						
 				</div>
 
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Municipio" />
-						<h:selectOneMenu id="municipio" styleClass="form-control"
+						<h:selectOneMenu id="municipio_combo" styleClass="form-control"
 						value="#{clienteController.formulario.municipioSelecionado}" 
 						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
-						   <f:selectItems value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+						   <f:selectItems id="municipiosL" value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
 						</h:selectOneMenu>	
 				</div>
 				
