@@ -68,16 +68,22 @@
 						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
 						   <f:selectItems value="#{enderecoController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+						
+						<f:ajax event="change" render="municipio_combo_endereco" listener="#{enderecoController.atualizaComboMunicipio}"></f:ajax>
+						
 						</h:selectOneMenu>	
 				</div>
 
 				<div class="col-md-6 form-group">
 					<h:outputLabel value="Municipio" for="municipio" />
-						<h:selectOneMenu id="municipio" styleClass="form-control"
+						<h:selectOneMenu id="municipio_combo_endereco" styleClass="form-control"
 						value="#{enderecoController.formulario.municipioSelecionado}"
 						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
-						   <f:selectItems value="#{enderecoController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+						   <f:selectItems value="#{enderecoController.formulario.todosMunicipios}"
+						   var="municipio" 
+						   itemValue="#{municipio}"
+						   itemLabel="#{municipio.nome}"></f:selectItems>
 						</h:selectOneMenu>	
 				</div>
 				

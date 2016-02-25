@@ -1,6 +1,7 @@
 package br.com.controller.formulario;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,7 +12,7 @@ import br.com.modelo.Endereco;
 import br.com.modelo.Estado;
 import br.com.modelo.Municipio;
 
-@Named("enderecoFormulario")
+@Named
 @ApplicationScoped
 public class EnderecoFormulario implements Serializable {
 
@@ -26,9 +27,9 @@ public class EnderecoFormulario implements Serializable {
 	@Inject
 	private Municipio municipioSelecionado;
 	
-	private List <Estado> todosEstados;
+	private List <Estado> todosEstados= new ArrayList<Estado>();;
 	
-	private List <Municipio> todosMunicipios;
+	private List <Municipio> todosMunicipios= new ArrayList<Municipio>();
 	
 	public Endereco getEndereco() {
 		return endereco;

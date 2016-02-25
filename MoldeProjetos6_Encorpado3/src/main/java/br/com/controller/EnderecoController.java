@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,14 +27,10 @@ public class EnderecoController  implements Serializable {
 	@Inject
 	private EnderecoFormulario formulario;
 	
-	@Inject
-	private Estado estadoTeste;
-	
 	@PostConstruct
 	public void init(){
 		
 		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
-		this.getFormulario().setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
 		
 	}
 	
@@ -54,6 +51,13 @@ public class EnderecoController  implements Serializable {
 		this.formulario.setTodosMunicipios(new ArrayList<Municipio>());
 		
 	}
+	
+	public void atualizaComboMunicipio(AjaxBehaviorEvent event){
+		
+		this.formulario.setTodosMunicipios(this.service.getMunicipioService()
+				.getNegocios().getDao()
+				.consultaMunicipiosPeloEstado(this.formulario.getEstadoSelecionado()));
+	}
 
 	public EnderecoService getService() {
 		return service;
@@ -71,12 +75,5 @@ public class EnderecoController  implements Serializable {
 		this.formulario = formulario;
 	}
 
-	public Estado getEstadoTeste() {
-		return estadoTeste;
-	}
-
-	public void setEstadoTeste(Estado estadoTeste) {
-		this.estadoTeste = estadoTeste;
-	}
 
 }

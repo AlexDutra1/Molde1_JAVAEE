@@ -19,8 +19,8 @@ import br.com.modelo.enums.EnumPreferencias;
 
 
 
+@Named
 @ApplicationScoped
-@Named("clienteFormulario")
 public class ClienteFormulario implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -32,11 +32,13 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteFormulario formulario;
 	
-	@Inject
-	private Estado estadoSelecionado;
+	@PostConstruct
+	public void init(){
+		
+		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.getFormulario().setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
 	
-	@Inject 
-	Municipio m1,m2,m3; 
+	}
 	
 	public void acaoAposCadastrar(){
 	
@@ -169,19 +171,8 @@ public class ClienteController implements Serializable {
 		//Consulta telefones por id do cliente Configura lista do formulario
 		this.formulario.setListaInteresses(this.service.getInteresseService().getNegocios().getDao().consultarPorIdCliente(cliente.getIdCliente()));
 				
-		
 		return "visualizaInteresses.xhtml";
 	}
-
-	@PostConstruct
-	public void init(){
-		
-		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
-		this.getFormulario().setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
-		this.getFormulario().setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
-	
-	}
-
 
 	public String abrePesquisa(){
 		
@@ -213,14 +204,7 @@ public class ClienteController implements Serializable {
 		this.formulario = formulario;
 	}
 
-	public Estado getEstadoSelecionado() {
-		return estadoSelecionado;
-	}
-
-	public void setEstadoSelecionado(Estado estadoSelecionado) {
-		this.estadoSelecionado = estadoSelecionado;
-	}
-
+	
 	
 
 

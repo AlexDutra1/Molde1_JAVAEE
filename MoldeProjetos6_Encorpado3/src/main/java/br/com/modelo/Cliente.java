@@ -56,13 +56,13 @@ public class Cliente implements Serializable {
 	
 	//RELACIONAMENTO ENDERECO OK
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
-    @JoinColumn(name="endereco_id", nullable=false)
+    @JoinColumn(name="endereco_id", nullable=true)
     @PrimaryKeyJoinColumn
 	private Endereco endereco;
 	
 	//Faz o mapeamento na entidade telefone. A coluna que faz a ligação foi nomeada com cliente_id_fixo
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="cliente_id_telefone")
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER )
+	@JoinColumn(name="cliente_id_telefone",nullable=true)
 	private List <Telefone> telefone;
 		
 	@ManyToMany(cascade = CascadeType.ALL)
