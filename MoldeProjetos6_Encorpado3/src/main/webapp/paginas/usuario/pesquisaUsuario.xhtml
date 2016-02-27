@@ -9,6 +9,7 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml">
 <!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
 	<ui:define name="corpo">
+	<h:form id="formPesquisaUsuario">
 
 <!-- Teste do painel bootstrap -->
 	<div class="panel panel-default">
@@ -18,12 +19,67 @@
 		
 				<div class="row">
 
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Nome"/>
+						<p:inputText id="input_nome" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.nome}" ></p:inputText>
+					</div>
+					
+					<div class="col-md-10 form-group">
+						<p:commandButton value="Pesquisar"
+						action="#{usuarioController.pesquisarPorNome}"></p:commandButton>
+					</div>
 
-				Teste Pesquisa
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Usúario"/>
+						<p:inputText id="input_usuario" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.usuario}"></p:inputText>
+					</div>
+					
+					<div class="col-md-10 form-group">
+						<p:commandButton value="Pesquisar"
+						action="#{usuarioController.pesquisaPorLogin}"></p:commandButton>
+					</div>
+					
+					<div class="col-md-10 form-group">
+						<p:outputLabel value="Email"/>
+						<p:inputText id="input_email" styleClass="form-control"
+						value="#{usuarioController.formulario.usuario.email}"></p:inputText>
+					</div>
+				
+					<div class="col-md-10 form-group">
+						<p:commandButton value="Pesquisar"
+						action="#{usuarioController.pesquisaPorEmail}"></p:commandButton>
+					</div>
 
+					<!-- TABELA -->
+					<div class="col-md-12 form-group">
+						<p:dataTable value="#{usuarioController.formulario.todosUsuarios}"
+						var="usuario" id="tabelaUsuarios">
+						
+					<p:column headerText="NOME" style="text-align: center;">
+						<h:outputText value="#{usuario.nome}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="LOGIN" style="text-align: center;">
+						<h:outputText value="#{usuario.usuario}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="EMAIL" style="text-align: center;">
+						<h:outputText value="#{usuario.email}"></h:outputText>
+					</p:column>
+					
+					<p:column headerText="AÇÕES" style="text-align: center;">
+						<h:outputText value="ICONE"></h:outputText>
+					</p:column>
+						
+						</p:dataTable>
+					</div>
+				
 				</div> <!-- FINAL DA ROW -->
 		</div> <!-- FINAL DO CORPO DO PAINEL -->
 	</div> <!-- FINAL DO PAINEL -->
+	</h:form>
 	</ui:define>
 </ui:composition>
 </html>

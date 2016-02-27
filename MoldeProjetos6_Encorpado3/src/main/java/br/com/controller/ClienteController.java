@@ -55,7 +55,6 @@ public class ClienteController implements Serializable {
 		//this.formulario.getCliente().getEndereco().getEstado().(this.formulario.getMunicipioSelecionado());
 		System.out.println("MUNICIPIO SELECIONADO: "+this.formulario.getMunicipioSelecionado().getNome());
 		
-		
 		//Configura os interesses no cliente
 		this.formulario.getCliente().setInteresses(this.formulario.getListaInteresses());
 		
@@ -152,7 +151,9 @@ public class ClienteController implements Serializable {
 	public void pesquisar(){
 		
 		//Faz consulta pelo nome
-		this.formulario.setTodosClientes(this.service.getNegocios().getDao().consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
 		
 	}
 	

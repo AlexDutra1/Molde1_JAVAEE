@@ -25,9 +25,9 @@
 			<div class="row">
 		
 			<div class="col-md-10 form-group">
-				<p:outputLabel value="Usuário: "></p:outputLabel>
+				<p:outputLabel value="Nome: "></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				value="#{usuarioController.formulario.usuario.usuario}"
+				value="#{usuarioController.formulario.usuario.nome}"
 				></p:inputText>
 			</div>
 			
@@ -35,6 +35,13 @@
 				<p:outputLabel value="Email: "></p:outputLabel>
 				<p:inputText styleClass="form-control"
 				value="#{usuarioController.formulario.usuario.email}"
+				></p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:outputLabel value="Login: "></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				value="#{usuarioController.formulario.usuario.usuario}"
 				></p:inputText>
 			</div>
 			

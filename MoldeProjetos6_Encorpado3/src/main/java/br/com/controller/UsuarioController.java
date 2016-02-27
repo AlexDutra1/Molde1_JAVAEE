@@ -1,11 +1,15 @@
 package br.com.controller;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
@@ -15,24 +19,69 @@ import br.com.servico.UsuarioService;
 
 @RequestScoped
 @Named
-public class UsuarioController {
+public class UsuarioController implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private UsuarioService service;
 	
 	@Inject
 	private UsuarioFormulario formulario;
-	
+		
 	//TESTE
 	private byte[] imagem;
 	
 	public void salvarCadastro(){
 		
-		this.formulario.setUsuario(new Usuario());
-		
 		this.getService().getNegocios().getDao().guardar(this.getFormulario().getUsuario());
-		
+
+		//Limpa campos apos cadastro
+		this.formulario.setUsuario(new Usuario());
 	}
+	
+	public void pesquisarPorNome(){
+		
+		this.formulario.setTodosUsuarios(this.service
+				.getNegocios().getDao()
+				.pesquisaPorNome(this.formulario.getUsuario().getNome()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
+		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getUsuario().setNome("");
+	}
+	
+	public void pesquisaPorLogin(){
+		
+		this.formulario.setTodosUsuarios(this.service
+				.getNegocios().getDao()
+				.pesquisaPorLogin(this.formulario.getUsuario().getUsuario()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
+		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_usuario");
+		
+		//Limpa campos apos cadastro
+		this.formulario.setUsuario(new Usuario());
+	}
+	
+	public void pesquisaPorEmail(){
+		
+		this.formulario.setTodosUsuarios(this.service
+				.getNegocios().getDao()
+				.pesquisarPorEmail(this.formulario.getUsuario().getEmail()));
+	
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
+		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_email");
+
+		//Limpa campos apos cadastro
+		this.formulario.setUsuario(new Usuario());
+	}
+
 	
 	/**
 	 * Metodo responsanvel por salvar aquivo

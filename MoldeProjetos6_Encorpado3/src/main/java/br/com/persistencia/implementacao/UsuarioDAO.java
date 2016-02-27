@@ -48,5 +48,30 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		trx.commit();
 		
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List <Usuario> pesquisaPorNome(String nome){
+		
+		Query consulta=manager.createQuery("select a from Usuario a where nome='"
+				+nome+"'", Usuario.class);
+		
+		return consulta.getResultList();
+	}
 
+	@SuppressWarnings("unchecked")
+	public List <Usuario> pesquisaPorLogin(String login){
+		Query consulta=manager.createQuery("select a from Usuario a where usuario='"
+				+login+"'", Usuario.class);
+		
+		return consulta.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List <Usuario> pesquisarPorEmail(String email){
+
+		Query consulta=manager.createQuery("select a from Usuario a where email='"
+				+email+"'", Usuario.class);
+		
+		return consulta.getResultList();
+	}
 }
