@@ -21,7 +21,7 @@ private EntityManager manager;
 	@SuppressWarnings("unchecked")
 	public List<Telefone> consultarPorIdCliente(Long id) {
 		
-		Query consulta=manager.createQuery("select a from Telefone a where cliente_id_fixo='"+id+"'",Telefone.class);
+		Query consulta=manager.createQuery("select a from Telefone a where cliente_id_telefone='"+id+"'",Telefone.class);
 				
 		return consulta.getResultList();
 	}

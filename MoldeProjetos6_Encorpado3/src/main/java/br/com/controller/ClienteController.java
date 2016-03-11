@@ -2,6 +2,7 @@ package br.com.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +10,13 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.criterion.CriteriaQuery;
+import org.primefaces.context.RequestContext;
 
 import br.com.controller.formulario.ClienteFormulario;
 import br.com.modelo.Cliente;
@@ -147,15 +155,6 @@ public class ClienteController implements Serializable {
 
 		return "editarCliente.xhtml";
 	}
-		
-	public void pesquisar(){
-		
-		//Faz consulta pelo nome
-		this.formulario.setTodosClientes(this.service
-				.getNegocios().getDao()
-				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
-		
-	}
 	
 	public String visualizaTelefones(Cliente cliente){
 
@@ -179,6 +178,163 @@ public class ClienteController implements Serializable {
 		
 		return "pesquisaCliente";
 	}
+		
+	//CONSULTAS
+	
+	
+	public void pesquisarPorNome(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setNome("");
+	
+	}
+	
+	public void pesquisarPorEmail(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultaPorEmail(this.formulario.getCliente().getEmail()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_email");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setEmail("");
+	
+	}
+
+	public void pesquisarPorDataDeNascimento(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultaPorDataNascimento(this.formulario.getCliente().getDataNascimento()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_data_nascimento");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setDataNascimento(null);
+	
+	}
+	
+	public void pesquisarPorGenero(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultaPorGenero(this.formulario.getCliente().getGenero()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_genero");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setGenero(null);
+	
+	}
+	
+	public void pesquisarPorRendaMensal(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultaPorRendaMensal(this.formulario.getCliente().getRendaMensal()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setRendaMensal(null);
+	
+	}
+	
+	public void pesquisarPorLagradouro(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultaPeloLagradouro((this.formulario.getEndereco().getLagradouro())));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_lagradouro");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().getEndereco().setLagradouro("");
+	
+	}
+	
+	public void pesquisarPorEstado(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setNome("");
+		
+		/*
+		EntityManager entityManager = emf.createEntityManager();
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Cachorro> criteriaQuery =
+		criteriaBuilder.createQuery(Cachorro.class);
+		Root<Cachorro> root = criteriaQuery.from(Cachorro.class);
+		TypedQuery<Cachorro> query = entityManager.createQuery(criteriaQuery);
+		 */
+	}
+	
+	public void pesquisarPorMunicipio(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setNome("");
+	
+	}
+	
+	public void pesquisarPorTelefone(){
+		
+		//Faz consulta pelo nome
+		this.formulario.setTodosClientes(this.service
+				.getNegocios().getDao()
+				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+		
+		//Limpa campos apos cadastro
+		this.formulario.getCliente().setNome("");
+	
+	}
+	
+	
 
 	public ClienteService getService() {
 		return service;

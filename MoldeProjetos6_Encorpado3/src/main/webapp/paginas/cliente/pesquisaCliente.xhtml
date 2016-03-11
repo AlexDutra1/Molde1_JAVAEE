@@ -12,10 +12,7 @@
 	<ui:define name="corpo">
 
 		<!-- FORM NECESSARIO -->
-		<h:form>
-
-
-
+		<h:form id="formPesquisaCliente">
 
 			<!-- PAINEL GERAL -->
 			<div class="panel panel-default">
@@ -24,60 +21,140 @@
 				</div>
 			<div class="panel-body">
 
-
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>Filtrar</h4>
 				</div>
 			<div class="panel-body">
 			
+			
+			<!-- PESQUISA POR NOME -->
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Nome"></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				id="input_nome"
 				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
 			</div>
 			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorNome}">
+			</p:commandButton>
+			</div>
+			
+			<!-- TESTE - Dentro do commandButton
+			<f:ajax execute="@form" render="@form" />
+			-->
+			 
+			<!-- PESQUISA POR EMAIL -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Email"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_email"
+				value="#{clienteController.formulario.cliente.email}"></p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorEmail}"></p:commandButton>
+			</div>
+			
+			<!-- PESQUISA POR DATA DE NASCIMENTO -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Data de Nascimento"></p:outputLabel>
+			</div>
+			
+			<div class="col-md-11 form-group">
+				<p:calendar 
+				id="input_data_nascimento"
+				value="#{clienteController.formulario.cliente.dataNascimento}"></p:calendar>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorDataDeNascimento}"></p:commandButton>
+			</div>
+			
+			
+			<!-- PESQUISA POR GENERO -->
+			<div class="col-md-10 form-group">
+				<h:outputLabel value="Género" />
+				<h:selectOneRadio value="#{clienteController.formulario.cliente.genero}">
+				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
+				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
+				</h:selectOneRadio>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorGenero}"></p:commandButton>
+			</div>
+			
+			
+			<!-- PESQUISA POR RENDA MENSAL -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Renda Mensal"></p:outputLabel>
+				<p:inputText styleClass="form-control"
+				id="input_renda_mensal"
+				value="#{clienteController.formulario.cliente.rendaMensal}"></p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorRendaMensal}"></p:commandButton>
+			</div>
+			
+			<!-- PESQUISA POR LAGRADOURO -->
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Endereço - Lagradouro"></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				id="input_lagradouro"
 				value="#{clienteController.formulario.endereco.lagradouro}"></p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorLagradouro}"></p:commandButton>
 			</div>
 			
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				
+				id="input_estado"
 				></p:inputText>
+			</div>
+			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorEstado}"></p:commandButton>
 			</div>
 			
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Endereço - Municipio"></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				
+				id="input_Municipio"
 				></p:inputText>
 			</div>
 			
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorMunicipio}"></p:commandButton>
+			</div>
+			
 			<div class="col-md-11 form-group">
-				<p:outputLabel value="Telefone - Fixo"></p:outputLabel>
+				<p:outputLabel value="Telefone"></p:outputLabel>
 				<p:inputText styleClass="form-control"
-				
+				id="input_telefone"
 				></p:inputText>
 			</div>
 			
-			<div class="col-md-11 form-group">
-				<p:commandButton value="Pesquisar" 
-				action="#{clienteController.pesquisar}"
-				>
-				<f:ajax execute="@form" render="@form" />
-				</p:commandButton>
+			<div class="col-md-10 form-group">
+				<p:commandButton value="Pesquisar"
+				action="#{clienteController.pesquisarPorTelefone}"></p:commandButton>
 			</div>
 			
 			</div><!-- FINAL DO CORPO DO PAINEL -->
 			</div><!-- FINAL DO PAINEL -->
-
-
-
 
 
 			<!-- TABELA -->
@@ -108,15 +185,6 @@
 					</p:column>
 					
 					<p:column headerText="END.Lagradouro" style="text-align: center;">
-						<h:outputText value="#{cliente.endereco.lagradouro}"></h:outputText>
-					</p:column>
-															
-					<p:column headerText="END.Cep" style="text-align: center;">
-						<h:outputText value="#{cliente.endereco.cep}"></h:outputText>
-					</p:column>
-					
-					<p:column headerText="END.Bairro" style="text-align: center;">
-						<h:outputText value="#{cliente.endereco.bairro}"></h:outputText>
 					</p:column>
 					
 					<p:column headerText="END.Estado" style="text-align: center;">
