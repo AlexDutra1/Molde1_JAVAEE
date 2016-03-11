@@ -40,6 +40,24 @@ public class UsuarioController implements Serializable {
 		this.formulario.setUsuario(new Usuario());
 	}
 	
+	public void pesquisar(){
+		
+
+		System.out.println(""+this.formulario.getUsuario().getNome());
+		
+		this.formulario.setTodosUsuarios(this.service
+				.getNegocios().getDao()
+				.pesquisarComCriterios(this.formulario.getUsuario()));
+		
+		//ATUALIZA TABELA E CAMPO DE PESQUISA
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
+		//RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_nome");
+		
+		//Limpa campos apos cadastro
+		//this.formulario.getUsuario().setNome("");
+		
+	}
+	
 	public void pesquisarPorNome(){
 		
 		this.formulario.setTodosUsuarios(this.service
