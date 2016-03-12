@@ -79,7 +79,8 @@ CDI
 JSF
 PrimeFaces
 Persistencia com JPA
-Consultas Dinamica com CRITERIA JPA
+CRITERIA JPA - consultas dinamicas com tipos primitivos
+CRITERIA JPA - consultas dinamicas com relacionamentos 
 
 =====================================================
 Configuração do Ambiente:

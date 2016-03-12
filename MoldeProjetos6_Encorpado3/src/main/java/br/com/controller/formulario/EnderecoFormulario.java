@@ -31,6 +31,8 @@ public class EnderecoFormulario implements Serializable {
 	
 	private List <Municipio> todosMunicipios= new ArrayList<Municipio>();
 	
+	private List <Endereco> todosEnderecos=new ArrayList<Endereco>();
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -69,5 +71,13 @@ public class EnderecoFormulario implements Serializable {
 
 	public void setMunicipioSelecionado(Municipio municipioSelecionado) {
 		this.municipioSelecionado = municipioSelecionado;
+	}
+
+	public List<Endereco> getTodosEnderecos() {
+		return todosEnderecos;
+	}
+
+	public void setTodosEnderecos(List<Endereco> todosEnderecos) {
+		this.todosEnderecos = todosEnderecos;
 	}
 }

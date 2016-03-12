@@ -44,7 +44,7 @@ public class Endereco implements Serializable{
 	
 	//RELACIONAMENTO MUNICIPIO
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
-    @JoinColumn(name="municipio_id", nullable=false)
+    @JoinColumn(name="municipio_id", nullable=true)
     @PrimaryKeyJoinColumn
 	private Municipio municipio;
 	

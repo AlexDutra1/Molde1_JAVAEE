@@ -61,49 +61,6 @@ public class UsuarioController implements Serializable {
 		
 	}
 	
-	public void pesquisarPorNome(){
-		
-		this.formulario.setTodosUsuarios(this.service
-				.getNegocios().getDao()
-				.pesquisaPorNome(this.formulario.getUsuario().getNome()));
-		
-		//ATUALIZA TABELA E CAMPO DE PESQUISA
-		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
-		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_nome");
-		
-		//Limpa campos apos cadastro
-		this.formulario.getUsuario().setNome("");
-	}
-	
-	public void pesquisaPorLogin(){
-		
-		this.formulario.setTodosUsuarios(this.service
-				.getNegocios().getDao()
-				.pesquisaPorLogin(this.formulario.getUsuario().getUsuario()));
-		
-		//ATUALIZA TABELA E CAMPO DE PESQUISA
-		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
-		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_usuario");
-		
-		//Limpa campos apos cadastro
-		this.formulario.setUsuario(new Usuario());
-	}
-	
-	public void pesquisaPorEmail(){
-		
-		this.formulario.setTodosUsuarios(this.service
-				.getNegocios().getDao()
-				.pesquisarPorEmail(this.formulario.getUsuario().getEmail()));
-	
-		//ATUALIZA TABELA E CAMPO DE PESQUISA
-		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
-		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_email");
-
-		//Limpa campos apos cadastro
-		this.formulario.setUsuario(new Usuario());
-	}
-
-	
 	/**
 	 * Metodo responsanvel por salvar aquivo
 	 * @param fileUploadEvent

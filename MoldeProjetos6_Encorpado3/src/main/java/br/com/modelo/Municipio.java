@@ -5,20 +5,23 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import br.com.controller.util.BaseEntity;
 
 @Entity
 @Table(name="tb_municipio")
+@SequenceGenerator(name="MUNICIPIO_SEQUENCE", sequenceName="MUNICIPIO_SEQUENCE", allocationSize=1, initialValue=0)
 public class Municipio implements BaseEntity,Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="MUNICIPIO_SEQUENCE")
 	private Long idMunicipio;
 	
 	private String nome;
