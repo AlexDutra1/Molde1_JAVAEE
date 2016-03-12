@@ -58,7 +58,7 @@ public class UsuarioDAO implements UsuarioGerenciable {
 	
 	public List <Usuario> pesquisarComCriterios(Usuario usuario){
 		
-		//CRITERIA HIBERNATE
+		//CRITERIA HIBERNATE-PARA IMPLEMENTAR
 		/*
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 		Session session = sf.openSession();
@@ -89,19 +89,22 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		Root<Usuario> root = criteriaQuery.from(Usuario.class);
 		
 		List<Predicate> condicoes = new ArrayList<Predicate>();
-		if(usuario.getNome() != null){
+		
+		if(!usuario.getNome().equals("")){
 		Path<String> atributoNome = root.get("nome");
-		Predicate whereNome = criteriaBuilder.equal(atributoNome, usuario.getNome());
+		Predicate whereNome = criteriaBuilder.like(atributoNome, usuario.getNome());
 		condicoes.add(whereNome);
 		}
-		if(usuario.getEmail() != null){
-		Path<Integer> atributoEmail = root.get("email");
-		Predicate whereEmail = criteriaBuilder.equal(atributoEmail, usuario.getEmail());
+		
+		if(!usuario.getEmail() .equals("")){
+		Path<String> atributoEmail = root.get("email");
+		Predicate whereEmail = criteriaBuilder.like(atributoEmail, usuario.getEmail());
 		condicoes.add(whereEmail);
 		}
-		if(usuario.getUsuario() != null){
-		Path<Integer> atributoUsuario = root.get("usuario");
-		Predicate whereUsuario = criteriaBuilder.equal(atributoUsuario, usuario.getUsuario());
+		
+		if(!usuario.getUsuario() .equals("")){
+		Path<String> atributoUsuario = root.get("usuario");
+		Predicate whereUsuario = criteriaBuilder.like(atributoUsuario, usuario.getUsuario());
 		condicoes.add(whereUsuario);
 		}
 		
@@ -109,16 +112,10 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		condicoes.toArray(new Predicate[condicoes.size()]);
 		Predicate todasCondicoes = criteriaBuilder.and(condicoesComoArray);
 		criteriaQuery.where(todasCondicoes);
-		
-		//Analisar Predicate
-		//Analisar CriteriaQuery
-		//Analisar CriteriaBuilder
-		
+
 		TypedQuery<Usuario> query =this.manager.createQuery(criteriaQuery);
 		
 		List <Usuario> list=query.getResultList();
-		
-		//List <Usuario> list= query.getSingleResult();
 		
 		for (Usuario usuario2 : list) {
 			System.out.println("TESTE SENHA: "+usuario2.getSenha());

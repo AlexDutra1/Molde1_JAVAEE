@@ -78,8 +78,8 @@ Bootstrap
 CDI
 JSF
 PrimeFaces
-JPA
-JPQL
+Persistencia com JPA
+Consultas Dinamica com CRITERIA JPA
 
 =====================================================
 Configuração do Ambiente:
