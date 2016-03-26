@@ -44,6 +44,9 @@ public class ClienteController implements Serializable {
 	}
 	
 	public void acaoAposCadastrar(){
+		
+		//Configura genero ao cliente
+		this.formulario.getCliente().setGenero(this.formulario.getEnumGenero());
 	
 		//Configura os telefones no cliente
 		this.formulario.getCliente().setTelefone(this.formulario.getListaTelefones());
@@ -177,12 +180,27 @@ public class ClienteController implements Serializable {
 	//CONSULTAS
 	
 	
-	public void pesquisar(){
+	public void pesquisar() throws NullPointerException {
 		
 		//Faz consulta pelo nome
 		this.formulario.setTodosClientes(this.service
 				.getNegocios().getDao()
-				.consultarPorNomeDAO(this.formulario.getCliente().getNome()));
+				.consultaPorCriterios(
+						this.formulario.getCliente(),
+						this.formulario.getEnumGenero(),
+						this.formulario.getTelefone()
+						));
+		/*
+		System.out.println("TESTE 1: "+this.formulario.getCliente().getDataNascimento());
+		
+		if(this.formulario.getCliente().getDataNascimento()==null){
+			System.out.println("É NULO "+this.formulario.getCliente().getDataNascimento());
+		}else{
+			System.out.println("NÃO É NULO "+this.formulario.getCliente().getDataNascimento());
+		}
+		*/
+		//.name da nullpointer
+		//System.out.println("TESTE 2: "+this.formulario.getEnumGenero().name());
 		
 		//ATUALIZA TABELA E CAMPO DE PESQUISA
 		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));

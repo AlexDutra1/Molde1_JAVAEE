@@ -60,9 +60,10 @@
 			</div>
 			
 			<!-- PESQUISA POR GENERO -->
+			
 			<div class="col-md-10 form-group">
 				<h:outputLabel value="Género" />
-				<h:selectOneRadio value="#{clienteController.formulario.cliente.genero}">
+				<h:selectOneRadio value="#{clienteController.formulario.enumGenero}">
 				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
 				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
 				</h:selectOneRadio>

@@ -1,6 +1,8 @@
 package br.com.persistencia.implementacao;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -8,8 +10,15 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import br.com.modelo.Cliente;
+import br.com.modelo.Telefone;
 import br.com.modelo.enums.EnumGenero;
 import br.com.persistencia.interfaces.ClienteGerenciable;
 
@@ -59,6 +68,125 @@ public class ClienteDAO implements ClienteGerenciable {
 		Query consulta=manager.createQuery("select a from Cliente a",Cliente.class);
 				
 		return consulta.getResultList();
+	}
+	
+	public List<Cliente> consultaPorCriterios(Cliente cliente , EnumGenero genero, Telefone telefone) throws NullPointerException {
+		
+		//CRITERIA JPA
+		
+		CriteriaBuilder criteriaBuilder = this.manager.getCriteriaBuilder();
+		CriteriaQuery<Cliente> criteriaQuery =
+		criteriaBuilder.createQuery(Cliente.class);
+		
+		//root é a raiz da consulta
+		Root<Cliente> root = criteriaQuery.from(Cliente.class);
+		
+		List<Predicate> condicoes = new ArrayList<Predicate>();
+		
+		//NOME
+		if(!cliente.getNome().equals("")){
+		Path<String> atributoNome = root.get("nome");
+		Predicate whereNome = criteriaBuilder.like(atributoNome, cliente.getNome());
+		condicoes.add(whereNome);
+		}
+		
+		//EMAIL
+		if(!cliente.getEmail() .equals("")){
+		Path<String> atributoEmail = root.get("email");
+		Predicate whereEmail = criteriaBuilder.like(atributoEmail, cliente.getEmail());
+		condicoes.add(whereEmail);
+		}
+		
+		//RENDA MENSAl
+		if(cliente.getRendaMensal() != null){
+		Path<BigDecimal> atributoRendaMensal = root.get("rendaMensal");
+		Predicate whereRendaMensal = criteriaBuilder.equal(atributoRendaMensal, cliente.getRendaMensal());
+		condicoes.add(whereRendaMensal);
+		}
+		
+		//GENERO
+		if(genero != null){
+		Path<String> atributoGenero = root.get("genero");
+		Predicate whereGenero = criteriaBuilder.equal(atributoGenero, genero);
+		condicoes.add(whereGenero);
+		}
+		
+		//DATA DE NASCIMENTO
+		if(cliente.getDataNascimento() != null){
+		Path<Date> atributoDataNascimento = root.get("dataNascimento");
+		Predicate whereDataNascimento = criteriaBuilder.equal(atributoDataNascimento, cliente.getDataNascimento());
+		condicoes.add(whereDataNascimento);
+		}
+		
+		/////////////////////////
+		//RELACIONAMENTO TELEFONE
+		
+		//TELEFONE NUMERO
+		/*
+		if(telefone != null){
+		Path<Telefone> atributoTelefone = rootTelefone.get("telefone");
+		Predicate whereTelefone = criteriaBuilder.equal(atributoTelefone, telefone);
+		condicoes.add(whereTelefone);
+		}
+		*/
+		
+		CriteriaBuilder criteriaBuilderTelefone = this.manager.getCriteriaBuilder();
+		CriteriaQuery<Telefone> criteriaQueryTelefone =
+		criteriaBuilderTelefone.createQuery(Telefone.class);
+		
+		Root<Telefone> rootTelefone = criteriaQueryTelefone.from(Telefone.class);
+		
+		//ORIGINAL
+		//TypedQuery<Telefone> queryTelefone =this.manager.createQuery(criteriaQueryTelefone);
+		/*
+		TypedQuery<Telefone> typedQuery = this.manager.createQuery(
+				criteriaQueryTelefone.select(rootTelefone )
+			    .where(
+			    	criteriaBuilderTelefone.equal(rootTelefone.join("Cliente").get("telefone"), telefone.getNumero())
+			    )
+			);
+			List<Telefone> results = typedQuery.getResultList();
+		
+		for (Telefone telefone2 : results) {
+			System.out.println("NUMEROS: "+telefone2.getNumero());
+		}
+		
+		*/
+		//List <Telefone> list=queryTelefone.getResultList();
+/*
+		Exemplo com varias entidades
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Product> query = builder.createQuery(Product.class);
+		Root<Product> from = query.from(Product.class);
+		
+		TypedQuery<Product> typedQuery = entityManager.createQuery(
+		    query.select(from )
+		    .where(
+		       builder.equal(from.join("supplier").get("name"), supplierName)
+		    )
+		);
+		List<Product> results = typedQuery.getResultList();
+*/		
+		
+
+		
+		
+		
+		
+		
+		
+		//FINAL
+		
+		Predicate[] condicoesComoArray =
+		condicoes.toArray(new Predicate[condicoes.size()]);
+		Predicate todasCondicoes = criteriaBuilder.and(condicoesComoArray);
+		criteriaQuery.where(todasCondicoes);
+
+		TypedQuery<Cliente> query =this.manager.createQuery(criteriaQuery);
+		
+		List <Cliente> list=query.getResultList();
+		
+		return list;
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -37,21 +37,21 @@ public class Cliente implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="CLIENTE_SEQUENCE")
 	private Long idCliente;
 	
-	@Column(name="nome")
+	@Column(name="nome",nullable=true)
 	private String nome;
 	
-	@Column(name="email")
+	@Column(name="email",nullable=true)
 	private String email;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_nascimento")
+	@Column(name="data_nascimento",nullable=true)
 	private Date dataNascimento;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(name="genero")
+	@Column(name="genero",nullable=true)
 	private EnumGenero genero;
 	
-	@Column(precision=7,scale=3, name="renda")
+	@Column(precision=7,scale=3, name="renda",nullable=true)
 	private BigDecimal rendaMensal;
 	
 	//RELACIONAMENTO ENDERECO OK

@@ -14,6 +14,7 @@ import br.com.modelo.Estado;
 import br.com.modelo.Interesse;
 import br.com.modelo.Municipio;
 import br.com.modelo.Telefone;
+import br.com.modelo.enums.EnumGenero;
 import br.com.modelo.enums.EnumPreferencias;
 
 
@@ -56,6 +57,8 @@ public class ClienteFormulario implements Serializable{
 	private List <Telefone> listaTelefones= new ArrayList<Telefone>();
 	
 	private EnumPreferencias enumPreferencias;
+	
+	private EnumGenero enumGenero;
 	
 	public Interesse getInteresse() {
 		return interesse;
@@ -167,6 +170,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setMunicipioSelecionado(Municipio municipioSelecionado) {
 		this.municipioSelecionado = municipioSelecionado;
+	}
+
+	public EnumGenero getEnumGenero() {
+		return enumGenero;
+	}
+
+	public void setEnumGenero(EnumGenero enumGenero) {
+		this.enumGenero = enumGenero;
 	}
 
 	
