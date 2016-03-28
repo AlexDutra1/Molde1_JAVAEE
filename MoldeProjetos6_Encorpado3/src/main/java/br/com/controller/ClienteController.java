@@ -182,13 +182,16 @@ public class ClienteController implements Serializable {
 	
 	public void pesquisar() throws NullPointerException {
 		
+		System.out.println("NO PESQUISAR: "+this.formulario.getTelefone().getNumero());
+		
 		//Faz consulta pelo nome
 		this.formulario.setTodosClientes(this.service
 				.getNegocios().getDao()
 				.consultaPorCriterios(
 						this.formulario.getCliente(),
 						this.formulario.getEnumGenero(),
-						this.formulario.getTelefone()
+						this.formulario.getTelefone(),
+						this.formulario.getEndereco()
 						));
 		/*
 		System.out.println("TESTE 1: "+this.formulario.getCliente().getDataNascimento());
