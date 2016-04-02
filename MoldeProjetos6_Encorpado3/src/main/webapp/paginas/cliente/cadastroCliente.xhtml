@@ -266,7 +266,7 @@
 						value="#{clienteController.formulario.municipioSelecionado}" 
 						converter="SimpleEntityConverter">
 						   <f:selectItem itemValue="" itemLabel="Selecione" />
-						   <f:selectItems id="municipiosL" value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+						   <f:selectItems id="municipiosL" value="#{clienteController.formulario.municipiosDoEstado}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
 						</h:selectOneMenu>	
 				</div>
 				

@@ -38,8 +38,9 @@ public class ClienteController implements Serializable {
 	@PostConstruct
 	public void init(){
 		
-		this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
-		this.getFormulario().setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
+		this.formulario.setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.formulario.setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
+		this.formulario.setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
 	
 	}
 	
@@ -129,7 +130,7 @@ public class ClienteController implements Serializable {
 	
 	public void atualizaComboMunicipio(AjaxBehaviorEvent event){
 		
-		this.formulario.setTodosMunicipios(this.service.getMunicipioService()
+		this.formulario.setMunicipiosDoEstado(this.service.getMunicipioService()
 				.getNegocios().getDao()
 				.consultaMunicipiosPeloEstado(this.formulario.getEstadoSelecionado()));
 		
@@ -178,11 +179,27 @@ public class ClienteController implements Serializable {
 	}
 		
 	//CONSULTAS
-	
-	
-	public void pesquisar() throws NullPointerException {
+	public void testePesquisaDeClientePorMunicipio(){
 		
-		System.out.println("NO PESQUISAR: "+this.formulario.getTelefone().getNumero());
+		System.out.println("Municipio Controle: "+this.formulario.getMunicipioSelecionado().getNome());
+		
+		this.formulario.setTodosClientes(this.service.getNegocios().getDao().consultaClientePorMunicipio(this.formulario.getMunicipioSelecionado()));
+		
+		List<Cliente> lista=this.formulario.getTodosClientes();
+		
+		
+		for (Cliente cliente : lista) {
+			System.out.println("Lista-controle: "+cliente.getNome());
+		}
+		
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaCliente:tabelaClientes"));
+		RequestContext.getCurrentInstance().update("formPesquisaCliente:input_nome");
+	}
+	
+	
+	public void pesquisar(){
+		
+		//System.out.println("NO PESQUISAR: "+this.formulario.getMunicipioSelecionado().getNome());
 		
 		//Faz consulta pelo nome
 		this.formulario.setTodosClientes(this.service
@@ -191,7 +208,9 @@ public class ClienteController implements Serializable {
 						this.formulario.getCliente(),
 						this.formulario.getEnumGenero(),
 						this.formulario.getTelefone(),
-						this.formulario.getEndereco()
+						this.formulario.getEndereco(),
+						this.formulario.getEstadoSelecionado(),
+						this.formulario.getMunicipioSelecionado()
 						));
 		/*
 		System.out.println("TESTE 1: "+this.formulario.getCliente().getDataNascimento());

@@ -18,6 +18,8 @@ import javax.persistence.criteria.Root;
 
 import br.com.modelo.Cliente;
 import br.com.modelo.Endereco;
+import br.com.modelo.Estado;
+import br.com.modelo.Municipio;
 import br.com.modelo.Telefone;
 import br.com.modelo.enums.EnumGenero;
 import br.com.persistencia.interfaces.ClienteGerenciable;
@@ -70,7 +72,7 @@ public class ClienteDAO implements ClienteGerenciable {
 		return consulta.getResultList();
 	}
 	
-	public List<Cliente> consultaPorCriterios(Cliente cliente , EnumGenero genero, Telefone telefone, Endereco endereco) throws NullPointerException {
+	public List<Cliente> consultaPorCriterios(Cliente cliente , EnumGenero genero, Telefone telefone, Endereco endereco, Estado estado, Municipio municipio) {
 		
 		//CRITERIA JPA
 		
@@ -121,18 +123,44 @@ public class ClienteDAO implements ClienteGerenciable {
 		//RELACIONAMENTO TELEFONE
 	
 		//CONSULTA POR NUMERO
-		if(telefone != null){
-			Predicate whereTelefone = criteriaBuilder.equal(root.join("telefone").get("numero"), telefone.getNumero());
+		if(!telefone.getNumero() .equals("")){
+			Path<String> atributoTelefoneNumero = root.join("telefone").get("numero");
+			Predicate whereTelefone = criteriaBuilder.equal(atributoTelefoneNumero, telefone.getNumero());
 			condicoes.add(whereTelefone);
 		}
 		
 		//RELACIONAMENTO ENDEREÇO
 		
 		//CONSULTA POR LAGRADOURO
-		System.out.println("LAGRADOURO: "+endereco.getLagradouro());
-		if(endereco != null){
-			Predicate whereEndereco = criteriaBuilder.equal(root.join("endereco").get("lagradouro"), endereco.getLagradouro());
+		if(!endereco.getLagradouro() .equals("")){
+			Path<String> atributoEnderecoLagradouro = root.join("endereco").get("lagradouro");
+			Predicate whereEndereco = criteriaBuilder.equal(atributoEnderecoLagradouro, endereco.getLagradouro());
 			condicoes.add(whereEndereco);
+		}
+		
+		//SITUAÇÃO
+		/*OU CONSULTA DE ESTADO FUNCIONA OU CONSULTA DE MUNICIPIO
+		 * NÂO PODE HAVER REFERENCIAS AO MESMO TEMPO DAS DUAS ENTIDADES
+		 * ARRANJAR OUTRA FORMA DE CONSULTAR
+		 * PROCURA SOBRE METAL MODEL
+		 * NOMES COM ACENTO NÃO SÂO ACEITOS
+		 * BACKUP ABAIXO
+		 */
+		
+		//CONSULTA POR ESTADO
+		if(estado != null){
+			Path<String> atributoEstadoNome = root.join("endereco").get("estado").get("nome");
+			Predicate whereEstado = criteriaBuilder.like(atributoEstadoNome, estado.getNome());
+			condicoes.add(whereEstado);
+		}
+		
+		//CONSULTA POR MUNICIPIO
+		if(municipio!= null){
+			Path<String> atributoMunicipioNome = root.join("endereco").join("municipio").get("nome");
+			System.out.println("NA OPERACAO: "+municipio.getNome());
+			System.out.println("NA OPERACAO-ALIAS: "+atributoMunicipioNome);
+			Predicate whereMunicipio = criteriaBuilder.like(atributoMunicipioNome, municipio.getNome());
+			condicoes.add(whereMunicipio);
 		}
 		
 		//FINAL
@@ -146,7 +174,19 @@ public class ClienteDAO implements ClienteGerenciable {
 		
 		List <Cliente> list=query.getResultList();
 		
+		for (Cliente cliente2 : list) {
+			System.out.println("LISTA ANTES DO RETORNO-CLIENTES: "+cliente2.getNome());
+		}
+		
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List <Cliente> consultaClientePorMunicipio(Municipio municipio){
+			
+			Query consulta=manager.createQuery("SELECT a FROM Cliente a JOIN a.endereco e JOIN e.municipio o ON o.nome LIKE'"+municipio.getNome()+"'", Cliente.class);
+			
+			return consulta.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

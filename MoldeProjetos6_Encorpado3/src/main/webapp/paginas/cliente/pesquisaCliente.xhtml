@@ -17,7 +17,7 @@
 			<!-- PAINEL GERAL -->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3>Pesquisa de Clientes</h3>
+					<h3 style="font-family: Impact; font-weight: bold">Pesquisa de Clientes</h3>
 				</div>
 			<div class="panel-body">
 
@@ -85,18 +85,34 @@
 				value="#{clienteController.formulario.endereco.lagradouro}"></p:inputText>
 			</div>
 			
+			<!-- 	
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
 				<p:inputText styleClass="form-control"
 				id="input_estado"
 				></p:inputText>
 			</div>
-			
+		 	-->	
+		 	
+		 	<!-- PESQUISA POR ESTADO -->
+			<div class="col-md-11 form-group">
+				<p:outputLabel value="Endereço - Estado"></p:outputLabel>
+				<h:selectOneMenu id="estado" styleClass="form-control"
+						value="#{clienteController.formulario.estadoSelecionado}" 
+						converter="SimpleEntityConverter">
+						   <f:selectItem itemValue="" itemLabel="Selecione" />
+						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+				</h:selectOneMenu>
+			</div>
+		 	
 			<div class="col-md-11 form-group">
 				<p:outputLabel value="Endereço - Municipio"></p:outputLabel>
-				<p:inputText styleClass="form-control"
-				id="input_Municipio"
-				></p:inputText>
+				<h:selectOneMenu id="municipio_combo" styleClass="form-control"
+				value="#{clienteController.formulario.municipioSelecionado}" 
+				converter="SimpleEntityConverter">
+				   <f:selectItem itemValue="" itemLabel="Selecione" />
+				   <f:selectItems id="municipiosL" value="#{clienteController.formulario.todosMunicipios}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+				</h:selectOneMenu>
 			</div>
 			
 			<div class="col-md-11 form-group">
@@ -143,12 +159,15 @@
 					</p:column>
 					
 					<p:column headerText="END.Lagradouro" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.lagradouro}"></h:outputText>
 					</p:column>
 					
 					<p:column headerText="END.Estado" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.estado.nome}"></h:outputText>
 					</p:column>
 					
 					<p:column headerText="END.Cidade" style="text-align: center;">
+						<h:outputText value="#{cliente.endereco.municipio.nome}"></h:outputText>
 					</p:column>
 					
 					<p:column headerText="AÇÕES" style="text-align: center;">

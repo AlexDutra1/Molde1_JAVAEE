@@ -37,6 +37,10 @@ public class Endereco implements Serializable{
 	
 	private String bairro;
 	
+	//TORNA BIDIRECIONAL
+	@OneToOne(mappedBy = "endereco")
+	private Cliente cliente;
+	
 	//RELACIONAMENTO ESTADO
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idEstado")
@@ -118,6 +122,14 @@ public class Endereco implements Serializable{
 
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	

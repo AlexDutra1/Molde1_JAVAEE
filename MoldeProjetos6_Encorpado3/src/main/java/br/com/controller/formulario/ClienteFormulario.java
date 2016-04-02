@@ -50,6 +50,8 @@ public class ClienteFormulario implements Serializable{
 	
 	private List <Municipio> todosMunicipios;
 	
+	private List <Municipio> municipiosDoEstado;
+	
 	private List <Interesse> listaInteresses= new ArrayList<Interesse>();
 	
 	private List <String> listaPreferencias;
@@ -178,6 +180,14 @@ public class ClienteFormulario implements Serializable{
 
 	public void setEnumGenero(EnumGenero enumGenero) {
 		this.enumGenero = enumGenero;
+	}
+
+	public List<Municipio> getMunicipiosDoEstado() {
+		return municipiosDoEstado;
+	}
+
+	public void setMunicipiosDoEstado(List<Municipio> municipiosDoEstado) {
+		this.municipiosDoEstado = municipiosDoEstado;
 	}
 
 	

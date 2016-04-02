@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,6 +31,11 @@ public class Municipio implements BaseEntity,Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idEstado")
 	private Estado estado;
+	
+	//RELACIONAMENTO ENDERECO
+	//Torna Bidirecional
+    @OneToOne(mappedBy = "municipio")
+	private Endereco endereco;
 	
 	public Long getId() {  
 	       return new Long(idMunicipio);  
@@ -57,5 +63,13 @@ public class Municipio implements BaseEntity,Serializable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 }
