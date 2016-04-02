@@ -150,4 +150,13 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		
 		return consulta.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Usuario> consultarTodosUsuariosDAO(){
+		
+		Query consulta=manager.createQuery("select a from Usuario a", Usuario.class);
+		
+		return consulta.getResultList();
+	}
+	
 }

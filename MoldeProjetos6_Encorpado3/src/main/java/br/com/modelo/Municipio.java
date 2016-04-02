@@ -32,7 +32,6 @@ public class Municipio implements BaseEntity,Serializable {
 	@JoinColumn(name = "idEstado")
 	private Estado estado;
 	
-	//RELACIONAMENTO ENDERECO
 	//Torna Bidirecional
     @OneToOne(mappedBy = "municipio")
 	private Endereco endereco;

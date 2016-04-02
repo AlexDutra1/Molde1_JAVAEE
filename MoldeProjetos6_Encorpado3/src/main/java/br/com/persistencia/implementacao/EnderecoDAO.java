@@ -95,7 +95,7 @@ private EntityManager manager;
 			
 		if(!endereco.getCep() .equals("")){
 		Path<String> atributoCep = root.get("cep");
-		Predicate whereCep = criteriaBuilder.like(atributoCep, endereco.getCep());
+		Predicate whereCep = criteriaBuilder.equal(atributoCep, endereco.getCep());
 		condicoes.add(whereCep);
 		}
 		
@@ -104,28 +104,19 @@ private EntityManager manager;
 		//System.out.println("TESTANDO ESTADO: "+endereco.getEstado().getNome());
 		//System.out.println("TESTANDO ESTADO: "+estado.getNome());
 		
-		if(!estado.getNome() .equals("")){
+		//CONSULTA POR ESTADO
+		if(estado!=null){
 		Path<String> atributoEstado = root.get("estado");
 		Predicate whereEstado = criteriaBuilder.equal(atributoEstado, estado);
 		condicoes.add(whereEstado);
 		}
-		
-		//APENAS MUNICIPIO NAO FUNCIONA
-		/*
-		if(!municipio.getNome() .equals("")){
-		Path<String> atributoMunicipio = root.get("municipio");
-		Predicate whereMunicipio = criteriaBuilder.equal(atributoMunicipio, municipio);
+				
+		//CONSULTA POR MUNICIPIO
+		if(municipio!=null){
+		Path<String> atributoMunicipio = root.join("municipio").get("nome");
+		Predicate whereMunicipio = criteriaBuilder.equal(atributoMunicipio, municipio.getNome());
 		condicoes.add(whereMunicipio);
 		}
-		*/
-		
-		/*
-		if(!endereco.getMunicipio() .equals("")){
-		Path<String> atributoMunicipio = root.get("municipio");
-		Predicate whereMunicipio = criteriaBuilder.equal(atributoMunicipio, endereco.getMunicipio());
-		condicoes.add(whereMunicipio);
-		}
-		*/
 		
 		Predicate[] condicoesComoArray =
 		condicoes.toArray(new Predicate[condicoes.size()]);

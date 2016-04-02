@@ -3,6 +3,7 @@ package br.com.controller;
 import java.io.Serializable;
 import java.util.Arrays;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -31,6 +32,13 @@ public class UsuarioController implements Serializable {
 		
 	//TESTE
 	private byte[] imagem;
+	
+	@PostConstruct
+	public void init(){
+		
+		this.formulario.setTodosUsuarios(this.getService().getNegocios().getDao().consultarTodosUsuariosDAO());
+	
+	}
 	
 	public void salvarCadastro(){
 		
