@@ -28,6 +28,9 @@ public class MunicipioController implements Serializable {
 
 	public void acaoAposCadastrar(){
 		
+		//this.formulario.getEstadoSelecionado().setMunicipios(null);
+		
+
 		//Associa municipio ao estado
 		this.formulario.getMunicipio().setEstado(this.formulario.getEstadoSelecionado());
 		

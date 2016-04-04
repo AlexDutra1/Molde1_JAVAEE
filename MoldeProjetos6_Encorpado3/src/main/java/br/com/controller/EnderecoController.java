@@ -45,10 +45,17 @@ public class EnderecoController  implements Serializable {
 		
 		//Configura Municipio ao Endereco
 		this.formulario.getEndereco().setMunicipio(this.formulario.getMunicipioSelecionado());
-		
+
 		//Salva no banco de dados
 		this.service.getNegocios().getDao().guardar(this.formulario.getEndereco());
+/*
+        	// verifica se o endereco já existe
+            if (this.formulario.getEndereco().getIdEndereco() != null) {
 		
+				//Salva no banco de dados
+				this.service.getNegocios().getDao().guardar(this.formulario.getEndereco());
+            }
+*/		
 		//limpa os campos do endereco
 		this.formulario.setEndereco(new Endereco());
 		this.formulario.setTodosEstados(new ArrayList<Estado>());

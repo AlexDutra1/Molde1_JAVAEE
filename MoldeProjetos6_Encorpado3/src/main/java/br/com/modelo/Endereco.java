@@ -41,10 +41,27 @@ public class Endereco implements Serializable{
 	@OneToOne(mappedBy = "endereco")
 	private Cliente cliente;
 	
+	/*
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false, targetEntity = ProgramaTrabalho.class)
+	@JoinColumn(insertable = true, unique = false, name = "ID_PROGRAMA_TRABALHO", updatable = true, nullable = false)
+	*/
+	
 	//RELACIONAMENTO ESTADO
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idEstado")
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "idEstado", nullable=false)
 	private Estado estado;
+	
+	/*
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false, targetEntity = Estado.class)
+	@JoinColumn(insertable = true, unique = true, name = "idEstado", updatable = true, nullable = false)
+	private Estado estado;
+	*/
+	
+	/*
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, optional = false, targetEntity = Estado.class)
+	@JoinColumn(insertable = true, unique = true, name = "idEstado", updatable = true, nullable = false)
+	private Estado estado;
+	*/
 	
 	//RELACIONAMENTO MUNICIPIO
 	@OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.EAGER)
