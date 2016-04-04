@@ -43,6 +43,8 @@ public class EnderecoController  implements Serializable {
 		//Configura Estado ao Endereço
 		this.formulario.getEndereco().setEstado(this.formulario.getEstadoSelecionado());
 		
+		//this.formulario.getMunicipioSelecionado().setEstado(this.formulario.getEstadoSelecionado());
+		
 		//Configura Municipio ao Endereco
 		this.formulario.getEndereco().setMunicipio(this.formulario.getMunicipioSelecionado());
 

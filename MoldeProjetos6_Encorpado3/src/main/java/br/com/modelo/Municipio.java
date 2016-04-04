@@ -29,8 +29,8 @@ public class Municipio implements BaseEntity,Serializable {
 	private String nome;
 	
 	//RELACIONAMENTO ESTADO
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idEstado")
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "idEstado", unique = true)
 	private Estado estado;
 	
 	//Torna Bidirecional

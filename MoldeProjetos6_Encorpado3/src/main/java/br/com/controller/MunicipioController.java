@@ -46,7 +46,7 @@ public class MunicipioController implements Serializable {
 	@PostConstruct
 	public void init(){
 		
-		//this.getFormulario().setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.formulario.setTodosEstados(this.service.getEstadoService().getNegocios().getDao().todosEstadosCombo());
 	}
 	
 	
