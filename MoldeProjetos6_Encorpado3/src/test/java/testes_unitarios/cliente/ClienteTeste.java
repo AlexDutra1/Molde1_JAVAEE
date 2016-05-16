@@ -2,14 +2,18 @@ package testes_unitarios.cliente;
 
 import junit.framework.Assert;
 
+import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit.InSequence;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
+@RunAsClient
 public class ClienteTeste extends AppTeste{
 	
 	@Test
+	@InSequence(1)
     public void should_create_greeting() {
         Assert.fail("Not yet implemented");
     }

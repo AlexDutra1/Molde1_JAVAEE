@@ -4,9 +4,10 @@ import java.io.File;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
+
+import br.com.modelo.Cliente;
 
 public class AppTeste {
 	
@@ -17,14 +18,22 @@ public class AppTeste {
 				.withTransitivity().asFile();
 
 		WebArchive arquivo = ShrinkWrap
-				.create(WebArchive.class, "label_teste.war")
-				.addPackages(true, "br.com.threeway.label")
+				.create(WebArchive.class, "MoldeProjetos1.war")
+				.addClass(Cliente.class)
+				.addAsLibraries(dependencias);
+				
+		
+		/*
+ * BACKUP
+		WebArchive arquivo = ShrinkWrap
+				.create(WebArchive.class, "molde1_teste.war")
+				.addPackages(true, "br.com")
 				.addAsLibraries(dependencias)
 				.addAsResource("test-persistence.xml",
 						"META-INF/persistence.xml")
 				.addAsResource("beans.xml", "META-INF/beans.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-
+*/
 		System.out.println(arquivo.toString(true));
 
 		return arquivo;
