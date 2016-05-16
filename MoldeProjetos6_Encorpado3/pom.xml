@@ -6,10 +6,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<!-- PERMITE PARA MAVEN USAR UTF-8 -->
+	<!-- PERMITE PARA MAVEN USAR UTF-8 E PROPRIEDADES DO ARQUILLIAN -->
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.arquillian_core>1.0.0.CR7</version.arquillian_core>
+		<version.arquillian_container>7.1.0.Final</version.arquillian_container>
 	</properties>
+
 
 	<!-- INFORMA PARA O MAVEN USAR A VERSAO 1.7 do JRE e a versão 3.1 do web 
 		dinamico IMPORTANTE -->
@@ -32,6 +36,13 @@
 				<configuration>
 					<webXml>src\main\webapp\WEB-INF\web.xml</webXml>
 				</configuration>
+			</plugin>
+
+			<!-- Atualização recomendada no guia do Arquillian -->
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
 			</plugin>
 		</plugins>
 
@@ -111,13 +122,13 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
-		
+
 		<!--Webdriver java para testes automatizados -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -125,7 +136,58 @@
 			<version>2.53.0</version>
 		</dependency>
 
+		<!-- Arquillian container Tomcat -->
+		<dependency>
+			<groupId>org.jboss.arquillian.container</groupId>
+			<artifactId>arquillian-tomcat-embedded-7</artifactId>
+			<version>1.0.0.CR7</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- JUNIT para testes unitarios -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+
+		
+		<!--Necessario senão dá erro na classe AppTeste -->
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+		</dependency>
+		
+		<!--  Integração do Arquillian com JUnit -->
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
 
 	</dependencies>
 
+<!-- API do Arquillian -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.1.11.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 </project>
