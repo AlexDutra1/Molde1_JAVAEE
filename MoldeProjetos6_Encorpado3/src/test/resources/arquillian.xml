@@ -2,15 +2,11 @@
 <arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://jboss.org/schema/arquillian"
     xsi:schemaLocation="http://jboss.org/schema/arquillian http://www.jboss.org/schema/arquillian/arquillian_1_0.xsd">
- 
+    
     <container qualifier="tomcat" default="true">
         <configuration>
-            <property name="providerUrl">jnp://test.example.com:1099</property>
+            <property name="tomcatHome">target/jboss-as-7.1.1.Final</property>
         </configuration>
-        <protocol type="Servlet 3.0">
-            <property name="host">br.com</property>
-            <property name="port">8181</property>
-        </protocol>
     </container>
  
 </arquillian>

@@ -18,7 +18,7 @@
 		<!--PAINEL GERAL -->
 		<andii:compPanel >
 		
-			<ui:define name="tituloDoPainel"><h3>Cadastro do Cliente</h3></ui:define>
+			<ui:define name="tituloDoPainel"><h3>Editar Cliente</h3></ui:define>
 		
 		<ui:define name="corpoDoPainel">
 		
@@ -270,64 +270,12 @@
 						</h:selectOneMenu>	
 				</div>
 				
-																					
-				
-<div class="col-md-6 form-group">
-<!-- Modal para cadastrar estado-->
-<andii:compModal>
-<ui:define name="botaoDoModal"><h4>Cadastrar Estado</h4></ui:define>
-<ui:define name="tituloDoModal"><h4>Cadastro de Estado</h4></ui:define>
-<ui:define name="conteudoDoModal">
-
-<p:outputLabel value="Nome do Estado"></p:outputLabel><br></br>
-<p:inputText styleClass="form-control" 
-value="#{estadoController.formulario.estado.nome}"></p:inputText><br></br>
-<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
-<p:inputText styleClass="form-control"
-value="#{estadoController.formulario.estado.sigla}"></p:inputText>
-
-</ui:define>
-<ui:define name="rodapeModal">
-
-      	 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-         <p:commandButton value="Cadastrar"	action="#{estadoController.acaoAposCadastrar}" />
-      	 
-</ui:define>
-
-</andii:compModal>
- <!-- FIM MODAL -->
-</div>
-
-<div class="col-md-6 form-group">
-<!-- Modal para cadastrar Cidade-->
-<andii:compModal>
-<ui:define name="botaoDoModal"><h4>Cadastrar Cidade</h4></ui:define>
-<ui:define name="tituloDoModal"><h4>Cadastro de Cidade</h4></ui:define>
-<ui:define name="conteudoDoModal">
-
-<p:outputLabel value="Nome da Cidade"></p:outputLabel><br></br>
-<p:inputText styleClass="form-control" ></p:inputText><br></br>
-<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
-<p:inputText styleClass="form-control"></p:inputText>
-
-</ui:define>
-<ui:define name="rodapeModal">
-
-      	 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-         <p:commandButton value="Cadastrar"	action="#{estadoController.acaoAposCadastrar}" />
-      	 
-</ui:define>
-
-</andii:compModal>
- <!-- FIM MODAL -->
- </div>
-		
 		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
 		</andii:compPanel> <!-- FIM DO PAINEL -->
 
 
 		<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar"
+				<p:commandButton value="Gravar Alteração"
 				update="formEditarCliente"
 				actionListener= "#{clienteController.acaoAposAlterar}"></p:commandButton>
 		</div>

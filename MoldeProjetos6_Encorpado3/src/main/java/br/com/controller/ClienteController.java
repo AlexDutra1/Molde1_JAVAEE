@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
@@ -35,12 +34,23 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteFormulario formulario;
 	
-	public void abreIncluir(){
+	public String abreIncluir(){
 		
+		limparFormulario();
+		this.formulario.setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.formulario.setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
+		
+		return "incluirClientes";
 	}
 	
-	public void acaoAposIncluir(){
+	public String abrePesquisa(){
 		
+		limparFormulario();
+		this.formulario.setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
+		this.formulario.setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
+		this.formulario.setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
+		
+		return "pesquisaCliente";
 	}
 	
 	public void limparFormulario(){
@@ -63,7 +73,7 @@ public class ClienteController implements Serializable {
 		
 	}
 	
-	
+	/*
 	@PostConstruct
 	public void init(){
 		
@@ -72,7 +82,7 @@ public class ClienteController implements Serializable {
 		this.formulario.setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
 	
 	}
-	
+	*/
 	public void acaoAposCadastrar(){
 		
 		//Configura genero ao cliente
@@ -165,11 +175,6 @@ public class ClienteController implements Serializable {
 		
 	}
 	
-	public String abreCadastro(){
-		
-		return "cadastroCliente.xhtml";
-	}
-	
 	public void excluirRegistro(Cliente clienteExcluir){
 		
 		this.service.getNegocios().getDao().excluir(clienteExcluir);
@@ -181,7 +186,7 @@ public class ClienteController implements Serializable {
 		
 		this.formulario.setCliente(clienteEditar);
 
-		return "editarClienteX.xhtml";
+		return "editarCliente";
 	}
 	
 	public String visualizaTelefones(Cliente cliente){
@@ -202,11 +207,6 @@ public class ClienteController implements Serializable {
 		return "visualizaInteresses.xhtml";
 	}
 
-	public String abrePesquisa(){
-		
-		return "pesquisaCliente";
-	}
-		
 	//CONSULTAS
 	public void testePesquisaDeClientePorMunicipio(){
 		

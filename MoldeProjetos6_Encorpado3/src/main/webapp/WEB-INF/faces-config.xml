@@ -56,6 +56,22 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
+			<from-outcome>incluirClientes</from-outcome>
+			<to-view-id>/paginas/cliente/cadastroCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>editarCliente</from-outcome>
+			<to-view-id>/paginas/cliente/editarCliente.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
 			<from-outcome>pesquisaCliente</from-outcome>
 			<to-view-id>/paginas/cliente/pesquisaCliente.xhtml</to-view-id>
 		</navigation-case>
