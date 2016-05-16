@@ -35,6 +35,35 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteFormulario formulario;
 	
+	public void abreIncluir(){
+		
+	}
+	
+	public void acaoAposIncluir(){
+		
+	}
+	
+	public void limparFormulario(){
+		this.formulario.setCliente(new Cliente());
+		this.formulario.setEndereco(new Endereco());
+		this.formulario.setInteresse(new Interesse());
+		this.formulario.setTelefone(new Telefone());
+		this.formulario.setListaTelefones(new ArrayList<Telefone>());
+		this.formulario.setListaInteresses(new ArrayList<Interesse>());
+		this.formulario.setListaPreferencias(new ArrayList<String>());
+		this.formulario.setEstadoSelecionado(new Estado());
+		this.formulario.setMunicipioSelecionado(new Municipio());
+	}
+	
+	public void acaoAposAlterar(){
+		
+		//Salva no banco de dados
+		this.service.getNegocios().getDao().guardar(this.getFormulario().getCliente());
+		this.limparFormulario();
+		
+	}
+	
+	
 	@PostConstruct
 	public void init(){
 		
@@ -138,7 +167,7 @@ public class ClienteController implements Serializable {
 	
 	public String abreCadastro(){
 		
-		return "cadastroCliente";
+		return "cadastroCliente.xhtml";
 	}
 	
 	public void excluirRegistro(Cliente clienteExcluir){
@@ -152,7 +181,7 @@ public class ClienteController implements Serializable {
 		
 		this.formulario.setCliente(clienteEditar);
 
-		return "editarCliente.xhtml";
+		return "editarClienteX.xhtml";
 	}
 	
 	public String visualizaTelefones(Cliente cliente){

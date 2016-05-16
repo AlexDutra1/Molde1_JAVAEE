@@ -1,14 +1,19 @@
 package br.com.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FileUploadEvent;
@@ -18,8 +23,8 @@ import br.com.controller.formulario.UsuarioFormulario;
 import br.com.modelo.Usuario;
 import br.com.servico.UsuarioService;
 
-@RequestScoped
-@Named
+@Named("usuarioController")
+@SessionScoped
 public class UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,15 +34,15 @@ public class UsuarioController implements Serializable {
 	
 	@Inject
 	private UsuarioFormulario formulario;
-		
+	
 	//TESTE
 	private byte[] imagem;
-	
+		
 	@PostConstruct
 	public void init(){
 		
-		this.formulario.setTodosUsuarios(this.getService().getNegocios().getDao().consultarTodosUsuariosDAO());
-	
+		//this.formulario.setTodosUsuarios(this.service.getNegocios().getDao().consultarTodosUsuariosDAO());
+
 	}
 	
 	public void salvarCadastro(){
@@ -55,12 +60,12 @@ public class UsuarioController implements Serializable {
 				.pesquisarComCriterios(this.formulario.getUsuario()));
 		
 		//ATUALIZA TABELA E CAMPO DE PESQUISA
-		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaUsuarios"));
+		RequestContext.getCurrentInstance().update(Arrays.asList("formPesquisaUsuario:tabelaConsultaUsuarios"));
 		
 		//Limpa campos apos cadastro
-		this.formulario.getUsuario().setNome("");
-		this.formulario.getUsuario().setEmail("");
-		this.formulario.getUsuario().setUsuario("");
+		//this.formulario.getUsuario().setNome("");
+		//this.formulario.getUsuario().setEmail("");
+		//this.formulario.getUsuario().setUsuario("");
 		
 		//ATUALIZA CAMPOS
 		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_nome");
@@ -68,6 +73,125 @@ public class UsuarioController implements Serializable {
 		RequestContext.getCurrentInstance().update("formPesquisaUsuario:input_email");
 		
 	}
+	
+	public void processFileUpload(FileUploadEvent uploadEvent) {
+		 
+        try {
+            //foto.setProduto(produtoSelecionado);
+            formulario.setImagem(uploadEvent.getFile().getContents());
+            //foto.setImagem(uploadEvent.getFile().getContents());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+ 
+    }
+	
+	public void fileUpload(FileUploadEvent event, String type, String diretorio) {
+		
+		try {
+			//this.nome = new java.util.Date().getTime() + type;
+			//this.caminho = getRealPath() + diretorio + getNome();
+			//this.arquivo = event.getFile().getContents();
+			this.formulario.setImagem(event.getFile().getContents());
+			//File file = new File(getRealPath() + diretorio);
+			//file.mkdirs();
+			
+		} catch (Exception ex) {
+			System.out.println("Erro no upload do arquivo" + ex);
+		}
+	}
+	
+	private byte[] arquivo; 
+	
+	private Part arquivoB;
+	
+	/*public void save() {
+	    try (InputStream input = arquivoB.getInputStream()) {
+	        Files.copy(input, new File(uploads, filename).toPath());
+	    }
+	    catch (IOException e) {
+	        // Show faces message?
+	    }
+	}*/
+	
+	//RASCUNHO
+	/*
+	<h:form id="form" enctype="multipart/form-data">
+	<h:outputLabel value="Arquivo" for="arquivo" />
+	<h:inputFile id="arquivo" value="#{importadorBean.arquivo}"
+		required="true" label="Arquivo" />
+	<h:commandButton value="Importar"
+		action="#{importadorBean.importa}">
+		</h:commandButton>
+							
+</h:form>
+	*/
+	public void importa(ActionEvent event) {
+        try {
+            String conteudo = new Scanner(arquivoB.getInputStream())
+                .useDelimiter("\\A").next();
+        } catch (IOException e) {
+            // trata o erro
+        }
+    }
+	
+	/*
+	public String upload() throws IOException {
+        InputStream inputStream = arquivoB.getInputStream();        
+       FileOutputStream outputStream = new FileOutputStream(getFilename(arquivoB));
+        
+       byte[] buffer = new byte[4096];        
+       int bytesRead = 0;
+       while(true) {                        
+           bytesRead = inputStream.read(buffer);
+           if(bytesRead > 0) {
+               outputStream.write(buffer, 0, bytesRead);
+           }else {
+               break;
+           }                       
+       }
+       outputStream.close();
+       inputStream.close();
+       
+       return "success";
+   }
+*/
+  /* private static String getFilename(Part part) {
+       for (String cd : part.getHeader("content-disposition").split(";")) {
+           if (cd.trim().startsWith("filename")) {
+               String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+               return filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
+           }
+       }
+       return null;
+   }*/
+   
+   public void handleFileUpload(AjaxBehaviorEvent event) {
+	    System.out.println("file size: " + arquivoB.getSize());
+	    System.out.println("file type: " + arquivoB.getContentType());
+	    System.out.println("file info: " + arquivoB.getHeader("Content-Disposition"));
+	}
+   
+	
+ 
+    
+    /*RASCUNHO 
+	<!-- 
+	<div class="col-md-12 form-group">
+		<h:graphicImage library="img" name="que_lindo.jpg"/>				
+		<h:graphicImage id="teste1" value="#{usuarioController.formulario.imagem}"/>
+
+		<h:inputFile value="#{usuarioController.formulario.imagem}" />
+			<h:commandButton action="#{usuarioController.salvar}" value="Enviar" />
+	</div>
+	 -->
+	 */
+   
+
+
+    public void salvar(){
+    	
+    }
 	
 	/**
 	 * Metodo responsanvel por salvar aquivo
@@ -129,6 +253,23 @@ public class UsuarioController implements Serializable {
 		this.formulario = formulario;
 	}
 
+	public byte[] getArquivo() {
+		return arquivo;
+	}
+
+	public void setArquivo(byte[] arquivo) {
+		this.arquivo = arquivo;
+	}
+
+	public Part getArquivoB() {
+		return arquivoB;
+	}
+
+	public void setArquivoB(Part arquivoB) {
+		this.arquivoB = arquivoB;
+	}
+
+	
 
 	
 	

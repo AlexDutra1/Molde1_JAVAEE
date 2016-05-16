@@ -19,6 +19,8 @@ public class UsuarioFormulario implements Serializable {
 	@Inject
 	private Usuario usuario;
 	
+	private byte[] imagem;
+	
 	private List <Usuario> todosUsuarios=new ArrayList<Usuario>();
 
 	public Usuario getUsuario() {
@@ -35,5 +37,13 @@ public class UsuarioFormulario implements Serializable {
 
 	public void setTodosUsuarios(List<Usuario> todosUsuarios) {
 		this.todosUsuarios = todosUsuarios;
+	}
+
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
 	}
 }

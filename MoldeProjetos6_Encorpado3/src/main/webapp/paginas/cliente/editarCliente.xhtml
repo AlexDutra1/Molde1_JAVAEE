@@ -4,25 +4,32 @@
 	  xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:andii="http://componentes.customizados.com"
       xmlns:p="http://primefaces.org/ui">
-      
+
 <ui:composition template="/WEB-INF/templates/layout.xhtml">
 
 <!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
 	<ui:define name="corpo">
 
 <!-- FORM NECESSARIO -->
-<h:form>
+<h:form id="formEditarCliente">
 
-<!-- Teste do painel bootstrap -->
-	<div class="panel panel-default">
-		<div class="panel-heading"><h3>Edição de Dados do Cliente</h3></div>
+		<!--PAINEL GERAL -->
+		<andii:compPanel >
 		
-		<div class="panel-body">
-
-		<h:inputHidden value="#{clienteController.formulario.cliente.idCliente}"></h:inputHidden>
+			<ui:define name="tituloDoPainel"><h3>Cadastro do Cliente</h3></ui:define>
 		
-	<div class="col-md-11 form-group">
+		<ui:define name="corpoDoPainel">
+		
+		<!-- PAINEL DE DADOS DO CLIENTE -->
+		<andii:compPanel >
+		
+			<ui:define name="tituloDoPainel"><h4>Dados do Cliente</h4></ui:define>
+		
+		<ui:define name="corpoDoPainel">
+		
+			<div class="col-md-11 form-group">
 				<p:outputLabel value="Nome"></p:outputLabel>
 				<p:inputText styleClass="form-control"
 				value="#{clienteController.formulario.cliente.nome}"></p:inputText>
@@ -39,23 +46,60 @@
 				</p:calendar>
 			</div>
 			
-	<!-- Necessario row para voltar a esquerda o telefone -->		
+ 	<!-- Necessario row para voltar a esquerda o telefone -->		
 	<div class="row">
 		<div class="col-md-12 form-group">	
 			<div class="col-md-2 form-group">
 				<p:outputLabel value="DDD "></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				id="id_ddd"
 				value="#{clienteController.formulario.telefone.ddd}"
 				></p:inputText>
 			</div>
 			<div class="col-md-4 form-group">
-				<p:outputLabel value="Telefone"></p:outputLabel>
+				<p:outputLabel value="Número"></p:outputLabel>
 				<p:inputText styleClass="form-control"
+				id="id_numero"
 				value="#{clienteController.formulario.telefone.numero}"
 				></p:inputText>
 			</div>
+		
+			<div class="col-md-1 form-group">
+				<p:outputLabel value=""></p:outputLabel>
+				<p:commandButton value="SALVAR TELEFONE"
+				update="tabelaTelefones id_ddd id_numero"
+				actionListener="#{clienteController.adicionaTelefone}">
+				
+					<f:ajax render="tabelaTelefones" execute="id_ddd id_numero" />
+				
+				</p:commandButton>
+			</div>
+			
 		</div>
 	</div>
+	
+			<div class="col-md-7 form-group">
+			
+				<p:dataTable value="#{clienteController.formulario.listaTelefones}"
+				var="telefone" id="tabelaTelefones">
+					
+				<p:column headerText="DDD" style="text-align: center;">
+					<h:outputText value="#{telefone.ddd}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Número" style="text-align: center;">
+					<h:outputText value="#{telefone.numero}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Ações" style="text-align: center;">
+					<p:commandButton value="Excluir"
+					ajax="false">
+						<f:ajax event="click" render="tabelaTelefones" listener="#{clienteController.excluiTelefone(telefone.ddd,telefone.numero)}"></f:ajax>
+					</p:commandButton>
+				</p:column>
+					
+   				</p:dataTable>
+   			</div>
 			
 			<div class="col-md-6 form-group">
 				<p:outputLabel value="Email "></p:outputLabel>
@@ -72,22 +116,229 @@
 
 			<div class="col-md-10 form-group">
 				<h:outputLabel value="Género" />
-				<h:selectOneRadio value="#{clienteController.formulario.cliente.genero}">
+				<h:selectOneRadio value="#{clienteController.formulario.enumGenero}">
 				   	<f:selectItem itemValue="MASCULINO" itemLabel="MASCULINO" />
 				   	<f:selectItem itemValue="FEMININO" itemLabel="FEMININO" />
 				</h:selectOneRadio>
 			</div>
+		
+		
+		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
+		</andii:compPanel> <!-- FIM DO PAINEL -->
+		
+		
+		
+		
+		
+		<!-- PAINEL DE INTERESSES -->
+		<andii:compPanel>
+		
+				<ui:define name="tituloDoPainel"><h4>Preferências do Cliente</h4></ui:define>
+		
+		<ui:define name="corpoDoPainel">
+		
+				<div class="col-md-12 form-group">
+					<h:selectManyCheckbox layout="pageDirection"
+					value="#{clienteController.formulario.listaPreferencias}">
+						<f:selectItem itemValue="Casa" itemLabel="Casa" />
+	   					<f:selectItem itemValue="Lote" itemLabel="Lote" />
+	   					<f:selectItem itemValue="Apartamento" itemLabel="Apartamento" />
+	   					<f:selectItem itemValue="Casa em cond. fechado" itemLabel="Casa em cond. fechado" />
+	   				</h:selectManyCheckbox>
+   				</div>
+   				
+		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
+		</andii:compPanel> <!-- FIM DO PAINEL -->
+		
+		<!-- PAINEL DE INTERESSES -->
+		<andii:compPanel>
+		
+				<ui:define name="tituloDoPainel"><h4>Cadastro de Interesses</h4></ui:define>
+		
+		<ui:define name="corpoDoPainel">
+				<div class="col-md-12 form-group">
+					<p:outputLabel value="Interesse"></p:outputLabel>
+   				</div>
+   				
+   				<div class="col-md-12 form-group">
+	   				<p:inputText id="inp_interesse" 
+	   				value="#{clienteController.formulario.interesse.nome}"></p:inputText>
+	   				
+				</div>
+				
+				<div class="col-md-12 form-group">
+					
+					<p:commandButton  value="Salvar" 
+					update="tabelaInteresses inp_interesse"
+					actionListener="#{clienteController.adicionaInteresse}">
+					
+						<f:ajax execute="inp_interesse" render="tabelaInteresses" />
+					
+					</p:commandButton>
+					
+				</div>
+				
+				<div class="col-md-4 form-group">
+				<p:dataTable value="#{clienteController.formulario.listaInteresses}"
+				var="interesse" id="tabelaInteresses">
+					
+				<p:column headerText="Interesses" style="text-align: center;">
+					<h:outputText value="#{interesse.nome}"></h:outputText>
+				</p:column>
+				
+				<p:column headerText="Ações" style="text-align: center;">
+					<p:commandButton value="Excluir"
+					ajax="false">
+						<f:ajax event="click" render="tabelaInteresses" listener="#{clienteController.excluiInteresse(interesse.nome)}"></f:ajax>
+					</p:commandButton>
+				</p:column>
+				
+   				</p:dataTable>
+   				</div>
+   			
+		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
+		</andii:compPanel> <!-- FIM DO PAINEL -->
 
-			<div class="col-md-12 form-group">
-				<p:commandButton value="Salvar" action="#{clienteController.acaoAposCadastrar}"></p:commandButton>
-			</div>
 
 
-</div> <!-- FINAL DO CORPO DO PAINEL -->
-	</div> <!-- FINAL DO PAINEL -->
-	
-</h:form>	
-	</ui:define>
-</ui:composition>
+		<!--PAINEL ENDERECO -->
+		<andii:compPanel >
+		
+				<ui:define name="tituloDoPainel"><h4>Endereço do Cliente</h4></ui:define>
+		
+		<ui:define name="corpoDoPainel">
+		
+				<div class="col-md-6 form-group">
+						<p:outputLabel value="Lagradouro "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.lagradouro}"
+						></p:inputText>
+				</div>
+				
+				<div class="col-md-2 form-group">
+						<p:outputLabel value="Quadra "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.quadra}"></p:inputText>
+				</div>
+				
+				<div class="col-md-2 form-group">
+						<p:outputLabel value="Lote "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.lote}"></p:inputText>
+				</div>
+				
+				
+				<div class="col-md-2 form-group">
+						<p:outputLabel value="Número "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.numero}"></p:inputText>
+				</div>
+				
+				<div class="col-md-4 form-group">
+						<p:outputLabel value="CEP "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.cep}"></p:inputText>
+				</div>
+				
+				<div class="col-md-8 form-group">
+						<p:outputLabel value="Bairro "></p:outputLabel>
+						<p:inputText styleClass="form-control"
+						value="#{clienteController.formulario.endereco.bairro}"></p:inputText>
+				</div>
+				
+				<div class="col-md-6 form-group">
+					<h:outputLabel value="Estado" for="estado"/>
+					<h:selectOneMenu id="estado" styleClass="form-control"
+						value="#{clienteController.formulario.estadoSelecionado}" 
+						converter="SimpleEntityConverter">
+						   <f:selectItem itemValue="" itemLabel="Selecione" />
+						   <f:selectItems value="#{clienteController.formulario.todosEstados}" var="estado" itemValue="#{estado}" itemLabel="#{estado.nome}"></f:selectItems>
+						
+						<f:ajax event="change" render="municipio_combo" listener="#{clienteController.atualizaComboMunicipio}"></f:ajax>
+					
+					</h:selectOneMenu>	
+						
+				</div>
+
+				<div class="col-md-6 form-group">
+					<h:outputLabel value="Municipio" />
+						<h:selectOneMenu id="municipio_combo" styleClass="form-control"
+						value="#{clienteController.formulario.municipioSelecionado}" 
+						converter="SimpleEntityConverter">
+						   <f:selectItem itemValue="" itemLabel="Selecione" />
+						   <f:selectItems id="municipiosL" value="#{clienteController.formulario.municipiosDoEstado}" var="municipio" itemValue="#{municipio}" itemLabel="#{municipio.nome}"></f:selectItems>
+						</h:selectOneMenu>	
+				</div>
+				
+																					
+				
+<div class="col-md-6 form-group">
+<!-- Modal para cadastrar estado-->
+<andii:compModal>
+<ui:define name="botaoDoModal"><h4>Cadastrar Estado</h4></ui:define>
+<ui:define name="tituloDoModal"><h4>Cadastro de Estado</h4></ui:define>
+<ui:define name="conteudoDoModal">
+
+<p:outputLabel value="Nome do Estado"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control" 
+value="#{estadoController.formulario.estado.nome}"></p:inputText><br></br>
+<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control"
+value="#{estadoController.formulario.estado.sigla}"></p:inputText>
+
+</ui:define>
+<ui:define name="rodapeModal">
+
+      	 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+         <p:commandButton value="Cadastrar"	action="#{estadoController.acaoAposCadastrar}" />
+      	 
+</ui:define>
+
+</andii:compModal>
+ <!-- FIM MODAL -->
+</div>
+
+<div class="col-md-6 form-group">
+<!-- Modal para cadastrar Cidade-->
+<andii:compModal>
+<ui:define name="botaoDoModal"><h4>Cadastrar Cidade</h4></ui:define>
+<ui:define name="tituloDoModal"><h4>Cadastro de Cidade</h4></ui:define>
+<ui:define name="conteudoDoModal">
+
+<p:outputLabel value="Nome da Cidade"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control" ></p:inputText><br></br>
+<p:outputLabel value="Sigla do Estado"></p:outputLabel><br></br>
+<p:inputText styleClass="form-control"></p:inputText>
+
+</ui:define>
+<ui:define name="rodapeModal">
+
+      	 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+         <p:commandButton value="Cadastrar"	action="#{estadoController.acaoAposCadastrar}" />
+      	 
+</ui:define>
+
+</andii:compModal>
+ <!-- FIM MODAL -->
+ </div>
+		
+		</ui:define> <!-- FIM DO CORPO DO PAINEL -->
+		</andii:compPanel> <!-- FIM DO PAINEL -->
+
+
+		<div class="col-md-12 form-group">
+				<p:commandButton value="Salvar"
+				update="formEditarCliente"
+				actionListener= "#{clienteController.acaoAposAlterar}"></p:commandButton>
+		</div>
+		
+		</ui:define> <!-- FIM DO CORPO DO PAINEL GERAL -->		
+		</andii:compPanel>	<!-- FIM DO PAINEL GERAL-->
+			
+		</h:form>	
+		
+			</ui:define> <!-- FIM DO CORPO DA PAGINA -->
+		</ui:composition>
+
 
 </html>

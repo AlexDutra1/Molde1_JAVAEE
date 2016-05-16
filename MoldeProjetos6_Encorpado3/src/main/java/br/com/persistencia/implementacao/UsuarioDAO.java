@@ -58,34 +58,12 @@ public class UsuarioDAO implements UsuarioGerenciable {
 	
 	public List <Usuario> pesquisarComCriterios(Usuario usuario){
 		
-		//CRITERIA HIBERNATE-PARA IMPLEMENTAR
-		/*
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		
-		Criteria criteria = session.createCriteria(Usuario.class);
-		if(usuario.getNome() != null){
-		criteria.add(Restrictions.eq("nome", usuario.getNome()));
-		}
-		if(usuario.getEmail() != null){
-		criteria.add(Restrictions.eq("idade", usuario.getEmail()));
-		}
-		
-		List<Usuario> list = criteria.list();
-		
-		for (Usuario usuario2 : list) {
-			System.out.println("LISTA GERADO PELOS CRITERIOS: "+usuario2.getNome());
-		}
-		
-		return list;
-		 */
-		
 		//CRITERIA JPA
 		
 		CriteriaBuilder criteriaBuilder = this.manager.getCriteriaBuilder();
 		CriteriaQuery<Usuario> criteriaQuery =
 		criteriaBuilder.createQuery(Usuario.class);
+		
 		Root<Usuario> root = criteriaQuery.from(Usuario.class);
 		
 		List<Predicate> condicoes = new ArrayList<Predicate>();
@@ -118,8 +96,31 @@ public class UsuarioDAO implements UsuarioGerenciable {
 		List <Usuario> list=query.getResultList();
 		
 		for (Usuario usuario2 : list) {
-			System.out.println("TESTE SENHA: "+usuario2.getSenha());
+			System.out.println("TESTE EMAIL: "+usuario2.getEmail());
 		}
+		
+		//CRITERIA HIBERNATE-PARA IMPLEMENTAR
+				/*
+				SessionFactory sf = new Configuration().configure().buildSessionFactory();
+				Session session = sf.openSession();
+				Transaction tx = session.beginTransaction();
+				
+				Criteria criteria = session.createCriteria(Usuario.class);
+				if(usuario.getNome() != null){
+				criteria.add(Restrictions.eq("nome", usuario.getNome()));
+				}
+				if(usuario.getEmail() != null){
+				criteria.add(Restrictions.eq("idade", usuario.getEmail()));
+				}
+				
+				List<Usuario> list = criteria.list();
+				
+				for (Usuario usuario2 : list) {
+					System.out.println("LISTA GERADO PELOS CRITERIOS: "+usuario2.getNome());
+				}
+				
+				return list;
+				 */
 		
 		return list;
 	

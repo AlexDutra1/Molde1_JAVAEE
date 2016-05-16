@@ -8,7 +8,9 @@
 
 <ui:composition template="/WEB-INF/templates/layout.xhtml">
 <!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+	
 	<ui:define name="corpo">
+	
 	<h:form id="formPesquisaUsuario">
 
 <!-- Teste do painel bootstrap -->
@@ -44,8 +46,11 @@
 					</div>
 				
 					<div class="col-md-10 form-group">
+						
 						<p:commandButton value="Pesquisar"
-						action="#{usuarioController.pesquisar}"></p:commandButton>
+						action="#{usuarioController.pesquisar}">
+						</p:commandButton>
+					
 					</div>
 					
 					</div> <!-- FINAL DA ROW -->
@@ -53,10 +58,13 @@
 			</div> <!-- FIM DO PAINEL -->
 
 			<div class="row">
-					<!-- TABELA -->
-					<div class="col-md-12 form-group">
-						<p:dataTable value="#{usuarioController.formulario.todosUsuarios}"
-						var="usuario" id="tabelaUsuarios">
+					
+				<!-- TABELA -->
+				<div class="col-md-12 form-group">
+				
+				<p:dataTable value="#{usuarioController.formulario.todosUsuarios}"
+				var="usuario" 
+				id="tabelaConsultaUsuarios">
 						
 					<p:column headerText="NOME" style="text-align: center;">
 						<h:outputText value="#{usuario.nome}"></h:outputText>
@@ -74,13 +82,16 @@
 						<h:outputText value="ICONE"></h:outputText>
 					</p:column>
 						
-						</p:dataTable>
-					</div>
+				</p:dataTable>
+						
+				</div>
+					
 			</div><!-- FINAL DA ROW -->
 			
 				
 		</div> <!-- FINAL DO CORPO DO PAINEL -->
 	</div> <!-- FINAL DO PAINEL -->
+	
 	</h:form>
 	</ui:define>
 </ui:composition>
