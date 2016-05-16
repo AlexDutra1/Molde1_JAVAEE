@@ -1,0 +1,17 @@
+1]Faça o download do bootstrap e cole a pasta em: webapp/resources/aqui
+
+2]Importe os arquivos no xhtml:
+css: importe dentro da tag <head>
+jquery: importe no final da tag <body>
+javascript: importe no final da tag <body>
+
+Buildpath exemplo: resources/pasta do bootstrap/etc
+
+3]Crie o arquivo Style.css e coloque na pasta css do Bootstrap
+
+4]O arquivo jquery voce faz copia o fonte do site, cria o arquivo javascript 
+e cola na pasta js do Bootstrap.
+
+Problema:
+No templates, mas precisamente no topo.xhtml as dependencias do Bootstrap estão com CDN pois não
+foi possivel setar o buildpath corretamente.

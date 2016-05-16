@@ -1,0 +1,19 @@
+<ui:insert>
+Tag que permite adicionar um codigo diferente do template
+Informa onde o codigo será diferente no template
+O uso comum do insert é no Body, no body a implementação é diferente de funcionalidade para funcionalidade
+Usado em: layout.xhtml
+
+<ui:define>
+Tag que contém a implementação do codigo diferente que não é do template
+
+<ui:incluide>
+Tag que simplesmente inclui uma pagina dentro da outra
+
+<ui:component>
+Tag para criação de novos componentes
+
+<ui:composition>
+Tag usada na tela de layout para compor a pagina de layout com rodape, menu e topo
+Usado tambem para implementar o template nas paginas normais
+Usado em: template.xhtml e paginas normais

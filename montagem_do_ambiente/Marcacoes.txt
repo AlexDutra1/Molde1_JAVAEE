@@ -1,0 +1,19 @@
+Marcações: topo, menu,corpo, rodape
+
+1]Crie uma pasta template dentro de Webapp
+
+2]Crie seu componente
+A]Declare o xmlns:ui dos facelets
+B]Crie uma pagina xhtml (necessario so a tag html e ui:component)
+C]Coloque o form entre o ui:component
+D]Agora os componentes desajaveis Primefaces e JSF Mojarra
+
+3]Use o insert e o define para mostrar qual parte irá mudar e onde irá mudar no template 
+e nas paginas que utilizarão o template
+
+4]Teste e se tiver ok, mova a pasta de webapp para web-inf (local certo), corrija as 
+importações e teste novamente os templates.
+
+5]O Bootstrap organiza a marcação
+
+6] Fazer REVISÃO DESSE TEXTO

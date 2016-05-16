@@ -21,6 +21,7 @@ public class AppTeste {
 				.create(WebArchive.class, "MoldeProjetos1.war")
 				.addPackages(true, "br.com")
 				.addAsLibraries(dependencias)
+				.addAsResource("beans.xml", "META-INF/beans.xml")
 				.addAsResource("test-persistence.xml","META-INF/persistence.xml");
 				
 		

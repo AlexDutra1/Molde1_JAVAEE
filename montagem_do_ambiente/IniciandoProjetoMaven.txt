@@ -1,0 +1,20 @@
+1]Crie um projeto Maven simples (Sem Arqueotipos)
+Obs: muitos arqueotipos possuem bugs
+
+2]Configure pelo pom.xml
+Dinamic web module 3.0 ou 3.1
+JRE 1.7 ou 1.8
+
+3]Habilite o JSF no "Project Faces" para habilitar o faces-config, e deixe desativado o gerenciamento do
+JSF pelo eclipse, deixe gerenciado pelo MAVEN
+Obs; Use o "Project Faces" apenas para habilitar o faces-config pois as configurações serão feitas no pom.xml
+
+4]Verifique se o Faces-config.xml e o web.xml estão no projeto
+
+5]Monte as dependencias do pom.xml
+
+6]Crie a estrutura: webapp/resources
+Pasta css
+Pasta img
+Pasta js
+

@@ -1,0 +1,25 @@
+Componentes Reutilizabeis
+
+Obs: Processo bem parecido com o uso do templates:
+
+1]Crie uma pasta componentes dentro de webapp/resources/aqui
+
+2]Crie seu componente
+A]Declare o xmlns:ui dos facelets
+B]Crie uma pagina xhtml (necessario so a tag html e ui:component)
+C]Coloque o form entre o ui:component
+D]Agora os componentes desajaveis Primefaces e JSF Mojarra
+
+3]Crie o xml que irá mapear o componente, o arquivo será nomeado com
+facelets.taglib.xml dentro da pasta componentes
+
+No mapeamento:
+namespace é um link qualquer
+name é a tag que chamará o componente
+source é a localização do componente em xhtml
+
+4]Registre o arquivo "facelets.taglib.xml" no web.xml
+
+5]Usando o componente
+A]Na tela declare a tag do componente com andii
+B]No local use "c andii:componente JSF id"

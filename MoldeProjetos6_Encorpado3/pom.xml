@@ -137,23 +137,23 @@
 		</dependency>
 
 		<!-- Arquillian container Tomcat Embedded -->
-		<!-- 
 		<dependency>
-			<groupId>org.jboss.arquillian.container</groupId>
-			<artifactId>arquillian-tomcat-embedded-7</artifactId>
-			<version>1.0.0.CR7</version>
-			<scope>test</scope>
+		  <groupId>org.jboss.arquillian.container</groupId>
+		  <artifactId>arquillian-tomcat-embedded-8</artifactId>
+		  <version>1.0.0.CR7</version>
+		  <scope>test</scope>
 		</dependency>
- 		-->
 		
 		<!-- Arquillian container Tomcat Remote -->
+		<!-- 
 		<dependency>
 			<groupId>org.jboss.arquillian.container</groupId>
 			<artifactId>arquillian-tomcat-remote-7</artifactId>
 			<version>1.0.0.CR7</version>
 			<scope>test</scope>
 		</dependency>
-
+ 		-->
+		
 		<!-- JUNIT para testes unitarios -->
 		<dependency>
 			<groupId>junit</groupId>
