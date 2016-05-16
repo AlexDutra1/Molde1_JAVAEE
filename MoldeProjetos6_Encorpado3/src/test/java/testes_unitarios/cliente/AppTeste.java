@@ -19,8 +19,9 @@ public class AppTeste {
 
 		WebArchive arquivo = ShrinkWrap
 				.create(WebArchive.class, "MoldeProjetos1.war")
-				.addClass(Cliente.class)
-				.addAsLibraries(dependencias);
+				.addPackages(true, "br.com")
+				.addAsLibraries(dependencias)
+				.addAsResource("test-persistence.xml","META-INF/persistence.xml");
 				
 		
 		/*
