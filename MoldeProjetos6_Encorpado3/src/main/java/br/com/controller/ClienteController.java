@@ -27,6 +27,9 @@ import br.com.servico.ClienteService;
 public class ClienteController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final String abreIncluir ="incluirClientes";
+	private static final String abrePesquisar="pesquisarClientes";
 
 	@Inject
 	private ClienteService service;
@@ -40,7 +43,7 @@ public class ClienteController implements Serializable {
 		this.formulario.setTodosEstados(this.getService().getEstadoService().getNegocios().getDao().todosEstadosCombo());
 		this.formulario.setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
 		
-		return "incluirClientes";
+		return abreIncluir;
 	}
 	
 	public String abrePesquisa(){
@@ -50,7 +53,7 @@ public class ClienteController implements Serializable {
 		this.formulario.setTodosMunicipios(this.getService().getMunicipioService().getNegocios().getDao().consultaTodosMunicipios());
 		this.formulario.setTodosClientes(this.getService().getNegocios().getDao().consultarTodosDAO());
 		
-		return "pesquisaCliente";
+		return "pesquisarClientes";
 	}
 	
 	public void limparFormulario(){

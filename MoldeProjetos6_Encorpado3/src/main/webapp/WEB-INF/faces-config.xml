@@ -72,7 +72,7 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>pesquisaCliente</from-outcome>
+			<from-outcome>pesquisarClientes</from-outcome>
 			<to-view-id>/paginas/cliente/pesquisaCliente.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -129,7 +129,7 @@
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>trocarlogin</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
+			<to-view-id>/paginas/login/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -137,7 +137,7 @@
 		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>login</from-outcome>
-			<to-view-id>/login.xhtml</to-view-id>
+			<to-view-id>/paginas/login/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -146,14 +146,6 @@
 		<navigation-case>
 			<from-outcome>autenticacao_ok</from-outcome>
 			<to-view-id>/paginas/home.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	
-	<navigation-rule>
-		<from-view-id>*</from-view-id>
-		<navigation-case>
-			<from-outcome>recusado</from-outcome>
-			<to-view-id>/paginas/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

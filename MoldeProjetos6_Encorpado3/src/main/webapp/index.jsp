@@ -12,7 +12,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
 <!-- REDIRECIONA AUTOMATICAMENTE A PAGINA APOS 0 SEGUNDOS -->
-<meta http-equiv="refresh" content="0;URL=login.xhtml"/>
+<!-- <meta http-equiv="refresh" content="0;URL=login.xhtml"/> -->
 
  <!-- DECLARACAO DO CSS DO BOOTSTRAP -->
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
