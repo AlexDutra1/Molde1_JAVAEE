@@ -149,4 +149,12 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>index.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>*</from-outcome>
+			<to-view-id>/faces/paginas/login/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

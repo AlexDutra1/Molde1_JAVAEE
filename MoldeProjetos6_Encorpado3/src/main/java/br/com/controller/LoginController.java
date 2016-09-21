@@ -22,6 +22,11 @@ public class LoginController implements Serializable{
 	@Inject
 	private LoginFormulario formulario;
 	
+	public String abreLogin(){
+		
+		return "login.xhtml";
+	}
+	
 	public String autenticar(){
 		System.out.println("Clicado");
 		System.out.println("Usuario: "+this.formulario.getUsuario().getUsuario());

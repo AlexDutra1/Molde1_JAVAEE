@@ -6,6 +6,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+
+
+
 	<!-- PERMITE PARA MAVEN USAR UTF-8 E PROPRIEDADES DO ARQUILLIAN -->
 
 	<properties>
@@ -181,6 +184,8 @@
 
 
 	</dependencies>
+	
+	
 
 	<!-- API do Arquillian -->
 	<dependencyManagement>
@@ -195,4 +200,65 @@
 
 		</dependencies>
 	</dependencyManagement>
+	
+	
+	    <profiles>
+	    <!-- Tomcat Embedded -->
+      <profile>
+       <id>arquillian-tomcat-embedded</id>
+        <activation>
+          <activeByDefault>true</activeByDefault>
+        </activation>
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-tomcat-embedded-7</artifactId>
+            <version>1.0.0.CR5</version>
+            <scope>test</scope>
+        </dependency>
+ 
+        <!-- org.apache.tomcat -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>7.0.42</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>7.0.42</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-logging-juli</artifactId>
+            <version>7.0.42</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jdt.core.compiler</groupId>
+            <artifactId>ecj</artifactId>
+            <version>3.7</version>
+            <scope>provided</scope>
+        </dependency>
+ 
+        <!-- Weld for Dependency Injection @Inject -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet</artifactId>
+            <version>1.1.9.Final</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.jboss.shrinkwrap.resolver</groupId>
+            <artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+      </profile>
+    </profiles>
+	
+	
+	
 </project>

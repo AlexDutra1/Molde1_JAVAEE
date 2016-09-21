@@ -9,12 +9,12 @@
 
 <ui:composition template="/WEB-INF/templates/layout.xhtml">
 
-	<!-- DEFINE É USADO PARA COLOCAR O CODIGO QUE É DIFERENTE DO TEMPLATE -->
+
+<div class="container">
 	<ui:define name="corpo">
-
-		<h:form>
-
-			<!--PAINEL GERAL -->
+		<h:form id="formHome">
+		
+		
 			<andii:compPanel>
 
 				<ui:define name="tituloDoPainel">
@@ -23,22 +23,20 @@
 
 				<ui:define name="corpoDoPainel">
 
-					<div class="col-md-11 form-group">
+						<p:graphicImage
+						style="max-width: 30%;"
+						width="70%" height="70%"
+						value="/resources/img/Memes_Chorando.jpg"
+						/>
 						<h1>SEJA BEM VINDO!!</h1>
-						<br></br>
-						<h1>HOME</h1>
-					</div>
-
+					
 				</ui:define>
-				<!-- FIM DO CORPO DO PAINEL -->
 			</andii:compPanel>
-			<!-- FIM DO PAINEL -->
 
 
-
-		</h:form>
-
+	</h:form>
 	</ui:define>
+	</div>
 </ui:composition>
 
 </html>

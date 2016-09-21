@@ -72,7 +72,7 @@
 	</context-param>
 
 	<!-- Filtro que encapsula a complexidade do upload de arquivos do Primefaces -->
-    
+   <!--  
 	<filter>
 	<filter-name>PrimeFaces FileUpload Filter</filter-name>
 	    <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
@@ -80,7 +80,7 @@
 	<filter-mapping>
 	    <filter-name>PrimeFaces FileUpload Filter</filter-name>
 	    <servlet-name>Faces Servlet</servlet-name>
-	</filter-mapping>
+	</filter-mapping> -->
 	
 	<!-- FIM DO FILTRO -->
 
