@@ -18,12 +18,12 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://127.0.0.1:5432/molde_projetos" />
+				value="jdbc:postgresql://127.0.0.1:5432/arquitetura_java_ee" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-			<property name="javax.persistence.jdbc.user" value="usuariobd" />
-			<property name="javax.persistence.jdbc.password" value="papaleguas78" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 		<!--<property name="javax.persistence.schema-generation.create-source" value="metadata" /> -->  <!-- GERA NOVAMENTE A TABELA QUANDO PROGRAMA FOR INICIADO -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
